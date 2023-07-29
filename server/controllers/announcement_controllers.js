@@ -6,6 +6,9 @@ export const postGroupAnnouncement = async (req, res) => {
         const { title, description } = req.body;
         const { group } = req.rootUser;
 
+        if(!title || !description){
+            res.status(422).json({error : "empty fields"});
+        }
         const announcement = new Announcement({
             title,
             description,
@@ -27,6 +30,10 @@ export const postSubgroupAnnouncement = async (req, res) => {
     try {
         const { title, description } = req.body;
         const { subgroup } = req.rootUser;
+
+        if(!title || !description){
+            res.status(422).json({error : "empty fields"});
+        }
 
         const announcement = new Announcement({
             title,

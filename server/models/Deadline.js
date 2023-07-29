@@ -6,7 +6,6 @@ const deadlineSchema = new mongoose.Schema({
     },
     date:{
         type: String,
-        required: true
     },
     subgroup :{
         type : String
