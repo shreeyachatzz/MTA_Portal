@@ -28,7 +28,7 @@ const Deadline = (props, state) => {
       return (
          <div className={`fullmain ${shouldSetHeight ? 'app' : ''}`}>
           <SideNav />
-        <div className="containerr">
+        <div className="containerr-d">
         <div className='mobHead'>
             DEADLINES
         </div>

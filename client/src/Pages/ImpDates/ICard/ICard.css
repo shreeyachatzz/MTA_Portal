@@ -1,15 +1,19 @@
-.card{
+.card-i{
     background-color: #fff;
     padding: 0vh;
     margin: 3vh;
+    border-radius: 1.5vh;
 }
 
-.date{
+.date-i{
     border-bottom: solid;
-    padding: 1vh;
+    padding: 2vh;
     border-color: black;
+    color: #FF432A;
 }
 
-.info{
+.info-i{
     padding: 2vh;
+    font-size: 2.5vh;
+    font-weight: 550;
 }

@@ -3,7 +3,9 @@ import './SmCard.css'
 
 const SmCard = () => {
   return (
-    <div className='card'>Data Structures</div>
+    <div className='card-m'>
+    Data Structures
+    </div>
   )
 }
 

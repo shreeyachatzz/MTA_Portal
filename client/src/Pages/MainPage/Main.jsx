@@ -24,7 +24,7 @@ const MainPage = (props, state) => {
         <div className='mobHead'>
           STUDY MATERIAL
         </div>
-        <div className='cards'>
+        <div className='cards-m'>
           {dataArray.map((item, index) => (
               <SmCard key={index} title={item.title}/>
             ))}

@@ -4,6 +4,7 @@ import { PiBooksDuotone } from 'react-icons/pi';
 import { TiThMenuOutline } from 'react-icons/ti';
 import { TfiAnnouncement } from 'react-icons/tfi';
 import { LiaStopwatchSolid, LiaCalendarSolid } from 'react-icons/lia';
+import { Link } from 'react-router-dom';
 
 const SideNav = (props) => {
   const [showSidee, setShowSidee] = useState(false);
@@ -38,25 +39,35 @@ const SideNav = (props) => {
           <p className='mail'>laggarwal1_be21@thapar.edu</p>
 
           <div className='links'>
-            <div className='link'>
-              <PiBooksDuotone className='logo' />
-              <a href='#section'>Study Material</a>
-            </div>
 
-            <div className='link'>
-              <TfiAnnouncement className='logo' />
-              <a href='#section'>Announcements</a>
-            </div>
+            <Link to="/">
+              <div className='link'>
+                <PiBooksDuotone className='logo' />
+                <a href='#section'>Study Material</a>
+              </div>
+            </Link>
 
-            <div className='link'>
-              <LiaStopwatchSolid className='logo' />
-              <a href='#section'>Deadlines</a>
-            </div>
+            <Link to="/announcements">
+              <div className='link'>
+                <TfiAnnouncement className='logo' />
+                <a href='#section'>Announcements</a>
+              </div>
+            </Link>
 
-            <div className='link'>
-              <LiaCalendarSolid className='logo' />
-              <a href='#section'>Important Dates</a>
-            </div>
+            <Link to="/deadline">
+              <div className='link'>
+                <LiaStopwatchSolid className='logo' />
+                <a href='#section'>Deadlines</a>
+              </div>
+            </Link>
+
+            <Link to="/impdates">
+              <div className='link'>
+                <LiaCalendarSolid className='logo' />
+                <a href='#section'>Important Dates</a>
+              </div>
+            </Link>
+
           </div>
 
           <div className='foot'>

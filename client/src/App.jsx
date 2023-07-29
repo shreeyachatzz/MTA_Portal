@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom';
 
 import './App.css'
 import Navbar from './Components/Navbar/Navbar'
@@ -11,10 +12,12 @@ function App() {
 
   return (
     <div className='app'>
-      {/* <MainPage/> */}
-      {/* <Announcements /> */}
-      {/* <Deadline /> */}
-      <ImpDates />
+    <Routes >
+      <Route path="/" element={<MainPage/>}/>
+      <Route path="/announcements" element={<Announcements/>}/>
+      <Route path="/deadline" element={<Deadline />}/>
+      <Route path="/impdates" element={ <ImpDates />}/>
+    </Routes>
     </div>
   )
 }

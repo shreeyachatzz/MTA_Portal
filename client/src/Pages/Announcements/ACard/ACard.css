@@ -1,16 +1,21 @@
-.grpclass{
+.grpclass-a{
     color: #4f6aff;
     font-weight: 700;
     font-size: 2.5vh;
+    padding-top: 1vh;
+    padding-left: 1vh;
 }
-.info{
+
+.info-a{
     color: #000000;
     font-weight: 400;
     letter-spacing: 0.12;
     font-size: 2vh;
+    padding: 1vh;
 }
 
-.card{
+.card-a{
     background-color: white;
     margin: 2vh;
+    border-radius: 1.5vh;
 }

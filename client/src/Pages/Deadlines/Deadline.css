@@ -1,4 +1,4 @@
-.containerr{
+.containerr-d{
     justify-content: center;
     margin-left: 18vw;
     margin-top: 10vh;
@@ -100,7 +100,7 @@
         grid-gap: 1rem;
         margin-left: 0vh;
     }    
-    .containerr{
+    .containerr-d{
         margin-left: 4vw;
         margin-top: 15vh;
     } 

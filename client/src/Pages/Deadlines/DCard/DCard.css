@@ -1,18 +1,21 @@
-.grpclass{
+.grpclass-d{
     color: #4f6aff;
     font-weight: 700;
     margin: 1vh;
 }
-.info{
+.info-d{
     color: #000000;
     font-weight: 400;
     letter-spacing: 0.12;
     font-size: 2vh;
+    padding: 1vh;
+    text-align: justify;
 }
 
-.card{
+.card-d{
     background-color: white;
     margin: 2vh;
+    border-radius: 1.5vh;
 }
 
 .butf{
@@ -23,35 +26,36 @@
     border-width: 2px;
 }
 
-.p1{
+.p1-d{
     display: flex;
     align-items: center;
     justify-content: left;
     text-align: left;
-
 }
-.sub{
+
+.sub-d{
     color: #4f6aff;
     margin: 1vh;
 }
 
-.date{
+.date-d{
     color: #FF432A;
     margin-left: auto;
     margin-right:2vw ;
     font-size: 2.5vh;
 }
-.deadBarr{
+.deadBarr-d{
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 @media (max-width: 600px) {
-    .deadBarr{
+    .deadBarr-d{
         flex-direction: column;
         justify-content: center;
     }
-    .date{
+    .date-d{
         margin-left:1vh;
         display: flex;
     }
