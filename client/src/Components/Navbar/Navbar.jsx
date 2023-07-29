@@ -58,6 +58,10 @@ const SideNav = (props) => {
               <a href='#section'>Important Dates</a>
             </div>
           </div>
+
+          <div className='foot'>
+            LSH Team
+          </div>
         </div>
       </div>
 
