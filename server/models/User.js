@@ -29,7 +29,11 @@ const userSchema = new mongoose.Schema({
         type : mongoose.Types.ObjectId,
         ref: "Announcement"
     }],
-    deadlines:[{
+    deadlinesGrp:[{
+        type : mongoose.Types.ObjectId,
+        ref: "Deadline"
+    }],
+    deadlinesSubGrp:[{
         type : mongoose.Types.ObjectId,
         ref: "Deadline"
     }],

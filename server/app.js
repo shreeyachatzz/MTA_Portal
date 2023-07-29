@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import { connectDB } from './dbconn/conn.js';
 import userRouter from './routes/user_routes.js';
 import announcementRouter from './routes/announcement_routes.js';
+import deadlineRouter from './routes/deadline_routes.js';
 
 const app =  express();
 dotenv.config({ path: './config.env' });
@@ -16,6 +17,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use('/user',userRouter);
 app.use('/announcement',announcementRouter);
+app.use('/deadline', deadlineRouter);
 
 
 app.get('/', (req, res) => {
