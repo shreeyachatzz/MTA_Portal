@@ -1,0 +1,156 @@
+.welc{
+    color: #fff;
+    font-size: 2vh;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.222px;
+    padding-top: 1vh;
+}
+
+.name{
+    color: #FF432A;
+    font-size: 3vh;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.29px;
+}
+
+.mail{
+    color: #90A0B7;
+    font-size: 2vh;
+    font-weight: 500;
+    letter-spacing: 0.16px;
+}
+
+.dash{
+    color: #90A0B7;
+    font-family: 'Epilogue', sans-serif;
+    font-weight: 700;
+    font-size: 2.5vh;
+    padding: 1vh;
+    text-align: center;
+    padding-top: 2vh;
+}
+
+.links{
+    display: flex;
+    flex-direction: column;
+    padding-top: 2vh;
+}
+.links a{
+    color: #109CF1;
+    font-size: 2.5vh;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    text-decoration: none;
+    padding-left: 1vh;
+}
+
+.link{
+    color: #109CF1;
+    display: flex;
+    padding: 1.5vh;
+}
+
+.logo{
+    align-items: center;
+    font-size: 3vh;
+}
+
+.link:hover{
+    background-color: rgba(255, 255, 255, 0.09);
+    border-radius: 1.2vh;
+}
+
+.sidee{
+    height: 100%;  
+    width: auto;  
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    background-color:#2D2D30; 
+    transition: .5s ease; 
+    overflow-x: hidden; 
+    padding-top: 20px; 
+    display: flex; 
+    flex-direction: column;
+    padding: 2vh;
+}
+
+.horHead{
+    display: none;
+
+}
+.ham{
+    display: none;
+    background-color: #2D2D30;
+    border: none;
+}
+.ham p{
+    padding-left: 1vh;
+    font-size: 2.5vh;
+}
+.whole{
+    overflow-x: hidden;
+    position: relative;
+}
+.pcHead{
+    translate: 0vh;
+    transition: ease-in-out;
+    display: block;
+    align-items: center;
+    width: 100%;
+    padding: 2vh;
+    background-color: #2D2D30;
+    border-bottom: solid;
+    border-color: #E3E3E3;
+    position: fixed;
+    z-index: 1;
+}
+.pcHead p{
+    color: #fff;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 4vh;
+    font-weight: 700;
+}
+.sidenav{
+    margin-top: 8vh;
+}
+
+
+@media (max-width: 1038px) {
+        .pcHead{
+            display: none;
+        }
+        .sidee{
+            transform: translate(-100vh);
+  transition: ease-in-out 0.3s;
+
+        }
+        .ham{
+            color:#FF432A;
+            font-size: xx-large;
+            display: flex;
+            align-items: center;
+        }
+        .horHead{
+            z-index: 1;
+            translate: 0vh;
+            transition: ease-in-out;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            padding: 2vh;
+            background-color: #2D2D30;
+            position: fixed;
+            border-bottom: solid;
+            border-color: #E3E3E3;
+            border-width: 1px;
+        }
+        .show-sidee {
+            transform: translate(0);
+        }
+}

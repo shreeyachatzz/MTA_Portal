@@ -1,0 +1,58 @@
+.grpclass{
+    color: #4f6aff;
+    font-weight: 700;
+    margin: 1vh;
+}
+.info{
+    color: #000000;
+    font-weight: 400;
+    letter-spacing: 0.12;
+    font-size: 2vh;
+}
+
+.card{
+    background-color: white;
+    margin: 2vh;
+}
+
+.butf{
+    padding: 0.6vh;
+    border: solid;
+    margin: 1vh ;
+    border-radius: 0.6em;
+    border-width: 2px;
+}
+
+.p1{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+
+}
+.sub{
+    color: #4f6aff;
+    margin: 1vh;
+}
+
+.date{
+    color: #FF432A;
+    margin-left: auto;
+    margin-right:2vw ;
+    font-size: 2.5vh;
+}
+.deadBarr{
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 600px) {
+    .deadBarr{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .date{
+        margin-left:1vh;
+        display: flex;
+    }
+}

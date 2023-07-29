@@ -1,0 +1,15 @@
+.card{
+    background-color: #fff;
+    padding: 0vh;
+    margin: 3vh;
+}
+
+.date{
+    border-bottom: solid;
+    padding: 1vh;
+    border-color: black;
+}
+
+.info{
+    padding: 2vh;
+}

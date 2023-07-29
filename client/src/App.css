@@ -1,0 +1,24 @@
+*{
+    margin:0px;
+    padding:0px;
+    font-family: 'Jost', sans-serif
+  }
+
+  .app {
+    background-image: url('./bg_main.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100%; /* Use min-height to ensure the .app element takes at least 100% of the viewport height */
+  
+    /* Add the following CSS to ensure scrolling for smaller screens */
+    position: relative;
+    overflow-y: auto; /* Enable vertical scrolling for the .app element's content */
+  }
+
+  @media (max-width:1038px) {
+    .app{
+      background-image: url('./bg_mobile.png');
+      height: auto;
+    }
+  }

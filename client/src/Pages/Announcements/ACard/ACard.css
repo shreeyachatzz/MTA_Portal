@@ -1,0 +1,16 @@
+.grpclass{
+    color: #4f6aff;
+    font-weight: 700;
+    font-size: 2.5vh;
+}
+.info{
+    color: #000000;
+    font-weight: 400;
+    letter-spacing: 0.12;
+    font-size: 2vh;
+}
+
+.card{
+    background-color: white;
+    margin: 2vh;
+}
