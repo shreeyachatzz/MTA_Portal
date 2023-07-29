@@ -21,7 +21,11 @@ const userSchema = new mongoose.Schema({
     group :{
         type: String
     },
-    announcements:[{
+    announcementsGrp:[{
+        type : mongoose.Types.ObjectId,
+        ref: "Announcement"
+    }],
+    announcementsSubGrp:[{
         type : mongoose.Types.ObjectId,
         ref: "Announcement"
     }],
@@ -37,8 +41,6 @@ const userSchema = new mongoose.Schema({
         type : mongoose.Types.ObjectId,
         ref: "Resource"
     }],
-
-    
     tokens : [
         {
             token:{

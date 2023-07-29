@@ -9,7 +9,7 @@ export const Authenticate = async (req, res, next) => {
         return res.status(401).json({ error: 'Unauthorized: No token provided' });
       }
       
-      console.log("ENV : ",process.env.SECRET_KEY);
+      // console.log("ENV : ",process.env.SECRET_KEY);
       const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
   
       const rootUser = await User.findOne({
