@@ -34,7 +34,7 @@ const Dropdown = ({ items }) => {
   return (
     <div className={`dropdown ${isOpen ? 'open' : ''}`} ref={dropdownRef}>
       <button className="dropbtn" onClick={handleDropdownClick}>
-        {selectedOption || 'Dropdown'}&nbsp;<BiDownArrow/>
+        {selectedOption || 'Subject'}&nbsp;<BiDownArrow/>
       </button>
       <div className="dropdown-content">
         {items.map((item, index) => (

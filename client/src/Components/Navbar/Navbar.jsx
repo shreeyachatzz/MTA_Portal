@@ -94,6 +94,13 @@ const SideNav = (props) => {
               </div>
             </Link>
 
+            <Link className={`${isAdmin ? '' : 'showsub'}`} to="/addSub">
+              <div className='link-s'>
+                <BsFillPlusSquareFill className='logo' />
+                <div className='goat'>Add Subjects</div>
+              </div>
+            </Link>
+
           </div>
 
           <div className='foot'>

@@ -45,6 +45,13 @@
     text-decoration: none;
     padding-left: 1vh;
 }
+.goat{
+    font-size: 2.5vh;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    text-decoration: none;
+    padding-left: 1vh;
+}
 
 .link{
     color: #109CF1;
@@ -58,7 +65,7 @@
     font-size: 3vh;
 }
 
-.link:hover{
+.link:hover,.link-s:hover{
     background-color: rgba(255, 255, 255, 0.09);
     border-radius: 1.2vh;
 }
@@ -125,11 +132,22 @@
     margin-top: 8vh;
 }
 
+.link-s{
+    color: #59FF30;
+    display: flex;
+    padding: 1.5vh;
+    align-items: center;
+}
+
+
 .foot{
-    margin-top: 39vh;
+    margin-top: 32vh;
     color: #fff;
     font-size: 2.5vh;
     margin-left: 1vh;
+}
+.showsub{
+    visibility: hidden;
 }
 
 @media (max-width: 1038px) {

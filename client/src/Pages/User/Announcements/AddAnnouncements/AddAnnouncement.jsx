@@ -8,6 +8,7 @@ const AddAnnouncement = () => {
     <div className='fullmain'>
           <SideNav />
         <div className="containerr">
+        <div className='heading'>ADD ANNOUNCEMENT</div>
             <AddCard />
         </div>
      </div>

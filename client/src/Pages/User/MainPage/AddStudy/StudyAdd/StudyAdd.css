@@ -1,0 +1,26 @@
+.an-details-sm{
+    background-color: transparent;
+    border-bottom: solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-color: #59FF30;
+    border-width: 1px;
+    width: 94%;
+    height:fit-content;
+    padding: 2vh;
+
+    color: #FFF;
+    font-family: Jost;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.00938rem;
+}
+.an-details-sm:focus{
+    outline-style: none;
+    border-width: 2px;
+    box-shadow: none;
+    background-color: transparent;
+}

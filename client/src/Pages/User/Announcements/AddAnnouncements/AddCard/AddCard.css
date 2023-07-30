@@ -59,7 +59,7 @@
     border: solid;
     border-color: #59FF30;
     border-width: 1px;
-    width: 97%;
+    width: 94%;
     height: 20vh;
     padding: 2vh;
 
@@ -82,5 +82,13 @@
 @media (max-width:1038px) {
     .full{
         width: 75%;
+        margin-left: 7vh;
+    }
+}
+
+@media (max-width:738px) {
+    .full{
+        width: 75%;
+        margin-left: 4vh;
     }
 }
