@@ -15,7 +15,6 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: auto;
-    grid-gap: 1rem;
 }
 .fill{
     height: auto;
@@ -40,8 +39,6 @@
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         grid-auto-rows: auto;
-        grid-gap: 0.6vh;
-        margin-left: 0vh;
     }    
     .containerr{
         margin-left: 4vw;

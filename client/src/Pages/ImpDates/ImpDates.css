@@ -1,6 +1,6 @@
-.containerr{
+.containerr-d{
     justify-content: center;
-    margin-left: 18vw;
+    margin-left: 15vw;
     margin-top: 15vh;
     color: black;
     font-weight: 700;
@@ -43,7 +43,7 @@
         grid-gap: 1rem;
         margin-left: 0vh;
     }    
-    .containerr{
+    .containerr-d{
         margin-left: 4vw;
     } 
 }

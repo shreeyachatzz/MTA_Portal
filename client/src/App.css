@@ -22,3 +22,21 @@
       height: auto;
     }
   }
+
+::-webkit-scrollbar-track
+{
+	border-radius: 10px;
+	background-color: #2D2D30;
+}
+
+::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #2D2D30;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 3px;
+	background-color: #1c1b1b;
+}

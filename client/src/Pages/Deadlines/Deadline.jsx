@@ -26,14 +26,14 @@ const Deadline = (props, state) => {
 
 
       return (
-         <div className={`fullmain ${shouldSetHeight ? 'app' : ''}`}>
+         <div className={`fullmain ${shouldSetHeight ? 'fill' : ''}`}>
           <SideNav />
-        <div className="containerr-d">
+        <div className="containerr-dd">
         <div className='mobHead'>
             DEADLINES
         </div>
 
-        <div className='deadBar'>
+        <div className='deadBard'>
             <div className='filter'>
             FILTER BY <Dropdown items={dropdownItems}/>
             </div>

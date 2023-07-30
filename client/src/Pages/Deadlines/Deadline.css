@@ -1,20 +1,21 @@
-.containerr-d{
+.containerr-dd{
     justify-content: center;
     margin-left: 18vw;
-    margin-top: 10vh;
     color: black;
     font-weight: 700;
-    font-size: 3vh;
+    font-size: 2.5vh;
     letter-spacing: 0.24px;
+    margin-top: 10vh;
 }
 .fullmain{
     min-height: 100vh;
 }
 
-.deadBar{
+.deadBard{
     display: flex;
     flex-direction: row;
     align-items: center;
+    position:-webkit-sticky;
 }
 .butf{
     padding: 0.6vh;
@@ -27,7 +28,7 @@
     margin-left: auto;
     margin-right:2vw ;
     display: flex;
-    font-size: 2.5vh;
+    font-size: 2.35vh;
 }
 .butf:hover{
     color: #FF432A;
@@ -47,7 +48,7 @@
     }
 }
 @media (max-width: 600px) {
-    .deadBar{
+    .deadBard{
         flex-direction: column;
         justify-content: center;
     }
@@ -100,7 +101,7 @@
         grid-gap: 1rem;
         margin-left: 0vh;
     }    
-    .containerr-d{
+    .containerr-dd{
         margin-left: 4vw;
         margin-top: 15vh;
     } 
