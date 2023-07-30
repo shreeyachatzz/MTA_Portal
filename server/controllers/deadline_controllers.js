@@ -4,16 +4,17 @@ import User from "../models/User.js";
 
 export const postGroupDeadline = async (req, res) => {
     try {
-        const { title, date } = req.body;
+        const { title, date, description } = req.body;
         const { group } = req.rootUser;
 
-        if (!title || !date) {
+        if (!title || !date || !description) {
             res.status(422).json({ error: "empty fields" });
         }
 
         const deadline = new Deadline({
             title,
             date,
+            description,
             group
         });
 
@@ -30,16 +31,17 @@ export const postGroupDeadline = async (req, res) => {
 
 export const postSubGroupDeadline = async (req, res) => {
     try {
-        const { title, date } = req.body;
+        const { title, date, description } = req.body;
         const { subgroup } = req.rootUser;
 
-        if (!title || !date) {
+        if (!title || !date || !description) {
             res.status(422).json({ error: "empty fields" });
         }
 
         const deadline = new Deadline({
             title,
             date,
+            description,
             subgroup
         });
 
