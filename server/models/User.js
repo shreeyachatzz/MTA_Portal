@@ -37,11 +37,15 @@ const userSchema = new mongoose.Schema({
         type : mongoose.Types.ObjectId,
         ref: "Deadline"
     }],
-    exams:[{
+    examsGrp:[{
         type : mongoose.Types.ObjectId,
         ref: "Exam"
     }],
-    resources:[{
+    examsSubGrp:[{
+        type : mongoose.Types.ObjectId,
+        ref: "Exam"
+    }],
+    resourcesGrp:[{
         type : mongoose.Types.ObjectId,
         ref: "Resource"
     }],
