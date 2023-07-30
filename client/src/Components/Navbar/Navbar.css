@@ -109,7 +109,7 @@
     padding: 2vh;
     background-color: #2D2D30;
     border-bottom: solid;
-    border-color: #E3E3E3;
+    border-bottom:1px solid #E3E3E3;
     position: fixed;
     z-index: 1;
 }
