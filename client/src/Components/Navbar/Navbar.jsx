@@ -40,7 +40,7 @@ const SideNav = (props) => {
 
           <div className='links'>
 
-            <Link to="/">
+            <Link to="/study">
               <div className='link'>
                 <PiBooksDuotone className='logo' />
                 <a href='#section'>Study Material</a>

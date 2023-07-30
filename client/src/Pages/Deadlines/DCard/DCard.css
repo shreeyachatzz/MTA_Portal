@@ -1,21 +1,22 @@
 .grpclass-d{
     color: #4f6aff;
     font-weight: 700;
-    margin: 1vh;
 }
 .info-d{
     color: #000000;
     font-weight: 400;
     letter-spacing: 0.12;
-    font-size: 2vh;
-    padding: 1vh;
+    font-size: 2.5vh;
     text-align: justify;
+    padding-left: 1.5vh;
+    padding-right: 1.5vh;
 }
 
 .card-d{
     background-color: white;
     margin: 2vh;
     border-radius: 1.5vh;
+    padding: 1.5vh;
 }
 
 .butf{

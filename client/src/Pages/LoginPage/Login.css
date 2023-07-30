@@ -1,0 +1,106 @@
+.lpage{
+    background-image: url('./FullPage.png');
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    overflow-y: hidden;
+}
+.form-sec{
+    background-color: #2D2D30;
+    width: 50vw;
+    z-index: 1;
+    height: 100vh;
+    float: right;
+    padding: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10vh;
+}
+
+.title{
+    color: #FFF;
+    font-family: Jost;
+    font-size: 6vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.desc{
+    color: #FFF;
+    font-family: Jost;
+    font-size: 2.5vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-bottom: 4vh;
+}
+
+.red{
+    color: #FF432A;
+}
+
+.labell{
+    color: #FFF;
+    font-family: Jost;
+    font-size: 2.5vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.form-group input{
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid;
+    border-color: #FFF;
+    width: 50vh;
+    color: white;
+    font-size: 2.5vh;
+    margin-bottom: 2vh;
+}
+.form-group input:focus{
+    border-color: #FF432A;
+    outline-style: none;
+    box-shadow: none;
+    background-color: transparent;
+}
+.forg{
+    text-align: right ;
+    color: #FFF;
+}
+.but-sin{
+    background-color: #FF432A;
+    color: #FFF;
+    font-family: Jost;
+    width: 100%;
+    margin: 4vh 2vh 0 0vh;
+    padding: 1.5vh;
+    font-size: 3vh;
+    border: none;
+    border-radius: 2.5vh;
+    font-weight: 500;
+}
+
+.but-sin:hover{
+    background-color: rgba(255, 255, 255, 0) ;
+    color: #FF432A;
+    border: solid;
+    font-size: 3vh;
+}
+
+@media (max-width:700px) {
+    .form-sec{
+        width: 100%;
+        transition: ease 2s;
+    }
+    .form-group{
+        padding-top: 3vh;
+        padding-bottom: 3vh;
+    }
+    .labell{
+        font-size: 3vh;
+    }
+}

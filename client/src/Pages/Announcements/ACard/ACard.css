@@ -10,7 +10,7 @@
     color: #000000;
     font-weight: 400;
     letter-spacing: 0.12;
-    font-size: 2vh;
+    font-size: 2.5vh;
     padding: 1vh;
 }
 
@@ -18,4 +18,5 @@
     background-color: white;
     margin: 2vh;
     border-radius: 1.5vh;
+    padding: 1.5vh;
 }
