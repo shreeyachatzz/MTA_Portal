@@ -1,6 +1,6 @@
 .containerr-d{
     justify-content: center;
-    margin-left: 15vw;
+    margin-left: 18vw;
     margin-top: 15vh;
     color: black;
     font-weight: 700;
@@ -46,4 +46,14 @@
     .containerr-d{
         margin-left: 4vw;
     } 
+}
+
+@media (max-width: 600px) {
+    .cards{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: auto;
+        grid-gap: 1rem;
+        margin-left: 0vh;
+    }    
 }

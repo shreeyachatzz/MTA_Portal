@@ -2,6 +2,9 @@ import React from 'react'
 import './DCard.css'
 
 const ACard = () => {
+  //Check Admin Status
+  const isAdmin=false;
+  
   return (
     <div className='card-d'>
         <div className='deadBarr-d'>
@@ -14,6 +17,9 @@ const ACard = () => {
             <div className='date-d'>
                 15/08/2023
             </div>
+            {isAdmin&& <div className='del-dead'>
+              Delete
+            </div>}
         </div>
         
         <div className='info-d'>This is the text of the announcement which can indeed be so big that you can sleep while reading it. It all comes down to the creative writing abilities of the CR/GR posting the information on this portal.</div>

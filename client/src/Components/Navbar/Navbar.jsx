@@ -3,10 +3,15 @@ import './Navbar.css';
 import { PiBooksDuotone } from 'react-icons/pi';
 import { TiThMenuOutline } from 'react-icons/ti';
 import { TfiAnnouncement } from 'react-icons/tfi';
+import { BsFillPlusSquareFill} from 'react-icons/bs';
 import { LiaStopwatchSolid, LiaCalendarSolid } from 'react-icons/lia';
 import { Link } from 'react-router-dom';
 
 const SideNav = (props) => {
+
+// Check admin status
+  const isAdmin=true;
+
   const [showSidee, setShowSidee] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -44,20 +49,36 @@ const SideNav = (props) => {
               <div className='link'>
                 <PiBooksDuotone className='logo' />
                 <a href='#section'>Study Material</a>
+                {isAdmin && 
+                <Link to="/add/study">
+                  <BsFillPlusSquareFill className='addLogo'/> 
+                </Link>
+                }             
               </div>
             </Link>
 
             <Link to="/announcements">
               <div className='link'>
                 <TfiAnnouncement className='logo' />
-                <a href='#section'>Announcements</a>
+                <a>Announcements</a>
+                &nbsp;
+                {isAdmin && 
+                <Link to="/add/announcements">
+                  <BsFillPlusSquareFill className='addLogo'/> 
+                </Link>
+                }
               </div>
             </Link>
 
             <Link to="/deadline">
               <div className='link'>
                 <LiaStopwatchSolid className='logo' />
-                <a href='#section'>Deadlines</a>
+                <a>Deadlines</a>
+                {isAdmin && 
+                <Link to="/add/deadline">
+                  <BsFillPlusSquareFill className='addLogo'/> 
+                </Link>
+                }
               </div>
             </Link>
 
@@ -65,6 +86,11 @@ const SideNav = (props) => {
               <div className='link'>
                 <LiaCalendarSolid className='logo' />
                 <a href='#section'>Important Dates</a>
+                {isAdmin && 
+                <Link to="/add/impdates">
+                  <BsFillPlusSquareFill className='addLogo'/> 
+                </Link>
+                }
               </div>
             </Link>
 

@@ -50,6 +50,7 @@
     color: #109CF1;
     display: flex;
     padding: 1.5vh;
+    align-items: center;
 }
 
 .logo{
@@ -86,6 +87,10 @@
     display: none;
     background-color: #2D2D30;
     border: none;
+}
+
+.ham:hover{
+    cursor: pointer;
 }
 .ham p{
     padding-left: 1vh;
@@ -160,4 +165,19 @@
         .show-sidee {
             transform: translate(0);
         }
+}
+
+.addLogo{
+    background-color: rgb(0, 0, 0);
+    color: #59FF30;
+    right: 0vh;
+    align-items: center;
+    width: fit-content;
+}
+.addLogo:hover{
+    background-color: rgb(0, 0, 0);
+    color:#FF432A;
+    margin-left: auto;
+    margin-right: 1vh;
+    
 }

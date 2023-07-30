@@ -1,6 +1,6 @@
 import React from 'react'
 import './Deadline.css'
-import SideNav from '../../Components/Navbar/Navbar'
+import SideNav from '../../../Components/Navbar/Navbar'
 import DCard from './DCard/DCard';
 import Dropdown from './Dropdown/Dropdown';
 

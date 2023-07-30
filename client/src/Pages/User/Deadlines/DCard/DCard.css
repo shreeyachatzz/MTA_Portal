@@ -50,6 +50,21 @@
     flex-direction: row;
     align-items: center;
 }
+.del-dead{
+    color: #ffffff;
+    font-weight: 300;
+    /* text-decoration: underline; */
+    border: solid;
+    background-color: #FF432A;
+    padding: 1vh;
+    border-radius: 1vh;
+    font-size: 2vh;
+}
+.del-dead:hover{
+    border: solid;
+    background-color: transparent;
+    color: #FF432A;
+}
 
 @media (max-width: 600px) {
     .deadBarr-d{

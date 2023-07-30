@@ -1,9 +1,9 @@
 import React from 'react'
-import './Main.css'
-import SideNav from '../../Components/Navbar/Navbar'
-import SmCard from './SmCard/SmCard'
+import './ImpDates.css'
+import SideNav from '../../../Components/Navbar/Navbar'
+import ICard from './ICard/ICard';
 
-const MainPage = (props, state) => {
+const ImpDates = (props, state) => {
   const dataArray = [
     { title: 'Card 1', content: 'Content 1' },
     { title: 'Card 2', content: 'Content 2' },
@@ -20,13 +20,13 @@ const MainPage = (props, state) => {
      <div className={`fullmain ${shouldSetHeight ? 'fill' : ''}`}>
       <SideNav />
       
-      <div className='containerr'>
+      <div className='containerr-d'>
         <div className='mobHead'>
-          STUDY MATERIAL
+          IMPORTANT DATES
         </div>
-        <div className='cards-m'>
+        <div className='cards'>
           {dataArray.map((item, index) => (
-              <SmCard key={index} title={item.title}/>
+              <ICard key={index} title={item.title}/>
             ))}
         </div>
       </div>
@@ -35,4 +35,4 @@ const MainPage = (props, state) => {
   )
 }
 
-export default MainPage
+export default ImpDates

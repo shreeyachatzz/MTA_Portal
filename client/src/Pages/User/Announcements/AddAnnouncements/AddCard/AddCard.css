@@ -1,0 +1,86 @@
+.full{
+    background-color: #505050;
+    width: 80%;
+    padding: 4vh;
+    border-radius: 1.5vh;
+    margin-left: 10vh;
+}
+.title-a{
+    color: #59FF30;
+    font-family: Jost;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.015rem;
+}
+.context{
+    color: #FFF;
+    font-family: Jost;
+    font-size: 2vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.00875rem;
+}
+.sec-grp{
+    padding: 1.5vh;
+    background-color: rgba(255, 255, 255, 0.09);
+    border-radius: 0.3125rem;
+    border: none;
+    margin-right: 2vh;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+
+    color: #FFF;
+    font-family: Jost;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.00938rem;
+}
+
+.sec-grp:hover{
+    color: #59FF30;
+    border: solid;
+    border-color: #59FF30;
+    border-width: 1px;
+}
+.sec-grp:active{
+    color: #59FF30;
+    border: solid;
+    border-color: #59FF30;
+    border-width: 1px;
+}
+
+.an-detail{
+    background-color: transparent;
+    border: solid;
+    border-color: #59FF30;
+    border-width: 1px;
+    width: 97%;
+    height: 20vh;
+    padding: 2vh;
+
+    color: #FFF;
+    font-family: Jost;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.00938rem;
+    border-radius: 1.5vh;
+}
+.an-detail:focus{
+    outline-style: none;
+    border-width: 2px;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+@media (max-width:1038px) {
+    .full{
+        width: 75%;
+    }
+}

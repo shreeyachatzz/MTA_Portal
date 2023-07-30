@@ -1,6 +1,6 @@
 import React from 'react'
 import './Announcements.css'
-import SideNav from '../../Components/Navbar/Navbar'
+import SideNav from '../../../Components/Navbar/Navbar'
 import ACard from './ACard/ACard';
 
 

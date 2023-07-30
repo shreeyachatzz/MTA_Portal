@@ -1,0 +1,46 @@
+.grpclass-a{
+    color: #4f6aff;
+    font-weight: 700;
+    font-size: 2.5vh;
+    padding-top: 1vh;
+    padding-left: 1vh;
+}
+
+.info-a{
+    color: #000000;
+    font-weight: 400;
+    letter-spacing: 0.12;
+    font-size: 2.5vh;
+    padding: 1vh;
+}
+
+.card-a{
+    background-color: white;
+    margin: 2vh;
+    border-radius: 1.5vh;
+    padding: 1.5vh;
+}
+.top-an{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.del-an{
+    color: white;
+    background-color: #FF432A;
+    font-weight: 100;
+    font-size: 2vh;
+    padding: 1vh;
+    border-radius: 1vh;
+    margin-left: auto;
+}
+
+.del-an:hover{
+    cursor: pointer;
+    background-color: transparent;
+    border: solid;
+    border-color: #FF432A;
+    transition:.1s ease all;
+    color: #FF432A;
+}
