@@ -48,7 +48,7 @@ const SideNav = (props) => {
     }
   };
 
-  const [userData, setUserData] = useState('');
+  const { userData, setUserData } = useEditContext();
   const token = localStorage.getItem("jwtoken");
 
   const getUserInfo = async () => {
@@ -71,9 +71,9 @@ const SideNav = (props) => {
       if (res.status === 200) {
         const data = await res.json();
         setUserData(data);
-        localStorage.setItem('userData', JSON.stringify(data));
+        // localStorage.setItem('userData', JSON.stringify(data));
       
-        if (data.role === "admin") {
+        if (userData.role === "admin") {
           setIsAdmin(true);
         } else {
           setIsAdmin(false);
@@ -99,8 +99,15 @@ const SideNav = (props) => {
           {/* <div className='dash'>DASHBOARD</div> */}
           <div className='person-info'>
             <p className='welc'>Welcome,</p>
-            <p className='name'>{userData.name}</p>
-            <p className='mail'>{userData.email}</p>
+            {userData ? (
+              <>
+                <p className='name'>{userData.name}</p>
+                <p className='mail'>{userData.email}</p>
+              </>
+            ) : (
+              // Show a loading message or fallback UI while userData is null
+              <p>Loading...</p>
+            )}
             <p className='admin-mode'>
               {isAdmin&&<p className='crgr'>CR/GR</p>}
               {isAdmin&&!makeEdit&&<button className='edit' onClick={handleEditClick}>ADD INFO</button>}
