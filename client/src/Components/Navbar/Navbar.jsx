@@ -68,7 +68,7 @@ const SideNav = (props) => {
               <div className='link'>
               <div className='focus'>
                 <PiBooksDuotone className='logo' />
-                <a href='#section'>Links</a>
+                Links
               </div>                
                 {isAdmin && makeEdit &&
                 <Link to="/add/study">
@@ -82,7 +82,7 @@ const SideNav = (props) => {
               <div className='link'>
                 <div className='focus'>
                   <TfiAnnouncement className='logo' />
-                  <a>Announcements</a>
+                  Announcements
                 </div>
                   
                   &nbsp;
@@ -98,7 +98,7 @@ const SideNav = (props) => {
               <div className='link'>
               <div className='focus'>
                 <LiaStopwatchSolid className='logo' />
-                <a>Deadlines</a>
+                Deadlines
               </div>
                 
                 {isAdmin && makeEdit &&
@@ -113,7 +113,7 @@ const SideNav = (props) => {
               <div className='link'>
               <div className='focus'>
                 <LiaCalendarSolid className='logo' />
-                <a href='#section'>Important Dates</a>
+                Important Dates
               </div>
             
                 {isAdmin && makeEdit &&
