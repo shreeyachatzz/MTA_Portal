@@ -1,6 +1,6 @@
 import express from 'express';
 import { Authenticate } from '../middlewares/auth.js';
-import { deleteGroupDeadlines, deleteSubGroupDeadlines, postGroupDeadline, postSubGroupDeadline, viewGroupDeadlines } from '../controllers/deadline_controllers.js';
+import { deleteGroupDeadlines, deleteSubGroupDeadlines, postGroupDeadline, postSubGroupDeadline, viewAllDeadlines, viewGroupDeadlines } from '../controllers/deadline_controllers.js';
 import { viewSubgroupAnnouncements } from '../controllers/announcement_controllers.js';
 
 const deadlineRouter = express.Router();
@@ -12,5 +12,6 @@ deadlineRouter.get('/getGrpDeadline', Authenticate, viewGroupDeadlines);
 deadlineRouter.get('/getSubGrpDeadline', Authenticate, viewSubgroupAnnouncements);
 deadlineRouter.delete('/delGrpDeadlines/:id',Authenticate,deleteGroupDeadlines);
 deadlineRouter.delete('/delSubGrpDeadlines/:id',Authenticate,deleteSubGroupDeadlines);
+deadlineRouter.get('/getAllDeadlines', Authenticate, viewAllDeadlines);
 
 export default deadlineRouter;
