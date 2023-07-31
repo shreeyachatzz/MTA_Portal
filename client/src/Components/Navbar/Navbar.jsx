@@ -71,10 +71,11 @@ const SideNav = (props) => {
       if (res.status === 200) {
         const data = await res.json();
         setUserData(data);
-        if(userData.role == "admin"){
+        localStorage.setItem('userData', JSON.stringify(data));
+      
+        if (data.role === "admin") {
           setIsAdmin(true);
-        }
-        else{
+        } else {
           setIsAdmin(false);
         }
       } else {
@@ -106,7 +107,7 @@ const SideNav = (props) => {
               {isAdmin&&makeEdit&&<button className='edit' onClick={handleExitClick}>EXIT</button>}
             </p>
           </div>
-          {isAdmin&&<br/>}
+          {!isAdmin&&<br/>}
           <div className='links'>
             <Link to="/study">
               <div className='link'>
