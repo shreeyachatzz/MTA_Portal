@@ -40,9 +40,11 @@ const SideNav = (props) => {
       <div className={`sidee ${showSidee ? 'show-sidee' : ''}`}>
         <div className='sidenav'>
           {/* <div className='dash'>DASHBOARD</div> */}
-          <p className='welc'>Welcome,</p>
-          <p className='name'>Lakshaya Aggarwal</p>
-          <p className='mail'>laggarwal1_be21@thapar.edu</p>
+          <div className='person-info'>
+            <p className='welc'>Welcome,</p>
+            <p className='name'>Lakshaya Aggarwal</p>
+            <p className='mail'>laggarwal1_be21@thapar.edu</p>
+          </div>
 
           <div className='links'>
             <Link to="/study">
