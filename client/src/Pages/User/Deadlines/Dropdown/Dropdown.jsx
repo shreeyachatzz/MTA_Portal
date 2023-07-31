@@ -2,9 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import './Dropdown.css';
 import { BiDownArrow } from 'react-icons/bi';
 
-const Dropdown = ({ items }) => {
+const Dropdown = ({ items, onChange, selectedSubject }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('');
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -27,14 +26,14 @@ const Dropdown = ({ items }) => {
   };
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option);
-    setIsOpen(false);
+    onChange(option === 'All Subjects' ? null : option); // Pass null if "All Subjects" is selected, otherwise, pass the selected subject
+    setIsOpen(false); // Close the dropdown when an option is selected
   };
 
   return (
     <div className={`dropdown ${isOpen ? 'open' : ''}`} ref={dropdownRef}>
       <button className="dropbtn" onClick={handleDropdownClick}>
-        {selectedOption || 'Subject'}&nbsp;<BiDownArrow/>
+        {selectedSubject || 'All Subjects'}&nbsp;<BiDownArrow />
       </button>
       <div className="dropdown-content">
         {items.map((item, index) => (

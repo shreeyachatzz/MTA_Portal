@@ -1,7 +1,13 @@
 import React from 'react'
 import './AddCard.css'
+import { useNavigate } from 'react-router-dom'
 
 const AddCard = () => {
+    const navigate = useNavigate()
+    const handleAnnSubmit=(e)=>{
+        e.preventDefault();
+        navigate('/announcements')
+    }
   return (
     <div className='full'>
         <div className='title-a'>
@@ -23,7 +29,9 @@ const AddCard = () => {
         </div>
         <textarea className="an-detail" placeholder="Write an announcement here...">
         </textarea>
-        
+        <div className='submiting'>
+        <p className='sub' onClick={handleAnnSubmit}>Submit</p>
+        </div>
 
     </div>
   )

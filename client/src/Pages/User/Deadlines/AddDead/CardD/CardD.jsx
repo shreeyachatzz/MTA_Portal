@@ -1,8 +1,15 @@
 import React from 'react'
 import './CardD.css'
 import DropdownAdd from '../../../../../Components/DropDownPop/DropDownAdd';
+import {useNavigate} from 'react-router-dom';
 
 const CardD = () => {
+    const navigate = useNavigate();
+    const handleClickSubD = event => {
+        event.preventDefault();
+    
+        navigate('/deadline');
+      };
 
       const dropdownItems = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
   return (
@@ -37,6 +44,10 @@ const CardD = () => {
         </div>
         <textarea className="an-details" placeholder="Write an announcement here...">
         </textarea>
+
+        <div className='submiting'>
+        <p className='sub' onClick={handleClickSubD}>Submit</p>
+        </div>
         
 
     </div>

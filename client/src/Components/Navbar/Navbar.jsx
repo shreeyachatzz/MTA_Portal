@@ -6,15 +6,27 @@ import { TfiAnnouncement } from 'react-icons/tfi';
 import { BsFillPlusSquareFill} from 'react-icons/bs';
 import { LiaStopwatchSolid, LiaCalendarSolid } from 'react-icons/lia';
 import { Link } from 'react-router-dom';
+import { useEditContext } from '../../EditContext';
+
 
 const SideNav = (props) => {
   const {heading}=props;
 
 // Check admin status
   const isAdmin=true;
+  const { makeEdit, setMakeEdit } = useEditContext();
+  
 
   const [showSidee, setShowSidee] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const handleEditClick = () => {
+    setMakeEdit(true); // Set the makeEdit state using the context function
+  };
+
+  const handleExitClick = () => {
+    setMakeEdit(false); // Set the makeEdit state using the context function
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -44,16 +56,21 @@ const SideNav = (props) => {
             <p className='welc'>Welcome,</p>
             <p className='name'>Lakshaya Aggarwal</p>
             <p className='mail'>laggarwal1_be21@thapar.edu</p>
+            <p className='admin-mode'>
+              {isAdmin&&<p className='crgr'>CR/GR</p>}
+              {isAdmin&&!makeEdit&&<button className='edit' onClick={handleEditClick}>ADD INFO</button>}
+              {isAdmin&&makeEdit&&<button className='edit' onClick={handleExitClick}>EXIT</button>}
+            </p>
           </div>
-
+          {!isAdmin&&<br/>}
           <div className='links'>
             <Link to="/study">
               <div className='link'>
               <div className='focus'>
                 <PiBooksDuotone className='logo' />
-                <a href='#section'>Study Material</a>
+                <a href='#section'>Links</a>
               </div>                
-                {isAdmin && 
+                {isAdmin && makeEdit &&
                 <Link to="/add/study">
                   <BsFillPlusSquareFill className='addLogo'/> 
                 </Link>
@@ -69,7 +86,7 @@ const SideNav = (props) => {
                 </div>
                   
                   &nbsp;
-                  {isAdmin && 
+                  {isAdmin && makeEdit &&
                   <Link to="/add/announcements">
                     <BsFillPlusSquareFill className='addLogo'/> 
                   </Link>
@@ -84,7 +101,7 @@ const SideNav = (props) => {
                 <a>Deadlines</a>
               </div>
                 
-                {isAdmin && 
+                {isAdmin && makeEdit &&
                 <Link to="/add/deadline">
                   <BsFillPlusSquareFill className='addLogo'/> 
                 </Link>
@@ -99,7 +116,7 @@ const SideNav = (props) => {
                 <a href='#section'>Important Dates</a>
               </div>
             
-                {isAdmin && 
+                {isAdmin && makeEdit &&
                 <Link to="/add/impdates">
                   <BsFillPlusSquareFill className='addLogo'/> 
                 </Link>
@@ -107,18 +124,15 @@ const SideNav = (props) => {
               </div>
             </Link>
 
-            {/* <Link className={`${isAdmin ? '' : 'showsub'}`} to="/addSub">
-              <div className='link-s'>
-                <BsFillPlusSquareFill className='logo' />
-                <div className='goat'>Add Subjects</div>
-              </div>
-            </Link> */}
 
           </div>
 
+          <Link className="linkabt" to="/about">
           <div className='foot'>
             LSH Team
           </div>
+          </Link>
+
         </div>
       </div>
 

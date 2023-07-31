@@ -4,7 +4,7 @@ import './ACard.css'
 const ACard = () => {
   
   // Check admin status
-  const isAdmin=false;
+  const isAdmin=true;
 
   return (
     <div className='card-a'>

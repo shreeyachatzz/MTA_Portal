@@ -92,3 +92,38 @@
         margin-left: 4vh;
     }
 }
+
+.submitting{
+    display: flex;
+    flex-direction: row;
+    width: 94%;
+}
+.sub{
+    width: fit-content;
+    padding: 1vh;
+    font-size: 2.5vh;
+    font-weight: 400;
+    border-radius: 1.5vh;
+    margin-left: auto;
+    margin-right: 2vh;
+    
+    border-color: #ffffff;
+    color: #ffffff;
+    background-color: transparent ;
+    border: solid;
+    border-radius: 1.5vh;
+}
+
+.sub:hover{
+    border-color: #59FF30;
+    color: #59FF30;
+    background-color: transparent ;
+    border: solid;
+    border-radius: 1.5vh;
+}
+
+@media (max-width:1038px) {
+    .sub{
+        margin-right: 0vh;
+    }
+}

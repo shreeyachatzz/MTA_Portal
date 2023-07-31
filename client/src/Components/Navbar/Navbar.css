@@ -38,7 +38,6 @@
 .links{
     display: flex;
     flex-direction: column;
-    padding-top: 2vh;
 }
 .links a{
     color: #109CF1;
@@ -155,7 +154,7 @@
 }
 
 .foot{
-    margin-top: 39vh;
+    margin-top: 38vh;
     color: #fff;
     font-size: 2.5vh;
     margin-left: 1vh;
@@ -210,4 +209,44 @@
     background-color: rgb(0, 0, 0);
     color:#FF432A;
     margin-left: auto;    
+}
+
+.admin-mode{
+    display: flex;
+    flex-direction: row;
+    padding-top: 1vh;
+    align-items: center;
+}
+
+.crgr{
+    color: #FF432A;
+    padding-left: 1vh;
+    font-size: 2.5vh;
+    padding-right: 2vh;
+}
+
+.edit{
+    background-color: transparent;
+    border: solid;
+    border-color: #FF432A;
+    padding: 0.5vh;
+    font-size: 2vh;
+    color: #FF432A;
+    border-radius: 1.5vh;
+    border-width: 2px;
+}
+
+.edit:hover{
+    cursor: pointer;
+    background-color: #FF432A;
+    color: white;
+}
+
+.linkabt{
+    text-decoration: none!important;
+}
+
+.foot:hover{
+    color: #59FF30;
+    transition: ease 0.2s;
 }

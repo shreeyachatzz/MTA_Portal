@@ -15,6 +15,7 @@ import AddAnnouncement from './Pages/User/Announcements/AddAnnouncements/AddAnno
 import DeadAdd from './Pages/User/Deadlines/AddDead/DeadAdd';
 import AddImp from './Pages/User/ImpDates/AddImp/AddImp';
 import AddStudy from './Pages/User/MainPage/AddStudy/AddStudy';
+import AboutUs from './Pages/AboutUs/AboutUs';
 
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
       <Route path="/add/announcements" element={<AddAnnouncement/>}/>
       <Route path="/add/deadline" element={<DeadAdd />}/>
       <Route path="/add/impdates" element={ <AddImp />}/>
+
+      <Route path="/about" element={ <AboutUs />}/>
     </Routes>
     </div>
     </>

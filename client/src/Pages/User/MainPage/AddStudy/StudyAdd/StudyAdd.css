@@ -24,3 +24,7 @@
     box-shadow: none;
     background-color: transparent;
 }
+
+.break{
+    height: 2vh;
+}

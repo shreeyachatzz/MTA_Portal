@@ -1,19 +1,27 @@
 .card-i{
     background-color: #fff;
     padding: 0vh;
-    margin: 3vh;
+    margin: 1vh;
     border-radius: 1.5vh;
 }
 
 .date-i{
-    border-bottom: solid;
     padding: 2vh;
-    border-color: black;
     color: #FF432A;
+    margin-left: 0vh;
 }
 
 .info-i{
     padding: 2vh;
     font-size: 2.5vh;
     font-weight: 550;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: solid;
+    padding-right: 2vh;
 }

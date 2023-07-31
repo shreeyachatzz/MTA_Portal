@@ -23,7 +23,7 @@ const MainPage = (props, state) => {
       
       <div className='containerr'>
         <div className='mobHead'>
-          STUDY MATERIAL
+          LINKS
         </div>
         <div className='cards-m'>
           {dataArray.map((item, index) => (
