@@ -1,6 +1,6 @@
 import React from 'react'
-import Dropdown from '../../Dropdown/Dropdown';
 import './CardD.css'
+import DropdownAdd from '../../../../../Components/DropDownPop/DropDownAdd';
 
 const CardD = () => {
 
@@ -11,7 +11,7 @@ const CardD = () => {
             Subject
         </div>
         <div className='justlikethat'>
-        <Dropdown items={dropdownItems}/>
+        <DropdownAdd items={dropdownItems}/>
         </div>
         <div className='title-a'>
             Class

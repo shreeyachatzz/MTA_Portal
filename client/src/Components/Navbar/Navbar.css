@@ -4,7 +4,8 @@
     font-weight: 500;
     line-height: normal;
     letter-spacing: 0.222px;
-    padding-top: 1vh;
+    padding-top: 2vh;
+    padding-left: 1vh;
 }
 
 .name{
@@ -13,6 +14,7 @@
     font-style: normal;
     font-weight: 700;
     letter-spacing: 0.29px;
+    padding-left: 1vh;
 }
 
 .mail{
@@ -20,6 +22,7 @@
     font-size: 2vh;
     font-weight: 500;
     letter-spacing: 0.16px;
+    padding-left: 1vh;
 }
 
 .dash{
@@ -56,8 +59,9 @@
 .link{
     color: #109CF1;
     display: flex;
-    padding: 1.5vh;
+    flex-direction: row;
     align-items: center;
+    margin-left: -2vh;
 }
 
 .logo{
@@ -65,7 +69,12 @@
     font-size: 3vh;
 }
 
-.link:hover,.link-s:hover{
+.focus{
+    padding: 1.5vh;
+    display: flex;
+}
+
+.focus:hover,.link-s:hover{
     background-color: rgba(255, 255, 255, 0.09);
     border-radius: 1.2vh;
 }
@@ -120,14 +129,15 @@
     position: fixed;
     z-index: 1;
 }
+
 .pcHead p{
     color: #fff;
     text-align: center;
-    align-items: center;
     justify-content: center;
     font-size: 4vh;
     font-weight: 700;
 }
+
 .sidenav{
     margin-top: 8vh;
 }
@@ -139,9 +149,8 @@
     align-items: center;
 }
 
-
 .foot{
-    margin-top: 32vh;
+    margin-top: 37vh;
     color: #fff;
     font-size: 2.5vh;
     margin-left: 1vh;
@@ -188,14 +197,13 @@
 .addLogo{
     background-color: rgb(0, 0, 0);
     color: #59FF30;
-    right: 0vh;
+    margin-left: auto;
     align-items: center;
     width: fit-content;
+    margin-top: 1.5vh;
 }
 .addLogo:hover{
     background-color: rgb(0, 0, 0);
     color:#FF432A;
-    margin-left: auto;
-    margin-right: 1vh;
-    
+    margin-left: auto;    
 }

@@ -18,7 +18,7 @@ const ImpDates = (props, state) => {
 
   return (
      <div className={`fullmain ${shouldSetHeight ? 'fill' : ''}`}>
-      <SideNav />
+      <SideNav heading='IMPORTANT DATES'/>
       
       <div className='containerr-d'>
         <div className='mobHead'>

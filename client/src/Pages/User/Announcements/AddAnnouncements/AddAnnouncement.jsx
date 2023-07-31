@@ -6,7 +6,7 @@ import AddCard from './AddCard/AddCard';
 const AddAnnouncement = () => {
   return (
     <div className='fullmain'>
-          <SideNav />
+          <SideNav heading='ADD ANNOUNCEMENT'/>
         <div className="containerr">
         <div className='heading'>ADD ANNOUNCEMENT</div>
             <AddCard />

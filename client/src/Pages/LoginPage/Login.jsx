@@ -52,7 +52,7 @@ const Login = () => {
             required
           />
         </div>
-        <div className='forg'>Forgot Password?</div>
+        <div className='forg'></div>
         <button type="submit" className='but-sin'>Login</button>
       </form>
     </div>

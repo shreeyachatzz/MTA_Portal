@@ -8,7 +8,7 @@ const DeadAdd = () => {
   return (
     <div>
         <div className='fullmain'>
-          <SideNav />
+          <SideNav heading='ADD DEADLINE'/>
         <div className="containerr">
         <div className='heading'>ADD DEADLINE</div>
             <CardD />

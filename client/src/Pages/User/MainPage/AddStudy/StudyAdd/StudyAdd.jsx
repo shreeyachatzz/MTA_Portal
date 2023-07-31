@@ -1,6 +1,7 @@
 import React from 'react'
-import Dropdown from '../../../Deadlines/Dropdown/Dropdown'
+
 import './StudyAdd.css'
+import DropdownAdd from '../../../../../Components/DropDownPop/DropDownAdd';
 
 const StudyAddCard = () => {
     const dropdownItems = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
@@ -11,7 +12,7 @@ const StudyAddCard = () => {
     </div>
     <div className='justlikethat'>
  
-    <Dropdown items={dropdownItems}/>
+    <DropdownAdd items={dropdownItems}/>
     </div>
     <div className='title-a'>
         Link

@@ -5,9 +5,9 @@ import StudyAddCard from './StudyAdd/StudyAdd'
 const AddStudy = () => {
   return (
     <div className='fullmain'>
-          <SideNav />
+          <SideNav heading='ADD STUDY MATERIAL'/>
         <div className="containerr">
-        <div className='heading'>ADD STUDY MATERIALS</div>
+        <div className='heading'>ADD STUDY MATERIAL</div>
             <StudyAddCard/>
         </div>
      </div>

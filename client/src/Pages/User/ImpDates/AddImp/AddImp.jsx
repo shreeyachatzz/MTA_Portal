@@ -5,9 +5,9 @@ import ImpAddCard from './ImpAddCard/ImpAddCard'
 const AddImp = () => {
   return (
     <div className='fullmain'>
-          <SideNav />
+          <SideNav heading='ADD IMPORTANT DATES'/>
         <div className="containerr">
-        <div className='heading'>ADD ANNOUNCEMENT</div>
+        <div className='heading'>ADD IMPORTANT DATE</div>
             <ImpAddCard />
         </div>
      </div>

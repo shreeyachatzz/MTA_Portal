@@ -8,6 +8,7 @@ import { LiaStopwatchSolid, LiaCalendarSolid } from 'react-icons/lia';
 import { Link } from 'react-router-dom';
 
 const SideNav = (props) => {
+  const {heading}=props;
 
 // Check admin status
   const isAdmin=true;
@@ -38,17 +39,18 @@ const SideNav = (props) => {
     <div className='whole'>
       <div className={`sidee ${showSidee ? 'show-sidee' : ''}`}>
         <div className='sidenav'>
-          <div className='dash'>DASHBOARD</div>
+          {/* <div className='dash'>DASHBOARD</div> */}
           <p className='welc'>Welcome,</p>
           <p className='name'>Lakshaya Aggarwal</p>
           <p className='mail'>laggarwal1_be21@thapar.edu</p>
 
           <div className='links'>
-
             <Link to="/study">
               <div className='link'>
+              <div className='focus'>
                 <PiBooksDuotone className='logo' />
                 <a href='#section'>Study Material</a>
+              </div>                
                 {isAdmin && 
                 <Link to="/add/study">
                   <BsFillPlusSquareFill className='addLogo'/> 
@@ -59,21 +61,27 @@ const SideNav = (props) => {
 
             <Link to="/announcements">
               <div className='link'>
-                <TfiAnnouncement className='logo' />
-                <a>Announcements</a>
-                &nbsp;
-                {isAdmin && 
-                <Link to="/add/announcements">
-                  <BsFillPlusSquareFill className='addLogo'/> 
-                </Link>
-                }
+                <div className='focus'>
+                  <TfiAnnouncement className='logo' />
+                  <a>Announcements</a>
+                </div>
+                  
+                  &nbsp;
+                  {isAdmin && 
+                  <Link to="/add/announcements">
+                    <BsFillPlusSquareFill className='addLogo'/> 
+                  </Link>
+                  }
               </div>
             </Link>
 
             <Link to="/deadline">
               <div className='link'>
+              <div className='focus'>
                 <LiaStopwatchSolid className='logo' />
                 <a>Deadlines</a>
+              </div>
+                
                 {isAdmin && 
                 <Link to="/add/deadline">
                   <BsFillPlusSquareFill className='addLogo'/> 
@@ -84,8 +92,11 @@ const SideNav = (props) => {
 
             <Link to="/impdates">
               <div className='link'>
+              <div className='focus'>
                 <LiaCalendarSolid className='logo' />
                 <a href='#section'>Important Dates</a>
+              </div>
+            
                 {isAdmin && 
                 <Link to="/add/impdates">
                   <BsFillPlusSquareFill className='addLogo'/> 
@@ -94,12 +105,12 @@ const SideNav = (props) => {
               </div>
             </Link>
 
-            <Link className={`${isAdmin ? '' : 'showsub'}`} to="/addSub">
+            {/* <Link className={`${isAdmin ? '' : 'showsub'}`} to="/addSub">
               <div className='link-s'>
                 <BsFillPlusSquareFill className='logo' />
                 <div className='goat'>Add Subjects</div>
               </div>
-            </Link>
+            </Link> */}
 
           </div>
 
@@ -117,7 +128,9 @@ const SideNav = (props) => {
       </div>
 
       <div className='pcHead'>
-        <p>HEADING</p>
+      <div className='head'>
+        <p>{heading}</p>
+      </div>
       </div>
     </div>
   );

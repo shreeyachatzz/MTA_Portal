@@ -22,7 +22,7 @@ const Announcements = (props, state) => {
     
       return (
          <div className={`fullmain ${shouldSetHeight ? 'app' : ''}`}>
-          <SideNav />
+          <SideNav heading='ANNOUNCEMENTS'/>
         <div className="containerr">
         <div className='mobHead'>
             ANNOUNCEMENTS

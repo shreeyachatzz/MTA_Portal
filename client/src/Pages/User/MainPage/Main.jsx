@@ -13,12 +13,13 @@ const MainPage = (props, state) => {
     { title: 'Card 1', content: 'Content 1' },
     { title: 'Card 2', content: 'Content 2' },
   ];
+  const heading='STUDY MATERIAL';
 
   const shouldSetHeight = dataArray.length < 10;
 
   return (
      <div className={`fullmain ${shouldSetHeight ? 'fill' : ''}`}>
-      <SideNav />
+      <SideNav heading={heading}/>
       
       <div className='containerr'>
         <div className='mobHead'>
