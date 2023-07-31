@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import { connectDB } from './dbconn/conn.js';
 import userRouter from './routes/user_routes.js';
 import announcementRouter from './routes/announcement_routes.js';
@@ -16,6 +17,12 @@ connectDB();
 
 //middlewares
 app.use(cookieParser());
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 app.use(express.json());
 app.use('/user',userRouter);
 app.use('/announcement',announcementRouter);

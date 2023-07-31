@@ -5,15 +5,16 @@ import { TiThMenuOutline } from 'react-icons/ti';
 import { TfiAnnouncement } from 'react-icons/tfi';
 import { BsFillPlusSquareFill} from 'react-icons/bs';
 import { LiaStopwatchSolid, LiaCalendarSolid } from 'react-icons/lia';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEditContext } from '../../EditContext';
 
 
 const SideNav = (props) => {
+  const navigate = useNavigate();
   const {heading}=props;
 
 // Check admin status
-  const isAdmin=true;
+  const [isAdmin,setIsAdmin] = useState(false);
   const { makeEdit, setMakeEdit } = useEditContext();
   
 
@@ -47,6 +48,50 @@ const SideNav = (props) => {
     }
   };
 
+  const [userData, setUserData] = useState('');
+  const token = localStorage.getItem("jwtoken");
+
+  const getUserInfo = async () => {
+    try {
+      if (!token) {
+        navigate('/login');
+        return;
+      }
+
+      const res = await fetch('http://localhost:5000/user/getUserData', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+          'Accept': 'application/json',
+        },
+        credentials: 'include',
+      });
+
+      if (res.status === 200) {
+        const data = await res.json();
+        setUserData(data);
+        localStorage.setItem('userData', JSON.stringify(data));
+      
+        if (data.role === "admin") {
+          setIsAdmin(true);
+        } else {
+          setIsAdmin(false);
+        }
+      } else {
+        // navigate('/login');
+        console.log("failed");
+      }
+    } catch (err) {
+      console.log(err);
+      navigate('/login');
+    }
+  };
+
+  useEffect(()=>{
+    getUserInfo();
+  },[])
+
   return (
     <div className='whole'>
       <div className={`sidee ${showSidee ? 'show-sidee' : ''}`}>
@@ -54,8 +99,8 @@ const SideNav = (props) => {
           {/* <div className='dash'>DASHBOARD</div> */}
           <div className='person-info'>
             <p className='welc'>Welcome,</p>
-            <p className='name'>Lakshaya Aggarwal</p>
-            <p className='mail'>laggarwal1_be21@thapar.edu</p>
+            <p className='name'>{userData.name}</p>
+            <p className='mail'>{userData.email}</p>
             <p className='admin-mode'>
               {isAdmin&&<p className='crgr'>CR/GR</p>}
               {isAdmin&&!makeEdit&&<button className='edit' onClick={handleEditClick}>ADD INFO</button>}
@@ -68,7 +113,7 @@ const SideNav = (props) => {
               <div className='link'>
               <div className='focus'>
                 <PiBooksDuotone className='logo' />
-                <a href='#section'>Links</a>
+                Links
               </div>                
                 {isAdmin && makeEdit &&
                 <Link to="/add/study">
@@ -82,7 +127,7 @@ const SideNav = (props) => {
               <div className='link'>
                 <div className='focus'>
                   <TfiAnnouncement className='logo' />
-                  <a>Announcements</a>
+                  Announcements
                 </div>
                   
                   &nbsp;
@@ -98,7 +143,7 @@ const SideNav = (props) => {
               <div className='link'>
               <div className='focus'>
                 <LiaStopwatchSolid className='logo' />
-                <a>Deadlines</a>
+                Deadlines
               </div>
                 
                 {isAdmin && makeEdit &&
@@ -113,7 +158,7 @@ const SideNav = (props) => {
               <div className='link'>
               <div className='focus'>
                 <LiaCalendarSolid className='logo' />
-                <a href='#section'>Important Dates</a>
+                Important Dates
               </div>
             
                 {isAdmin && makeEdit &&
