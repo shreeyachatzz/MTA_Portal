@@ -5,7 +5,7 @@
   }
   
   /* Style for the dropdown button */
-  .dropbtn {
+  .dropbtnn {
     background-color: #4d4d9b00;
     color:bisque;
     padding: 12px;
@@ -17,7 +17,7 @@
     flex-direction: row;
   }
 
-  .dropbtn:hover{
+  .dropbtnn:hover{
     color:#FF432A
   }
 

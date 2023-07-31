@@ -33,7 +33,7 @@ const DropdownAdd = ({ items }) => {
 
   return (
     <div className={`dropdown ${isOpen ? 'open' : ''}`} ref={dropdownRef}>
-      <button className="dropbtn" onClick={handleDropdownClick}>
+      <button className="dropbtnn" onClick={handleDropdownClick}>
         {selectedOption || 'Subject'}&nbsp;<BiDownArrow/>
       </button>
       <div className="dropdown-content">

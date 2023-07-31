@@ -35,7 +35,7 @@ const ImpDates = (props, state) => {
         </div>
         <div className='cards'>
           {sortedDataArray.map((item, index) => (
-              <ICard 
+              <ICard
                 key={index}
                 title={item.title}
                 content={item.content}
