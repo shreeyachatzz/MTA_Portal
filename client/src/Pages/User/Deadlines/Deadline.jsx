@@ -88,6 +88,7 @@ const Deadline = () => {
         {sortedDataArray.map((item, index) => (
           <DCard
             key={index}
+            id={item._id}
             title={item.title}
             description={item.description}
             date={item.date}
