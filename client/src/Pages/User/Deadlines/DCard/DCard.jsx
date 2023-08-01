@@ -10,12 +10,11 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
 
   useEffect(() => {
     setIsAdmin(userData.role === "admin");
-  }, []); // Empty dependency array ensures the effect runs only once on component mount
+  }, []);
 
   const handleDelete = async () => {
     setDeleteBtnText('Deleting...')
     try {
-      // Determine the appropriate backend route based on whether it's a group or subgroup deadline
       const backendRoute =
         groupOrSubgroup === 'group'
           ? `http://localhost:5000/deadline/delGrpDeadlines/${id}`
@@ -37,7 +36,6 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
         setDeleteBtnText('Delete');
         window.alert("Deadline deleted, Plz refresh the page!");
         console.log("Deadline deleted successfully!");
-        // You can perform any additional actions after successful deletion, such as updating the UI or fetching new data.
       } else {
         console.log("Failed to delete the deadline!");
         console.log(data);
