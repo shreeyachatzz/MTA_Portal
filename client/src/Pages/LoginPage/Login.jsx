@@ -67,7 +67,7 @@ const loginUser = async (e) => {
     <div className="form-container">
       <form >
         <div className="form-group">
-            <div className='labell'>Email</div>
+            <div className='labell'><i>Email</i></div>
           <input
             placeholder='College email id'
             type="email"
@@ -78,7 +78,7 @@ const loginUser = async (e) => {
           />
         </div>
         <div className="form-group">
-            <div className='labell'>Password</div>
+            <div className='labell'><i>Password</i></div>
           <input
             placeholder='Enter your password'
             type="password"
