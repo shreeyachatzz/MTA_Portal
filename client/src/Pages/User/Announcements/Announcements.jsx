@@ -6,7 +6,7 @@ import ACard from './ACard/ACard';
 const Announcements = (props) => {
   const [allAnnouncements, setAllAnnouncements] = useState([]);
   const [selectedButton, setSelectedButton] = useState('');
-  const [isLoading, setIsLoading] = useState(true); // New state to track loading status
+  const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState('');
 
   const token = localStorage.getItem('jwtoken');
@@ -42,12 +42,11 @@ const Announcements = (props) => {
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     getUserInfo();
-  },[])
+  }, []);
 
   useEffect(() => {
-    // Fetch all announcements when the component mounts or when selectedButton changes
     const fetchAllAnnouncements = async () => {
       try {
         setIsLoading(true); // Set loading status to true when fetching data
@@ -81,7 +80,10 @@ const Announcements = (props) => {
       }
     };
 
-    fetchAllAnnouncements();
+    // Only fetch announcements if userData is available
+    if (userData) {
+      fetchAllAnnouncements();
+    }
   }, [selectedButton, userData]);
 
   const shouldSetHeight = allAnnouncements.length < 4;
@@ -120,11 +122,11 @@ const Announcements = (props) => {
           allAnnouncements.map((item, index) => (
             <ACard
               key={index}
-              id = {item._id}
-              date={item.date} 
+              id={item._id}
+              date={item.date}
               description={item.description}
               groupOrSubgroup={item.group || item.subgroup}
-               />
+            />
           ))
         )}
       </div>
