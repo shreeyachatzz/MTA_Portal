@@ -111,10 +111,6 @@ export const deleteSubGroupDeadlines = async (req, res) => {
             return res.status(404).json({ error: 'Deadline not found' });
         }
 
-        if (deadline.subgroup !== req.rootUser.subgroup) {
-            return res.status(403).json({ error: 'You are not authorized to delete this deadline' });
-        }
-
         await Deadline.findByIdAndRemove(id);
 
         await User.findByIdAndUpdate(req.rootUser._id, { $pull: { deadlinesSubGrp: id } });

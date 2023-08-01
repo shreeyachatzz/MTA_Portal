@@ -16,6 +16,11 @@ const CardD = () => {
     const token = localStorage.getItem("jwtoken");
     const handleClickSubD = async () => {
         try {
+
+            if (!title || !date || !description) {
+                window.alert('Please fill in all the details.');
+                return;
+              }
             const requestData = {
                 title,
                 date,
@@ -69,7 +74,7 @@ const CardD = () => {
 
     const handleButtonClick = (buttonType) => {
         setClickedButton(buttonType);
-        console.log(clickedButton);
+        console.log(buttonType);
     };
 
     const handleDateChange = (event) => {
@@ -98,14 +103,14 @@ const CardD = () => {
             </div>
             <div className='select-but'>
                 <button
-                    className={`sec-grp ${clickedButton === 'group' ? 'active' : ''}`}
-                    onClick={() => handleButtonClick('group')}
+                    className={`sec-grp ${clickedButton === 'subgroup' ? 'active' : ''}`}
+                    onClick={() => handleButtonClick('subgroup')}
                 >
                     {userData.subgroup}
                 </button>
                 <button
-                    className={`sec-grp ${clickedButton === 'subgroup' ? 'active' : ''}`}
-                    onClick={() => handleButtonClick('subgroup')}
+                    className={`sec-grp ${clickedButton === 'group' ? 'active' : ''}`}
+                    onClick={() => handleButtonClick('group')}
                 >
                     {userData.group}
                 </button>
