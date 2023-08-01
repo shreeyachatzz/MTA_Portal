@@ -1,7 +1,7 @@
 import React from 'react'
 import './DCard.css'
 
-const DCard = ({ title, content, subject, date }) => {
+const DCard = ({ title, description, date, groupOrSubgroup }) => {
   //Check Admin Status
   const isAdmin=true;
   
@@ -10,9 +10,9 @@ const DCard = ({ title, content, subject, date }) => {
         <div className='deadBarr-d'>
         <div className='p1-d'>
             <div className='sub-d'>
-                Subject: {subject}
+                Subject: {title}
             </div>
-            <div className='grpclass-d'>#CO15-22</div>
+            <div className='grpclass-d'>#{groupOrSubgroup}</div>
           </div>
             <div className='date-d'>
             {date}
@@ -22,7 +22,7 @@ const DCard = ({ title, content, subject, date }) => {
             </div>}
         </div>
         
-        <div className='info-d'>{content}</div>
+        <div className='info-d'>{description}</div>
     </div>
   )
 }

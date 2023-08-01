@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './DropDownAdd.css';
 import { BiDownArrow } from 'react-icons/bi';
 
-const DropdownAdd = ({ items }) => {
+const DropdownAdd = ({ items, onSubjectChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
   const dropdownRef = useRef(null);
@@ -29,7 +29,9 @@ const DropdownAdd = ({ items }) => {
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
+    onSubjectChange(option); 
   };
+  // console.log(selectedOption);
 
   return (
     <div className={`dropdown ${isOpen ? 'open' : ''}`} ref={dropdownRef}>

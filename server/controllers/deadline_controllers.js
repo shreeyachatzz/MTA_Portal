@@ -125,3 +125,22 @@ export const deleteSubGroupDeadlines = async (req, res) => {
         res.status(500).json({ error: 'An error occurred while deleting the deadline' });
     }
 };
+
+
+export const viewAllDeadlines = async (req, res) => {
+    try {
+      const { subgroup, group } = req.rootUser;
+      const subgroupString = subgroup.toString();
+  
+      const subgroupDeadlines = await Deadline.find({ subgroup: subgroupString });
+      const groupDeadlines = await Deadline.find({ group });
+  
+      const allDeadlines = subgroupDeadlines.concat(groupDeadlines);
+  
+      res.status(200).json({ deadlines: allDeadlines });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'An error occurred while fetching deadlines' });
+    }
+  };
+  
