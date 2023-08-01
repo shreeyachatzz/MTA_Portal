@@ -116,7 +116,7 @@ const SideNav = (props) => {
               <div className='link'>
               <div className='focus'>
                 <PiBooksDuotone className='logo' />
-                Links
+                &nbsp;Links
               </div>                
                 {isAdmin && makeEdit &&
                 <Link to="/add/study">
@@ -130,7 +130,7 @@ const SideNav = (props) => {
               <div className='link'>
                 <div className='focus'>
                   <TfiAnnouncement className='logo' />
-                  Announcements
+                  &nbsp;Announcements
                 </div>
                   
                   &nbsp;
@@ -146,7 +146,7 @@ const SideNav = (props) => {
               <div className='link'>
               <div className='focus'>
                 <LiaStopwatchSolid className='logo' />
-                Deadlines
+                &nbsp;Deadlines
               </div>
                 
                 {isAdmin && makeEdit &&
@@ -161,7 +161,7 @@ const SideNav = (props) => {
               <div className='link'>
               <div className='focus'>
                 <LiaCalendarSolid className='logo' />
-                Important Dates
+                &nbsp;Important Dates
               </div>
             
                 {isAdmin && makeEdit &&
@@ -189,12 +189,18 @@ const SideNav = (props) => {
           <TiThMenuOutline />
           <p>Menu</p>
         </div>
+        <button className='logout-btn' onClick={() => console.log('Logout')}>
+          Logout
+          </button>
       </div>
 
       <div className='pcHead'>
       <div className='head'>
         <p>{heading}</p>
       </div>
+        <button className='logout-btn-pc' onClick={() => console.log('Logout')}>
+            Logout
+        </button>
       </div>
     </div>
   );

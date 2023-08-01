@@ -34,8 +34,9 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
 
       if (response.status === 200) {
         setDeleteBtnText('Delete');
-        window.alert("Deadline deleted, Plz refresh the page!");
+        // window.alert("Deadline deleted, Plz refresh the page!");
         console.log("Deadline deleted successfully!");
+        window.location.reload();
       } else {
         console.log("Failed to delete the deadline!");
         console.log(data);

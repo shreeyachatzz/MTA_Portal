@@ -33,6 +33,17 @@
 .butf:hover{
     color: #FF432A;
 }
+.butf.active {
+    background-color: #FF432A; /* Change this to the desired active button background color */
+    border-color: #FF432A;
+    color: white;
+  }
+
+.butf.active:hover {
+background-color: #FF432A; /* Change this to the desired active button background color */
+border-color: #FF432A;
+color: aliceblue;
+}
 .filter{
     margin: 2vh;
     margin-left: 4vh;

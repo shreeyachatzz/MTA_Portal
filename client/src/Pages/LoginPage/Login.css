@@ -94,7 +94,7 @@
 @media (max-width:700px) {
     .form-sec{
         width: 100%;
-        transition: ease 2s;
+        padding-left: 3vh;
     }
     .form-group{
         padding-top: 3vh;
