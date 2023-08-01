@@ -51,6 +51,11 @@ const SideNav = (props) => {
   const { userData, setUserData } = useEditContext();
   const token = localStorage.getItem("jwtoken");
 
+  const handleLogout = () => {
+    localStorage.removeItem('jwtoken');
+    navigate('/login');
+  };
+
   const getUserInfo = async () => {
     try {
       if (!token) {
@@ -189,7 +194,7 @@ const SideNav = (props) => {
           <TiThMenuOutline />
           <p>Menu</p>
         </div>
-        <button className='logout-btn' onClick={() => console.log('Logout')}>
+        <button className='logout-btn' onClick={handleLogout}>
           Logout
           </button>
       </div>
@@ -198,7 +203,7 @@ const SideNav = (props) => {
       <div className='head'>
         <p>{heading}</p>
       </div>
-        <button className='logout-btn-pc' onClick={() => console.log('Logout')}>
+        <button className='logout-btn-pc' onClick={handleLogout}>
             Logout
         </button>
       </div>
