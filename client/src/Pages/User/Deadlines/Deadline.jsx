@@ -73,14 +73,14 @@ const Deadline = () => {
           <div className='filter'>
             FILTER BY <Dropdown items={[...dropdownItems, 'All Subjects']} onChange={handleSubjectChange} selectedSubject={selectedSubject} />
           </div>
-          <div className='fend'>
+          {/* <div className='fend'>
             <div className='butf'>
               COE16
             </div>
             <div className='butf'>
               COE15-22
             </div>
-          </div>
+          </div> */}
         </div>
         <div className={`msg ${noEl ? 'show' : ''}`}>
           No Data Available
