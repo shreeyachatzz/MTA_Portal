@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import { createContext, useContext, useMemo, useState } from 'react';
 
 const EditContext = createContext();
 
@@ -6,8 +6,18 @@ export const EditContextProvider = ({ children }) => {
   const [makeEdit, setMakeEdit] = useState(false);
   const [userData, setUserData] = useState(null);
 
+  // Memoize the userData state
+  const memoizedUserData = useMemo(() => userData, [userData]);
+
+  const contextValues = {
+    makeEdit,
+    setMakeEdit,
+    userData: memoizedUserData,
+    setUserData,
+  };
+
   return (
-    <EditContext.Provider value={{ makeEdit, setMakeEdit, userData, setUserData}}>
+    <EditContext.Provider value={contextValues}>
       {children}
     </EditContext.Provider>
   );

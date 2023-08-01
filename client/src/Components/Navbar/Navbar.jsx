@@ -51,9 +51,31 @@ const SideNav = (props) => {
   const { userData, setUserData } = useEditContext();
   const token = localStorage.getItem("jwtoken");
 
-  const handleLogout = () => {
-    localStorage.removeItem('jwtoken');
-    navigate('/login');
+  const handleLogout = async () => {
+    const result = window.confirm('Are you sure you want to logout?');
+    if (result) {
+      try {
+        const res = await fetch('http://localhost:5000/user/logout', {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        });
+
+        if (!res.ok) {
+          const error = new Error(res.error);
+          throw error;
+        } else {
+          navigate('/login');
+          localStorage.removeItem('userId');
+          localStorage.removeItem('jwtoken');
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    } 
   };
 
   const getUserInfo = async () => {

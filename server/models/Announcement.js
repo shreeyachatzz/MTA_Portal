@@ -1,7 +1,7 @@
 import mongoose, { model } from "mongoose";
 
 const announcementSchema = new mongoose.Schema({
-    title: {
+    date: {
         type: String,
     },
     subgroup :{

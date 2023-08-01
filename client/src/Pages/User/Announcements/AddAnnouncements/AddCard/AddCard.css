@@ -39,6 +39,7 @@
     font-weight: 600;
     line-height: normal;
     letter-spacing: 0.00938rem;
+    cursor: pointer;
 }
 
 .sec-grp:hover{
@@ -106,6 +107,7 @@
     border-radius: 1.5vh;
     margin-left: auto;
     margin-right: 2vh;
+    cursor: pointer;
     
     border-color: #ffffff;
     color: #ffffff;

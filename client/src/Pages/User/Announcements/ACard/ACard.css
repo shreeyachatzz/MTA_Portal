@@ -34,6 +34,7 @@
     padding: 1vh;
     border-radius: 1vh;
     margin-left: auto;
+    cursor: pointer;
 }
 
 .del-an:hover{

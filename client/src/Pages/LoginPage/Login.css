@@ -82,6 +82,7 @@
     border: none;
     border-radius: 2.5vh;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .but-sin:hover{
