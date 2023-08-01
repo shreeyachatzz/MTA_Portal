@@ -10,7 +10,9 @@
 .fullmain{
     min-height: 100vh;
 }
-
+.butf{
+    cursor: pointer;
+}
 .fill{
     height: auto;
 }
