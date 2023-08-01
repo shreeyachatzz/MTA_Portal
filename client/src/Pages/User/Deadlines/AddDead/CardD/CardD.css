@@ -41,3 +41,21 @@
     box-shadow: none;
     background-color: transparent;
 }
+
+.sec-grp {
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    border: 2px solid #59FF30;
+    border-radius: 1vh;
+    color: white;
+    cursor: pointer;
+}
+
+.sec-grp.active {
+    background-color: #59FF30;
+    color: white;
+}
+
+.sec-grp:not(:last-child) {
+    margin-right: 1rem;
+}

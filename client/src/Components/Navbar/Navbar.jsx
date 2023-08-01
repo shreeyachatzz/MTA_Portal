@@ -73,11 +73,7 @@ const SideNav = (props) => {
         setUserData(data);
         // localStorage.setItem('userData', JSON.stringify(data));
       
-        if (userData.role === "admin") {
-          setIsAdmin(true);
-        } else {
-          setIsAdmin(false);
-        }
+        setIsAdmin(data.role === "admin");
       } else {
         // navigate('/login');
         console.log("failed");

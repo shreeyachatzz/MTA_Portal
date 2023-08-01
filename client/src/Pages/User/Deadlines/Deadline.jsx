@@ -1,45 +1,65 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Deadline.css';
 import SideNav from '../../../Components/Navbar/Navbar';
 import DCard from './DCard/DCard';
 import Dropdown from './Dropdown/Dropdown';
 
 const Deadline = () => {
-  const dataArray = [
-    { title: 'Card 1', content: 'Content 1', subject: 'DSA', date: '15/09/2003' },
-    { title: 'Card 2', content: 'Content 2', subject: 'CN', date: '15/06/2013' },
-    { title: 'Card 3', content: 'Content 3', subject: 'DAA', date: '15/06/2023' },
-    { title: 'Card 1', content: 'Content 1', subject: 'AI', date: '15/07/2003' },
-    { title: 'Card 2', content: 'Content 2', subject: 'CN', date: '15/08/2003' },
-    { title: 'Card 3', content: 'Content 3', subject: 'OS', date: '15/09/2003' },
-    { title: 'Card 1', content: 'Content 1', subject: 'CN', date: '15/10/2003' },
-    { title: 'Card 2', content: 'Content 2', subject: 'OS', date: '15/11/2003' },
-    { title: 'Card 3', content: 'Content 3', subject: 'DAA', date: '15/12/2003' },
-    // Add more objects as needed
-  ];
-
   const dropdownItems = ['OS', 'DSA', 'DAA', 'CN', 'AI'];
 
-  const shouldSetHeight = dataArray.length < 4;
-  const noEl = dataArray.length === 0;
+  const [selectedSubject, setSelectedSubject] = useState('All Subjects');
+  const [allDeadlines, setAllDeadlines] = useState([]);
+  const [originalDeadlines, setOriginalDeadlines] = useState([]);
 
-  const [selectedSubject, setSelectedSubject] = useState(null);
+  useEffect(() => {
+    // Fetch all deadlines when the component mounts
+    const fetchAllDeadlines = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/deadline/getAllDeadlines', {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+          },
+        });
+        if (!response.ok) {
+          throw new Error('An error occurred while fetching deadlines');
+        }
 
-  // Filter the dataArray based on the selected subject in the dropdown
-  const filteredDataArray = selectedSubject
-    ? dataArray.filter(item => item.subject === selectedSubject)
-    : dataArray;
+        const data = await response.json();
+        setAllDeadlines(data.deadlines);
+        setOriginalDeadlines(data.deadlines);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-  const handleSubjectChange = (selectedSubject) => {
-    setSelectedSubject(selectedSubject);
-  };
+    fetchAllDeadlines();
+  }, []);
 
   // Convert the date strings to Date objects for proper sorting
-  const sortedDataArray = [...filteredDataArray].sort((a, b) => {
+  const sortedDataArray = allDeadlines.sort((a, b) => {
     const [dayA, monthA, yearA] = a.date.split('/');
     const [dayB, monthB, yearB] = b.date.split('/');
     return Date.UTC(yearA, monthA - 1, dayA) - Date.UTC(yearB, monthB - 1, dayB);
   });
+
+  const shouldSetHeight = sortedDataArray.length < 4;
+  const noEl = sortedDataArray.length === 0;
+
+  const handleSubjectChange = (selectedSubject) => {
+    setSelectedSubject(selectedSubject);
+
+    // If a subject is selected, filter the deadlines based on the subject
+    // Otherwise, display all deadlines
+    if (selectedSubject!=='All Subjects') {
+      const filteredDeadlines = originalDeadlines.filter(item => item.title === selectedSubject);
+      setAllDeadlines(filteredDeadlines);
+    } else {
+      // If no subject is selected, fetch all deadlines again
+      // You can add a separate endpoint to fetch all deadlines without filters to improve performance
+      setAllDeadlines(originalDeadlines);
+    }
+  };
 
   return (
     <div className={`fullmain ${shouldSetHeight ? 'fill' : ''}`}>
@@ -69,9 +89,9 @@ const Deadline = () => {
           <DCard
             key={index}
             title={item.title}
-            content={item.content}
-            subject={item.subject}
+            description={item.description}
             date={item.date}
+            groupOrSubgroup={item.group || item.subgroup}
           />
         ))}
       </div>
