@@ -2,13 +2,49 @@ import React, { useEffect, useState } from 'react';
 import './Announcements.css';
 import SideNav from '../../../Components/Navbar/Navbar';
 import ACard from './ACard/ACard';
-import { useEditContext } from '../../../EditContext';
 
 const Announcements = (props) => {
   const [allAnnouncements, setAllAnnouncements] = useState([]);
   const [selectedButton, setSelectedButton] = useState('');
   const [isLoading, setIsLoading] = useState(true); // New state to track loading status
-  const { userData, setUserData } = useEditContext();
+  const [userData, setUserData] = useState('');
+
+  const token = localStorage.getItem('jwtoken');
+
+  const getUserInfo = async () => {
+    try {
+      if (!token) {
+        navigate('/login');
+        return;
+      }
+
+      const res = await fetch('http://localhost:5000/user/getUserData', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+          'Accept': 'application/json',
+        },
+        credentials: 'include',
+      });
+
+      if (res.status === 200) {
+        const data = await res.json();
+        setUserData(data);
+        // localStorage.setItem('userData', JSON.stringify(data));
+      } else {
+        // navigate('/login');
+        console.log("failed");
+      }
+    } catch (err) {
+      console.log(err);
+      navigate('/login');
+    }
+  };
+
+  useEffect(()=>{
+    getUserInfo();
+  },[])
 
   useEffect(() => {
     // Fetch all announcements when the component mounts or when selectedButton changes
@@ -46,7 +82,7 @@ const Announcements = (props) => {
     };
 
     fetchAllAnnouncements();
-  }, [selectedButton, userData.subgroup, userData.group]);
+  }, [selectedButton, userData]);
 
   const shouldSetHeight = allAnnouncements.length < 4;
 
