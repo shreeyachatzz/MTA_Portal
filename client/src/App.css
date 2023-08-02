@@ -16,7 +16,7 @@
     overflow-y: auto; /* Enable vertical scrolling for the .app element's content */
   }
 
-  @media (max-width:1038px) {
+  @media (max-width:1023px) {
     .app{
       background-image: url('./bg_mobile.png');
       height: auto;

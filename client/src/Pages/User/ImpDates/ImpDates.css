@@ -6,6 +6,8 @@
     font-weight: 700;
     font-size: 3vh;
     letter-spacing: 0.24px;
+    overflow-x: hidden;
+    padding-bottom: 5vh;
 }
 .fullmain{
     min-height: 100vh;
@@ -29,8 +31,8 @@
     flex-direction: column;
     font-size: 2.5vh;
     margin-left: 2vh;
+    flex: 1;
 }
-
 @media (max-width: 438px) {
 /* @media (max-width: 1038px) { */
     .mobHead{

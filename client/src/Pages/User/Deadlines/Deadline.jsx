@@ -38,8 +38,8 @@ const Deadline = () => {
 
   // Convert the date strings to Date objects for proper sorting
   const sortedDataArray = allDeadlines.sort((a, b) => {
-    const [dayA, monthA, yearA] = a.date.split('/');
-    const [dayB, monthB, yearB] = b.date.split('/');
+    const [yearA, monthA, dayA] = a.date.split('-');
+    const [yearB, monthB, dayB] = b.date.split('-');
     return Date.UTC(yearA, monthA - 1, dayA) - Date.UTC(yearB, monthB - 1, dayB);
   });
 
