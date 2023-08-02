@@ -110,3 +110,16 @@
         width: 70vw;
     }
 }
+
+.rp{
+   text-align: right;
+}
+.rp:hover {
+    color: #FF432A;
+    cursor: pointer;
+    transition: ease 0.1s;
+ }
+ .rplink{
+    color: #FFF;
+    text-decoration: none;
+ }

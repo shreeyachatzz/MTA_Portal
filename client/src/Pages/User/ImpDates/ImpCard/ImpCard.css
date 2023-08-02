@@ -61,11 +61,9 @@
     padding: 2vh 2vh 2vh 2vh;
 }
 .type1,.date1{
-    margin-left: 1vw;
+    margin-left: 0vw;
 }
-.venue1{
-    margin-left: -4vw;
-}
+
 
 
 .date,.time,.venue,.type{
@@ -214,7 +212,9 @@
     /* .type,.venmob{
         padding-left:3vh;
     } */
-    
+    .dtogether{
+        /* background-color: yellowgreen; */
+    }
     .venmob{
         text-align: center;
         padding-top: 1vh;

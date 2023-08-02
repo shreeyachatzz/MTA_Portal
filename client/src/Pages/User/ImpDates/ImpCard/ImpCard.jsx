@@ -3,7 +3,7 @@ import './ImpCard.css';
 import { MdOutlineDeleteForever } from 'react-icons/md';
 
 const ImpCard = ({subject,date,time,venue,type}) => {
-    const isAdmin=true;
+    const isAdmin=false;
   return (
     <div className='card-imp-d'>
     

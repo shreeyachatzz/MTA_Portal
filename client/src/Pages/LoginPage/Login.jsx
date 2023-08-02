@@ -1,5 +1,5 @@
 import React,{useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
 const Login = () => {
@@ -10,6 +10,7 @@ const Login = () => {
 })
 
   const navigate = useNavigate();
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser((prevState) => ({
@@ -88,6 +89,9 @@ const loginUser = async (e) => {
             required
           />
         </div>
+        <Link className='rplink' to='/reset'>
+        <div className='rp'>Reset Password?</div>
+        </Link>
         <div className='forg'></div>
         <button type="submit" className='but-sin' onClick={loginUser}>Login</button>
       </form>

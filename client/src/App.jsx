@@ -16,6 +16,7 @@ import DeadAdd from './Pages/User/Deadlines/AddDead/DeadAdd';
 import AddImp from './Pages/User/ImpDates/AddImp/AddImp';
 import AddStudy from './Pages/User/MainPage/AddStudy/AddStudy';
 import AboutUs from './Pages/AboutUs/AboutUs';
+import ResetPass from './Pages/ResetPass/ResetPass';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
     <Routes >
       <Route path="/" element={<Landing/>}/>
       <Route path="/login" element={<Login/>}/>
+      <Route path="/reset" element={<ResetPass/>}/>
       <Route path="/study" element={<MainPage/>}/>
       <Route path="/announcements" element={<Announcements/>}/>
       <Route path="/deadline" element={<Deadline />}/>
