@@ -1,10 +1,10 @@
 import React from 'react'
 import './SmCard.css'
 
-const SmCard = () => {
+const SmCard = ({title,key}) => {
   return (
     <div className='card-m'>
-    Data Structures
+    {title}
     </div>
   )
 }

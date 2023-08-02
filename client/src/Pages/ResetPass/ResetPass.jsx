@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './ResetPass.css';
-
 const ResetPass = () => {
   const [resetData, setResetData] = useState({
     email: "",

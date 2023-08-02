@@ -183,10 +183,12 @@
 }
 
 .foot{
-    margin-top: 38vh;
+    margin-top: 33vh;
     color: #fff;
     font-size: 2.5vh;
     margin-left: 1vh;
+    justify-content: center;
+    text-align: center;
 }
 .showsub{
     visibility: hidden;
@@ -301,6 +303,21 @@
 }
 
 .foot:hover{
-    color: #59FF30;
     transition: ease 0.2s;
+}
+.lucky,.chatz,.grass{
+    font-weight: 600;
+    color: antiquewhite;
+    text-decoration: none;
+    padding: 0.25vh;
+    font-size: 3vh;
+}
+.lucky:hover{
+    color: #59FF30;
+}
+.chatz:hover{
+    color: #ff8fd0;
+}
+.grass:hover{
+    color: #70eaff;
 }
