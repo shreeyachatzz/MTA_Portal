@@ -1,0 +1,104 @@
+.card-imp{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 90%;
+    background-color: rgb(255, 255, 255);
+    margin: 0vh 2vh 0vh 2vh;
+    border-radius: 1.5vh;
+}
+.subj{
+    width: 25vw;
+    padding: 2vh 2vh 2vh 4vh;
+    text-align: left;  
+}
+.date{
+    padding: 2vh 2vh 2vh 2vh;
+}
+.time{
+    padding: 2vh 2vh 2vh 2vh;
+    
+}
+.venue{
+    padding: 2vh 2vh 2vh 2vh;
+}
+.type{
+    padding: 2vh 2vh 2vh 2vh;
+}
+
+.date,.time,.venue,.type{
+    width: 13vw;
+    text-align: center;
+}
+
+.date,.time,.subj,.venue{
+    border-right: solid ;
+    border-color: rgb(165, 165, 165);
+    border-width: 2px;
+}
+
+
+.card-imp1{
+    color: #084e7a;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 90%;
+    background-color: none;
+    margin: 0vh 2vh 0vh 2vh;
+    border-radius: 1.5vh;
+    font-weight: bold;
+}
+.subj1{
+    width: 23.5vw;
+    text-align: center;  
+    padding: 2vh 2vh 0vh 2vh;
+    font-weight: bold;
+}
+/* .venue1{
+    background-color: aquamarine;
+}
+.date1{
+    background-color: rgb(111, 165, 165);
+}
+.time1{
+    background-color: blueviolet;
+}
+.type1{
+    background-color: chartreuse;
+} */
+
+.type1,.venue1,.time1,.date1{
+    padding: 2vh 0vh 0vh 0vh;
+    font-weight: bold;
+}
+
+
+.date1,.time1,.venue1,.type1{
+    width: 13vw;
+    text-align: center;
+}
+
+@media (max-width: 638px) {
+    .card-imp1{
+        font-size: 3vw;
+        color: antiquewhite;
+        font-weight: 600;
+    }
+    .card-imp{
+        font-size: 3vw;
+    }
+}
+
+@media (max-width: 1038px) {
+    .date1 i{
+        display: none;
+    }
+    .date,.time,.subj{
+        border-color: rgb(0, 0, 0);
+        border-width: 1.5px;
+    }
+    .card-imp1{
+        color: antiquewhite;
+    }
+}
