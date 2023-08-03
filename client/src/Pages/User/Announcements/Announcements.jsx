@@ -31,9 +31,7 @@ const Announcements = (props) => {
       if (res.status === 200) {
         const data = await res.json();
         setUserData(data);
-        // localStorage.setItem('userData', JSON.stringify(data));
       } else {
-        // navigate('/login');
         console.log("failed");
       }
     } catch (err) {
@@ -61,18 +59,7 @@ const Announcements = (props) => {
         }
 
         const data = await response.json();
-
-        // Filter announcements based on selectedButton (subgroup or group)
-        let filteredAnnouncements = [];
-        if (selectedButton === 'COE16') {
-          filteredAnnouncements = data.announcements.filter(item => item.subgroup === userData.subgroup);
-        } else if (selectedButton === 'COE15-22') {
-          filteredAnnouncements = data.announcements.filter(item => item.group === userData.group);
-        } else {
-          filteredAnnouncements = data.announcements;
-        }
-
-        setAllAnnouncements(filteredAnnouncements);
+        setAllAnnouncements(data.announcements);
         setIsLoading(false); // Set loading status to false after data is fetched
       } catch (error) {
         console.error(error);
@@ -80,18 +67,24 @@ const Announcements = (props) => {
       }
     };
 
-    // Only fetch announcements if userData is available
-    if (userData) {
-      fetchAllAnnouncements();
-    }
-  }, [selectedButton, userData]);
+    // Fetch all announcements
+    fetchAllAnnouncements();
+  }, []);
 
-  const shouldSetHeight = allAnnouncements.length < 4;
-
-  // Function to handle button clicks
   const handleButtonClick = (category) => {
     setSelectedButton(prevState => prevState === category ? '' : category);
   };
+
+  const filteredAnnouncements = allAnnouncements.filter(item => {
+    if (selectedButton === 'COE16') {
+      return item.subgroup === userData.subgroup;
+    } else if (selectedButton === 'COE15-22') {
+      return item.group === userData.group;
+    }
+    return true; // No filtering for other cases
+  });
+
+  const shouldSetHeight = filteredAnnouncements.length < 4;
 
   return (
     <div className={`fullmain ${shouldSetHeight ? 'app' : ''}`}>
@@ -115,14 +108,11 @@ const Announcements = (props) => {
           </div>
         </div>
         {isLoading ? (
-          // Show loading message or spinner while data is being fetched
           <div>Loading...</div>
         ) : (
-          // Show announcement cards once data is fetched
-          allAnnouncements.map((item, index) => (
+          filteredAnnouncements.map((item, index) => (
             <ACard
-              key={index}
-              id={item._id}
+              key={item._id}
               date={item.date}
               description={item.description}
               groupOrSubgroup={item.group || item.subgroup}
