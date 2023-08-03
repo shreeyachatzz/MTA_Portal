@@ -78,3 +78,35 @@ export const logout = async (req, res) => {
     res.clearCookie('jwtoken', { path: '/' });
     res.status(200).json({ message: "user logged out" });
 }
+
+
+export const resetPassword = async (req, res) => {
+    const { email, currentPassword, newPassword } = req.body;
+
+    if (!email || !currentPassword || !newPassword) {
+        return res.status(400).json({ message: "Please provide all fields." });
+    }
+
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found." });
+        }
+
+        const isMatch = await bcrypt.compare(currentPassword, user.password);
+
+        if (!isMatch) {
+            return res.status(400).json({ message: "Current password is incorrect." });
+        }
+
+        const hashedNewPassword = bcrypt.hashSync(newPassword, 10);
+        user.password = hashedNewPassword;
+        await user.save();
+
+        res.status(200).json({ message: "Password reset successful." });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Internal server error." });
+    }
+}
