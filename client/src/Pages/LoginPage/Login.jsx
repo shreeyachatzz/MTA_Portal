@@ -4,6 +4,7 @@ import './Login.css';
 
 const Login = () => {
   
+  const[LoadingMsg,setLoadingMsg] = useState('Login');
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -20,6 +21,7 @@ const Login = () => {
 }
 
 const loginUser = async (e) => {
+  setLoadingMsg('PROCESSING ...');
   e.preventDefault();
   const {email, password } = user;
 
@@ -38,10 +40,12 @@ const loginUser = async (e) => {
   const data = await res.json();
 
   if (res.status === 400) {
+    setLoadingMsg('Login');
       window.alert("Login failed !");
       console.log(res.status);
       console.log(data);
   } else if (res.status !== 400) {
+      setLoadingMsg('Login');
       localStorage.setItem("userId", data.userId);
       localStorage.setItem("jwtoken", data.token);
       navigate('/study');
@@ -93,7 +97,7 @@ const loginUser = async (e) => {
         <div className='rp'>Reset Password?</div>
         </Link>
         <div className='forg'></div>
-        <button type="submit" className='but-sin' onClick={loginUser}>Login</button>
+        <button type="submit" className='but-sin' onClick={loginUser}>{LoadingMsg}</button>
       </form>
     </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 const ResetPass = () => {
+  const[resetMsg, setResetMsg] = useState('Reset');
   const [resetData, setResetData] = useState({
     email: "",
     currentPassword: "",
@@ -18,6 +19,7 @@ const ResetPass = () => {
   };
 
   const handleResetPassword = async (e) => {
+    setResetMsg('PROCESSING ... ');
     e.preventDefault();
     const { email, currentPassword, newPassword } = resetData;
 
@@ -36,12 +38,14 @@ const ResetPass = () => {
 
     const data = await res.json();
 
-    if (res.status === 400) {
+    if (res.status === 400 || res.status === 404) {
+      setResetMsg('Reset');
       window.alert("Reset password failed!");
       console.log(res.status);
       console.log(data);
     } else if (res.status !== 400) {
       window.alert("Password reset successful!");
+      setResetData('Reset');
       navigate('/login'); 
       console.log(res.status);
       console.log(data);
@@ -98,7 +102,7 @@ const ResetPass = () => {
                 <div className='rp'>Reset Password?</div>
               </Link>
               <div className='forg'></div>
-              <button type="submit" className='but-sin'>Reset</button>
+              <button type="submit" className='but-sin'>{resetMsg}</button>
             </form>
           </div>
         </div>
