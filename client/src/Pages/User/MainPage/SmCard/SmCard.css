@@ -3,6 +3,10 @@
     padding: 3vh;
     border-radius: 1.5vh;
     margin: 2.5vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 .card-m:hover{
     background-color: #d8d8d8;

@@ -45,7 +45,7 @@ const userSchema = new mongoose.Schema({
         type : mongoose.Types.ObjectId,
         ref: "Exam"
     }],
-    resourcesGrp:[{
+    resourcesSubGrp:[{
         type : mongoose.Types.ObjectId,
         ref: "Resource"
     }],
