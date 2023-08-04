@@ -59,7 +59,7 @@ const ImpCard = ({ id, subject, date, time, venue, type, groupOrSubgroup }) => {
   return (
     <>
       <div>
-        {isAdmin && (
+        
           <div className='card-imp-d'>
             <div className='card-imp'>
               <div className='sub-box'>
@@ -83,7 +83,6 @@ const ImpCard = ({ id, subject, date, time, venue, type, groupOrSubgroup }) => {
               )}
             </div>
           </div>
-        )}
       </div>
     </>
   );
