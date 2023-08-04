@@ -47,19 +47,21 @@
 .date{
     padding: 1vh 2vh 2vh 2vh;
     border-bottom: solid;
-
 }
+
+
+
 .time{
     padding: 1vh 2vh 2vh 2vh;
     
 }
 
 .venue{
-    padding: 4vh 2vh 4vh 2vh;
+    padding: 3.5vh 2vh 5vh 2vh;
 }
-.type{
-    padding: 2vh 2vh 2vh 2vh;
-}
+/* .type{
+    padding: 5vh 2vh 2vh 2vh;
+} */
 .type1,.date1{
     margin-left: 0vw;
 }
@@ -173,6 +175,7 @@
     }
     .subj,.subj1{
         width: 30vw;
+        border-width: 1.5px;
     }
     .dtogether,.type,.date1,.type1,.tven,.venue,.venmob,.tven{
         width: 21vw;
@@ -183,7 +186,22 @@
     }
 
     .date,.time{
-        width: 16vw;
+        width: 10vw;
+        text-align: center;
+        align-items: center;
+        padding-left: 5vh;
+        padding-right: 5vh;
+        border-width: 1.5px;
+    }
+    .dtogether{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* background-color: antiquewhite; */
+        border-width: 1.5px;
+    }
+    .subj{
+        /* background-color: aqua; */
     }
     .type{
         border-bottom: solid;
@@ -191,7 +209,13 @@
         border-width: 1.5px;
         padding: 0;
         padding-bottom: 1vh;
+        padding-left: 1.15vh;
+        padding-right: 1.15vh;
         width: 100%;
+    }
+    .dtogether1{
+        padding-left: 15vw;
+        padding-right: 5vw;
     }
     .type1{
         margin-right:8vw;
@@ -212,9 +236,6 @@
     /* .type,.venmob{
         padding-left:3vh;
     } */
-    .dtogether{
-        /* background-color: yellowgreen; */
-    }
     .venmob{
         text-align: center;
         padding-top: 1vh;
@@ -226,3 +247,5 @@
         /* background-color: #084e7a; */
     }
 }
+
+
