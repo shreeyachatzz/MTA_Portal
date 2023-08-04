@@ -113,6 +113,7 @@ const Announcements = (props) => {
           filteredAnnouncements.map((item, index) => (
             <ACard
               key={item._id}
+              id={item._id}
               date={item.date}
               description={item.description}
               groupOrSubgroup={item.group || item.subgroup}

@@ -7,7 +7,7 @@ const resourceSchema = new mongoose.Schema({
     link:{
         type: String
     },
-    group :{
+    subgroup :{
         type : String
     },
     user : {
