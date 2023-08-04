@@ -6,7 +6,10 @@ export const addResource = async (req, res) => {
     const {subject, link} = req.body;
     const { subgroup } = req.rootUser;
 
-    // Create a new resource
+    if (!subject || !link) {
+      return res.status(400).json({ error: 'Subject and link cannot be empty' });
+    }
+
     const resource = new Resource({
       subject,
       link,

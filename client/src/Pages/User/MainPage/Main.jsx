@@ -77,7 +77,7 @@ const MainPage = (props, state) => {
         </div>
         <div className='cards-m'>
           {filteredData.map((item, index) => (
-            <SmCard key={index} subject={item.subject} link={item.link} />
+            <SmCard key={index} id={item._id }subject={item.subject} link={item.link} />
           ))}
         </div>
       </div>
