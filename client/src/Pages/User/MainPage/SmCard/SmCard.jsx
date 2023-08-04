@@ -41,7 +41,7 @@ const SmCard = ({ id, subject, link }) => {
 
   return (
     <div className='card-m'>
-        <a href={fullLink} target="_blank" rel="noopener noreferrer">
+        <a href={fullLink} target="_blank" rel="noopener noreferrer" className='whole'>
         {subject}
         </a>
         {!isAdmin && (
