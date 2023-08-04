@@ -87,10 +87,10 @@ color: aliceblue;
 }
 .msg{
     display: none;
-    text-align: center;
+    /* text-align: center; */
     margin: 3vh;
-    color: #FF432A;
-    font-weight: 300;
+    /* color: #FF432A; */
+    /* font-weight: 300; */
 }
 
 .show{

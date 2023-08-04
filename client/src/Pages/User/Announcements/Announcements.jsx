@@ -110,7 +110,7 @@ const Announcements = (props) => {
         {isLoading ? (
           <div>Loading...</div>
         ) : (
-          filteredAnnouncements.map((item, index) => (
+          filteredAnnouncements.reverse().map((item, index) => (
             <ACard
               key={item._id}
               id={item._id}

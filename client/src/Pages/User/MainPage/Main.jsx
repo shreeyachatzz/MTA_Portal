@@ -5,9 +5,10 @@ import SmCard from './SmCard/SmCard';
 import { BiSearchAlt } from 'react-icons/bi';
 
 const MainPage = (props, state) => {
-  const [data, setData] = useState([]); // Store the original data
+  const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [loading, setLoading] = useState(true); // Initialize loading state
 
   const heading = 'STUDY MATERIAL';
 
@@ -15,11 +16,10 @@ const MainPage = (props, state) => {
 
   const handleSearchInputChange = (event) => {
     const inputValue = event.target.value.toLowerCase();
-
     setSearchQuery(inputValue);
 
     if (inputValue === '') {
-      setFilteredData(data); // Use the original data when the search query is empty
+      setFilteredData(data);
     } else {
       setFilteredData(
         data.filter((item) =>
@@ -31,7 +31,6 @@ const MainPage = (props, state) => {
 
   const token = localStorage.getItem('jwtoken');
   useEffect(() => {
-    // Fetch resources from the backend
     const fetchResources = async () => {
       try {
         const response = await fetch('http://localhost:5000/resource/viewResource', {
@@ -47,10 +46,12 @@ const MainPage = (props, state) => {
         }
 
         const data = await response.json();
-        setData(data); // Store the original data
+        setData(data);
         setFilteredData(data);
+        setLoading(false); // Set loading to false after data is fetched
       } catch (error) {
         console.error(error);
+        setLoading(false); // Set loading to false in case of error
         // Handle error if needed
       }
     };
@@ -76,9 +77,13 @@ const MainPage = (props, state) => {
           </div>
         </div>
         <div className='cards-m'>
-          {filteredData.map((item, index) => (
-            <SmCard key={index} id={item._id }subject={item.subject} link={item.link} />
-          ))}
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            filteredData.map((item, index) => (
+              <SmCard key={index} id={item._id} subject={item.subject} link={item.link} />
+            ))
+          )}
         </div>
       </div>
     </div>

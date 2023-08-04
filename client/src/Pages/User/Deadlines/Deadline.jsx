@@ -83,7 +83,7 @@ const Deadline = () => {
           </div> */}
         </div>
         <div className={`msg ${noEl ? 'show' : ''}`}>
-          No Data Available
+          Loading ...
         </div>
         {sortedDataArray.map((item, index) => (
           <DCard

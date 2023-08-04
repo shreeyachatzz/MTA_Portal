@@ -7,10 +7,12 @@ const AddCard = () => {
     const { userData, setUserData } = useEditContext();
     const [clickedButton, setClickedButton] = useState('subgroup');
     const [description, setDescription] = useState('');
+    const [submitText, setSubmitText] = useState('Submit');
     const navigate = useNavigate();
 
     const token = localStorage.getItem("jwtoken");
     const handleAnnSubmit = async(e) => {
+        setSubmitText('Processing ...');
         try {
 
             if (!description) {
@@ -37,8 +39,10 @@ const AddCard = () => {
             const data = await response.json();
 
             if (response.status === 422) {
+                setSubmitText('Submit');
                 window.alert('Empty fields! Please fill in all the details.');
             } else if (response.status === 201) {
+                setSubmitText('Submit');
                 // Handle success scenario, e.g., show success message, clear form, etc.
                 console.log('Announcement submission successful!');
                 console.log(data);
@@ -49,6 +53,7 @@ const AddCard = () => {
                 // Navigate to another page after successful submission, if required
                 navigate('/announcements'); // Change '/success' to the desired route
             } else {
+                setSubmitText('Submit');
                 console.log('Announcement submission failed!');
                 console.log(data);
             }
@@ -65,6 +70,13 @@ const AddCard = () => {
     const handleDescriptionChange = (event) => {
         setDescription(event.target.value);
     };
+
+    const handleTextareaKeyPress = (event) => {
+        if (event.key === 'Enter' && !event.shiftKey) {
+          event.preventDefault();
+          handleAnnSubmit();
+        }
+      };
 
     return (
         <div className='full'>
@@ -89,10 +101,10 @@ const AddCard = () => {
             <div className='title-a'>
                 Announcement
             </div>
-            <textarea className="an-detail" placeholder="Write an announcement here..." onChange={handleDescriptionChange}>
+            <textarea className="an-detail" placeholder="Write an announcement here..." onChange={handleDescriptionChange}  onKeyDown={handleTextareaKeyPress}>
             </textarea>
             <div className='submiting'>
-                <p className='sub' onClick={handleAnnSubmit}>Submit</p>
+                <p className='sub' onClick={handleAnnSubmit}>{submitText}</p>
             </div>
 
         </div>

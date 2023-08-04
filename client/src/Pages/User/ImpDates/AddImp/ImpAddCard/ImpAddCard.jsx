@@ -56,10 +56,12 @@ const ImpAddCard = () => {
         console.log('Exam date added successfully!');
         navigate('/impdates');
       } else {
+        setSubmitText('Submit');
         console.log('Failed to add the exam date!');
         console.log(data);
       }
     } catch (error) {
+      setSubmitText('Submit');
       navigate('/login');
       console.error('Error adding exam date:', error);
     }
@@ -67,6 +69,13 @@ const ImpAddCard = () => {
 
   const classOptions = ['EST', 'MST', 'SESS', 'LAB', 'MISC.'];
 
+  const handleTextareaKeyPress = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      handleImpSubmit();
+    }
+  };
+  
   return (
     <div className='full'>
       <div className='row-1'>
@@ -147,6 +156,7 @@ const ImpAddCard = () => {
         placeholder='Write an announcement here...'
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        onKeyDown={handleTextareaKeyPress}
       ></textarea>
       <div className='submiting'>
         <p className='sub' onClick={handleImpSubmit}>
