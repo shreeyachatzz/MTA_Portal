@@ -72,6 +72,7 @@
 .focus{
     padding: 1.5vh;
     display: flex;
+    width: 100%;
 }
 
 .focus:hover,.link-s:hover{
@@ -186,7 +187,7 @@
     margin-top: 33vh;
     color: #fff;
     font-size: 2.5vh;
-    margin-left: 1vh;
+    margin-left: -1.5vh;
     justify-content: center;
     text-align: center;
 }
