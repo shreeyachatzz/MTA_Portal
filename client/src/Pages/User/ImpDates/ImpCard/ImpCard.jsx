@@ -6,15 +6,24 @@ import { useEditContext } from '../../../../EditContext';
 const ImpCard = ({ id, subject, date, time, venue, type, groupOrSubgroup }) => {
   const { userData, setUserData } = useEditContext();
   const [isAdmin, setIsAdmin] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false); // State to track delete operation
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     setIsAdmin(userData.role === 'admin');
   }, []);
 
+  const formatDate = (inputDate) => {
+    const dateObj = new Date(inputDate);
+    const day = dateObj.getDate();
+    const month = dateObj.getMonth() + 1; // Months are zero-indexed
+    const year = dateObj.getFullYear().toString().slice(-2); // Get last two digits of the year
+
+    return `${day}/${month}/${year}`;
+  };
+
   const handleDelete = async () => {
     try {
-      setIsDeleting(true); // Start the delete operation
+      setIsDeleting(true);
 
       const backendRoute =
         groupOrSubgroup === 'group'
@@ -43,7 +52,7 @@ const ImpCard = ({ id, subject, date, time, venue, type, groupOrSubgroup }) => {
     } catch (error) {
       console.error('Error deleting exam:', error);
     } finally {
-      setIsDeleting(false); // Finish the delete operation
+      setIsDeleting(false);
     }
   };
 
@@ -55,11 +64,11 @@ const ImpCard = ({ id, subject, date, time, venue, type, groupOrSubgroup }) => {
             <div className='card-imp'>
               <div className='sub-box'>
                 <div className='subj'>
-                  {subject} <i>#{groupOrSubgroup}</i>
+                  {subject} <br/><i>#{groupOrSubgroup}</i>
                 </div>
               </div>
               <div className='dtogether'>
-                <div className='date'>{date}</div>
+                <div className='date'>{formatDate(date)}</div>
                 <div className='time'>{time}</div>
               </div>
               <div className='tven'>

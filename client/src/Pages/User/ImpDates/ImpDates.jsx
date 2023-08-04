@@ -6,7 +6,7 @@ import ImpCard from './ImpCard/ImpCard';
 const ImpDates = (props) => {
   const [selectedButton, setSelectedButton] = useState('');
   const [examDates, setExamDates] = useState([]);
-  
+
   const shouldSetHeight = examDates.length < 10;
 
   useEffect(() => {
@@ -39,6 +39,9 @@ const ImpDates = (props) => {
   const filteredExamDates = selectedButton === ''
     ? examDates
     : examDates.filter(item => item.class === selectedButton);
+
+  // Sort the filtered exam dates by date and time
+  filteredExamDates.sort((a, b) => new Date(a.date + ' ' + a.time) - new Date(b.date + ' ' + b.time));
 
   return (
     <div className={`fullmain ${shouldSetHeight ? 'fill' : ''}`}>
