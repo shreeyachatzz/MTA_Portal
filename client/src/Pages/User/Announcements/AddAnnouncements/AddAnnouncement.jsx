@@ -9,7 +9,7 @@ const AddAnnouncement = () => {
           <SideNav heading='ADD ANNOUNCEMENT'/>
         <div className="containerr">
         <div className='heading'>ADD ANNOUNCEMENT</div>
-            <AddCard />
+            <AddCard className='yay'/>
         </div>
      </div>
   )

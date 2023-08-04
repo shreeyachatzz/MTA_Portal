@@ -28,3 +28,7 @@
 .break{
     height: 2vh;
 }
+
+@media (max-width: 500px) {
+    
+}

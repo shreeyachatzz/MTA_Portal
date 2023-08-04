@@ -29,7 +29,7 @@ const ImpAddCard = () => {
 
         <div className='time-imp'>
           <div className='title-a'>Time</div>
-          <input type='time' className='datechoice'></input>
+          <input type='time' className='datechoice bbt'></input>
         </div>
       </div>
       <div className='rowz1'>
@@ -40,7 +40,7 @@ const ImpAddCard = () => {
 
         <div className='type-imp'>
           <div className='title-a'>Type</div>
-          <select value={selectedButton} onChange={handlegrp} className='datechoice'>
+          <select value={selectedButton} onChange={handlegrp} className='datechoice tyty'>
             <option value=''>All</option>
             {classOptions.map((option, index) => (
               <option className='harsh' key={index} value={option}>
