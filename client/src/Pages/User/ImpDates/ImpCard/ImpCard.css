@@ -8,6 +8,7 @@
     border-radius: 1.5vh;
     align-items: center;
 }
+
 .card-imp-d{
     display: flex;
     align-items: center;
@@ -23,6 +24,7 @@
     /* padding-right: 1vh;
     padding-left: 1vh; */
     border-radius: 0vh 1.5vh 1.5vh 0vh;
+    cursor: pointer;
 }
 .del-impdate:hover{
     color: rgb(189, 0, 0);

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Link, Routes, Route, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Routes, Route } from 'react-router-dom';
 import './StudyAdd.css';
 
 const StudyAddCard = () => {
   const navigate = useNavigate();
-  const [addBtn,setAddBtN] = useState('Add');
+  const [addBtn, setAddBtN] = useState('Add');
   const [inputData, setInputData] = useState({ subject: '', link: '' });
 
   const handleClickSub = async (event) => {
@@ -26,9 +26,7 @@ const StudyAddCard = () => {
       if (response.status === 400) {
         setAddBtN('Add');
         window.alert('Empty fields!');
-      }
-
-      else{
+      } else {
         setAddBtN('Add');
         navigate('/study');
       }
@@ -49,31 +47,33 @@ const StudyAddCard = () => {
 
   return (
     <div className='full'>
-      <div className='title-a'>Subject</div>
-      <input
-        className='an-details-sm'
-        placeholder='Enter title'
-        type='text'
-        name='subject'
-        onChange={handleChange}
-      />
-      <div className='title-a'>
-        <br />
-        Link
-      </div>
-      <input
-        className='an-details-sm'
-        placeholder='Paste link here...'
-        type='text'
-        name='link'
-        onChange={handleChange}
-      />
-      <div className='break'></div>
-      <div className='submiting'>
-        <p className='sub' onClick={handleClickSub}>
-          {addBtn}
-        </p>
-      </div>
+      <form onSubmit={handleClickSub}>
+        <div className='title-a'>Subject</div>
+        <input
+          className='an-details-sm'
+          placeholder='Enter title'
+          type='text'
+          name='subject'
+          onChange={handleChange}
+        />
+        <div className='title-a'>
+          <br />
+          Link
+        </div>
+        <input
+          className='an-details-sm'
+          placeholder='Paste link here...'
+          type='text'
+          name='link'
+          onChange={handleChange}
+        />
+        <div className='break'></div>
+        <div className='submiting'>
+          <button type='submit' className='sub'>
+            {addBtn}
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

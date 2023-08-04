@@ -14,6 +14,9 @@
     flex-direction: column;
     width: 45%;
 }
+#sub_grp{
+    margin-top: -13px;
+}
 .date-imp{
     padding-left: 0vh;
 }
