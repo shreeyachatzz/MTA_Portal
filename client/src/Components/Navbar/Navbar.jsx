@@ -188,7 +188,7 @@ const SideNav = (props) => {
               <div className='link'>
               <div className='focus'>
                 <LiaCalendarSolid className='logo' />
-                &nbsp;Important Dates
+                &nbsp;Evaluations
               </div>
             
                 {isAdmin && makeEdit &&

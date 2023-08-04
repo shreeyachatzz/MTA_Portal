@@ -8,6 +8,15 @@ const examSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    time:{
+        type: String
+    },
+    venue:{
+        type: String
+    },
+    type:{
+        type:String
+    },
     subgroup :{
         type : String
     },

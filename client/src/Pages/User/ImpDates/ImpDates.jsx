@@ -1,37 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ImpDates.css';
 import SideNav from '../../../Components/Navbar/Navbar';
 import ImpCard from './ImpCard/ImpCard';
 
 const ImpDates = (props) => {
   const [selectedButton, setSelectedButton] = useState('');
-
-  const dataArray = [
-    { subject: 'Network Programming', date: '15/06/03', time: '12.30pm', venue:'LT101',type:'SESS', class: 'co16'},
-    { subject: 'Software Engineering', date: '15/06/13', time: '12.30pm', venue:'-' , type:'SESS',class: 'co16-20'},
-    { subject: 'Machine Learning', date: '15/06/23', time: '12.30pm', venue:'LT101' ,type:'SESS', class: 'co16'},
-    { subject: 'ML Lab', date: '15/06/33', time: '12.30pm', venue:'LT101',type:'EST', class: 'co16-20' },
-    { subject: 'SE Lab', date: '15/06/43', time: '12.30pm', venue:'LT101', type:'MST', class: 'co16-20' },
-    { subject: 'EDS', date: '15/06/53', time: '12.30pm', venue:'LT101' ,type:'EST',class: 'co16'}, 
-    { subject: 'EDS', date: '15/06/53', time: '12.30pm', venue:'LT101' ,type:'EST', class: 'co16-20'},    
-    // Add more objects as needed
-  ];
+  const [examDates, setExamDates] = useState([]);
   
-  const shouldSetHeight = dataArray.length < 10;
+  const shouldSetHeight = examDates.length < 10;
 
-  const sortedDataArray = [...dataArray].sort((a, b) => {
-    const [dayA, monthA, yearA] = a.date.split('/');
-    const [dayB, monthB, yearB] = b.date.split('/');
-    return Date.UTC(yearA, monthA - 1, dayA) - Date.UTC(yearB, monthB - 1, dayB);
-  });
+  useEffect(() => {
+    // Fetch exam dates from the backend
+    const fetchExamDates = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/exam/viewMyExamDates', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+          },
+        });
 
-  const handlegrp = () => {
-    setSelectedButton((prevSelected) => (prevSelected === 'co16' ? '' : 'co16'));
-  };
+        if (!response.ok) {
+          throw new Error('Failed to fetch exam dates');
+        }
 
-  const filteredDataArray = sortedDataArray.filter((item) => {
-    return selectedButton === '' || item.class === selectedButton;
-  });
+        const data = await response.json();
+        setExamDates(data.exams);
+      } catch (error) {
+        console.error(error);
+        // Handle error if needed
+      }
+    };
+
+    fetchExamDates();
+  }, []);
+
+  const filteredExamDates = selectedButton === ''
+    ? examDates
+    : examDates.filter(item => item.class === selectedButton);
 
   return (
     <div className={`fullmain ${shouldSetHeight ? 'fill' : ''}`}>
@@ -39,9 +46,6 @@ const ImpDates = (props) => {
 
       <div className='containerr-d'>
         <div className='mobHead'>IMPORTANT DATES</div>
-        <div className={`butf harshlove ${selectedButton === 'co16' ? 'active' : ''}`} onClick={handlegrp}>
-          CO16
-        </div>
         <div className='cards'>
           <div className='card-imp1'>
             <div className='subj1'>SUBJECT</div>
@@ -53,14 +57,16 @@ const ImpDates = (props) => {
             </div>
             <div className='venue1'>VENUE</div>
           </div>
-          {filteredDataArray.map((item, index) => (
+          {filteredExamDates.map((item, index) => (
             <ImpCard
               key={index}
-              subject={item.subject}
+              id={item._id}
+              subject={item.title}
               date={item.date}
               time={item.time}
               venue={item.venue}
               type={item.type}
+              groupOrSubgroup={item.group || item.subgroup}
             />
           ))}
         </div>

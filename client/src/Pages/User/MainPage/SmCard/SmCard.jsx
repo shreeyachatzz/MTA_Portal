@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './SmCard.css';
 import { useNavigate } from 'react-router-dom';
+import { useEditContext } from '../../../../EditContext';
 
 const SmCard = ({ id, subject, link }) => {
   const navigate = useNavigate();
+  const { userData, setUserData } = useEditContext();
   const [isAdmin, setIsAdmin] = useState(false);
   const [deleteMsg, setDeleteMsg] = useState('Delete');
+
+  useEffect(() => {
+    setIsAdmin(userData.role === "admin");
+  }, []);
 
   const fullLink = link.startsWith('http://') || link.startsWith('https://')
     ? link
     : `http://${link}`;
+
 
   const handleDelete = async () => {
     setDeleteMsg('Deleting ...');
@@ -23,7 +30,7 @@ const SmCard = ({ id, subject, link }) => {
       });
 
       const data = await response.json();
-      if(response.status ===200){
+      if (response.status === 200) {
         setDeleteMsg('Delete');
         console.log(data);
         window.location.reload();
@@ -41,15 +48,15 @@ const SmCard = ({ id, subject, link }) => {
 
   return (
     <div className='card-m'>
-        <a href={fullLink} target="_blank" rel="noopener noreferrer" className='whole'>
+      <a href={fullLink} target="_blank" rel="noopener noreferrer" className='whole'>
         {subject}
-        </a>
-        {!isAdmin && (
-          <span className="del-dead" onClick={handleDelete}>
-            {deleteMsg}
-          </span>
-        )}
-      </div>
+      </a>
+      {isAdmin && (
+        <span className="del-dead" onClick={handleDelete}>
+          {deleteMsg}
+        </span>
+      )}
+    </div>
   );
 };
 

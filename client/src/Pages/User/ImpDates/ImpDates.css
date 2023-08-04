@@ -13,7 +13,9 @@
     min-height: 100vh;
 }
 
-
+.subj i{
+    color: blue;
+}
 .fill{
     height: auto;
 }
