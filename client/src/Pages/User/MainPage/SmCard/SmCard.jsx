@@ -1,18 +1,25 @@
-import React, { useState } from 'react'
-import './SmCard.css'
+import React, { useState } from 'react';
+import './SmCard.css';
 
-const SmCard = ({id, subject, link}) => {
+const SmCard = ({ id, subject, link }) => {
   const [isAdmin, setIsAdmin] = useState(false);
-  return (
-    <div className='card-m'>
-      {subject}
-      {!isAdmin &&
-        <span className="del-dead">
-          Delete
-        </span>
-      }
-    </div>
-  )
-}
 
-export default SmCard
+  const fullLink = link.startsWith('http://') || link.startsWith('https://')
+    ? link
+    : `http://${link}`;
+
+  return (
+    <a href={fullLink} target="_blank" rel="noopener noreferrer">
+      <div className='card-m'>
+        {subject}
+        {!isAdmin && (
+          <span className="del-dead">
+            Delete
+          </span>
+        )}
+      </div>
+    </a>
+  );
+};
+
+export default SmCard;
