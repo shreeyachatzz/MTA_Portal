@@ -53,6 +53,11 @@
     display: flex;
     align-items: center;
 }
+
+.cards-i:focus{
+    box-shadow: 0 0 20px rgba(0, 128, 255, 0.5); 
+    border: none;
+}
 .search-contain{
     display: flex;
     flex-direction: row;
@@ -66,12 +71,12 @@
     background-color: transparent;
     padding: 1vh;
 }
-.cards-i.active{
+.cards-i:focus{
     border: none;
     outline: none;
-    border-bottom: 1px solid #ccc; 
 }
 .icon-search{
     font-size: 3vh;
     padding: 1vh;
+    margin-right: 1vh;
 }
