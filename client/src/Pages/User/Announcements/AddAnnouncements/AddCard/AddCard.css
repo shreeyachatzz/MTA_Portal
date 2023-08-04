@@ -94,6 +94,16 @@
     }
 }
 
+@media (max-width:538px) {
+    .full{
+        width: 75%;
+        margin-left: 1.5vh;
+    }
+    .title-a{
+        font-size: 3vh;
+    }
+}
+
 .submitting{
     display: flex;
     flex-direction: row;
