@@ -2,7 +2,7 @@ import React from 'react'
 import './ICard.css'
 
 const ICard = ({ title, content, date }) => {
-  const isAdmin=true;
+  const isAdmin=false;
   return (
     <div className='card-i'>
     <div className='header'>
