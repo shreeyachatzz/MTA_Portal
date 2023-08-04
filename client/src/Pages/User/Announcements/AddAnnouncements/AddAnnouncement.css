@@ -1,11 +1,24 @@
 .heading{
     text-align: center;
 }
+.containerr{
+    display: flex;
+    flex-direction: column;
+}
 @media (max-width:1038px) {
     .heading{
         color: white;
         padding-bottom: 2vh;
         font-weight: 400;
         font-size: 3.5vh;
+        text-align: center;
+        padding-left: 3vh;
+
+    }
+}
+@media (max-width:1038px) {
+    .heading{
+        margin-left: -4vh;
+
     }
 }
