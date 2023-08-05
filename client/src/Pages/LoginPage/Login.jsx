@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
 const Login = () => {
-  const [LoadingMsg, setLoadingMsg] = useState('Login');
+  const [loadingMsg, setLoadingMsg] = useState('Login');
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -20,36 +20,38 @@ const Login = () => {
   };
 
   const loginUser = async (e) => {
-    setLoadingMsg('PROCESSING ...');
     e.preventDefault();
+    setLoadingMsg('PROCESSING ...');
+
     const { email, password } = user;
 
-    const res = await fetch('http://localhost:5000/user/login', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
+    try {
+      const res = await fetch('http://localhost:5000/user/login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (res.status === 400) {
+      if (res.status === 400) {
+        setLoadingMsg('Login');
+        window.alert('Login failed !');
+      } else {
+        setLoadingMsg('Login');
+        localStorage.setItem('userId', data.userId);
+        localStorage.setItem('jwtoken', data.token);
+        navigate('/study');
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
       setLoadingMsg('Login');
-      window.alert('Login failed !');
-      console.log(res.status);
-      console.log(data);
-    } else if (res.status !== 400) {
-      setLoadingMsg('Login');
-      localStorage.setItem('userId', data.userId);
-      localStorage.setItem('jwtoken', data.token);
-      navigate('/study');
-      console.log(res.status);
-      console.log(data);
     }
   };
 
@@ -99,7 +101,7 @@ const Login = () => {
               </Link>
               <div className='forg'></div>
               <button type='submit' className='but-sin'>
-                {LoadingMsg}
+                {loadingMsg}
               </button>
             </form>
           </div>

@@ -5,18 +5,15 @@ import { useEditContext } from '../../../../EditContext';
 
 const SmCard = ({ id, subject, link }) => {
   const navigate = useNavigate();
-  const { userData, setUserData } = useEditContext();
+  const { userData } = useEditContext();
   const [isAdmin, setIsAdmin] = useState(false);
   const [deleteMsg, setDeleteMsg] = useState('Delete');
 
   useEffect(() => {
-    setIsAdmin(userData.role === "admin");
-  }, []);
+    setIsAdmin(userData.role === 'admin');
+  }, [userData]);
 
-  const fullLink = link.startsWith('http://') || link.startsWith('https://')
-    ? link
-    : `http://${link}`;
-
+  const fullLink = link.startsWith('http://') || link.startsWith('https://') ? link : `http://${link}`;
 
   const handleDelete = async () => {
     setDeleteMsg('Deleting ...');
@@ -29,16 +26,12 @@ const SmCard = ({ id, subject, link }) => {
         },
       });
 
-      const data = await response.json();
       if (response.status === 200) {
         setDeleteMsg('Delete');
-        console.log(data);
         window.location.reload();
-      }
-      else {
+      } else {
         setDeleteMsg('Delete');
         throw new Error('Failed to delete resource');
-        console.log(data);
       }
     } catch (error) {
       // navigate('/login');
@@ -46,16 +39,19 @@ const SmCard = ({ id, subject, link }) => {
     }
   };
 
+  // Define the delete button conditionally
+  const deleteButton = isAdmin && (
+    <span className="del-dead" onClick={handleDelete}>
+      {deleteMsg}
+    </span>
+  );
+
   return (
     <div className='card-m'>
       <a href={fullLink} target="_blank" rel="noopener noreferrer" className='whole'>
         {subject}
       </a>
-      {isAdmin && (
-        <span className="del-dead" onClick={handleDelete}>
-          {deleteMsg}
-        </span>
-      )}
+      {deleteButton}
     </div>
   );
 };

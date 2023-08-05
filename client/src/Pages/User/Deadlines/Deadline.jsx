@@ -10,9 +10,9 @@ const Deadline = () => {
   const [selectedSubject, setSelectedSubject] = useState('All Subjects');
   const [allDeadlines, setAllDeadlines] = useState([]);
   const [originalDeadlines, setOriginalDeadlines] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch all deadlines when the component mounts
     const fetchAllDeadlines = async () => {
       try {
         const response = await fetch('http://localhost:5000/deadline/getAllDeadlines', {
@@ -28,19 +28,20 @@ const Deadline = () => {
         const data = await response.json();
         setAllDeadlines(data.deadlines);
         setOriginalDeadlines(data.deadlines);
+        setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        console.error('Error fetching deadlines:', error);
+        setIsLoading(false);
       }
     };
 
     fetchAllDeadlines();
   }, []);
 
-  // Convert the date strings to Date objects for proper sorting
-  const sortedDataArray = allDeadlines.sort((a, b) => {
-    const [yearA, monthA, dayA] = a.date.split('-');
-    const [yearB, monthB, dayB] = b.date.split('-');
-    return Date.UTC(yearA, monthA - 1, dayA) - Date.UTC(yearB, monthB - 1, dayB);
+  const sortedDataArray = allDeadlines.slice().sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return dateA - dateB;
   });
 
   const shouldSetHeight = sortedDataArray.length < 4;
@@ -48,18 +49,15 @@ const Deadline = () => {
 
   const handleSubjectChange = (selectedSubject) => {
     setSelectedSubject(selectedSubject);
-
-    // If a subject is selected, filter the deadlines based on the subject
-    // Otherwise, display all deadlines
-    if (selectedSubject!=='All Subjects') {
+  
+    if (selectedSubject !== 'All Subjects') {
       const filteredDeadlines = originalDeadlines.filter(item => item.title === selectedSubject);
       setAllDeadlines(filteredDeadlines);
     } else {
-      // If no subject is selected, fetch all deadlines again
-      // You can add a separate endpoint to fetch all deadlines without filters to improve performance
       setAllDeadlines(originalDeadlines);
     }
   };
+  
 
   return (
     <div className={`fullmain ${shouldSetHeight ? 'fill' : ''}`}>
@@ -73,21 +71,13 @@ const Deadline = () => {
           <div className='filter'>
             FILTER BY <Dropdown items={[...dropdownItems, 'All Subjects']} onChange={handleSubjectChange} selectedSubject={selectedSubject} />
           </div>
-          {/* <div className='fend'>
-            <div className='butf'>
-              COE16
-            </div>
-            <div className='butf'>
-              COE15-22
-            </div>
-          </div> */}
         </div>
-        <div className={`msg ${noEl ? 'show' : ''}`}>
-          No Data Available
+        <div className={`msg ${isLoading ? 'show' : ''}`}>
+          {isLoading ? 'Loading ...' : null}
         </div>
-        {sortedDataArray.map((item, index) => (
+        {sortedDataArray.map(item => (
           <DCard
-            key={index}
+            key={item._id}
             id={item._id}
             title={item.title}
             description={item.description}

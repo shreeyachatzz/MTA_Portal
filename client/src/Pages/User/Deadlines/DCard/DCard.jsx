@@ -3,17 +3,16 @@ import './DCard.css';
 import { useEditContext } from '../../../../EditContext';
 
 const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
-  // Check Admin Status
-  const { userData, setUserData } = useEditContext();
+  const { userData } = useEditContext();
   const [isAdmin, setIsAdmin] = useState(false);
-  const [deleteBtnText,setDeleteBtnText] = useState('Delete');
+  const [deleteBtnText, setDeleteBtnText] = useState('Delete');
 
   useEffect(() => {
     setIsAdmin(userData.role === "admin");
-  }, []);
+  }, [userData]);
 
   const handleDelete = async () => {
-    setDeleteBtnText('Deleting...')
+    setDeleteBtnText('Deleting...');
     try {
       const backendRoute =
         groupOrSubgroup === 'group'
@@ -30,16 +29,11 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
         },
       });
 
-      const data = await response.json();
-
       if (response.status === 200) {
         setDeleteBtnText('Delete');
-        // window.alert("Deadline deleted, Plz refresh the page!");
-        console.log("Deadline deleted successfully!");
         window.location.reload();
       } else {
         console.log("Failed to delete the deadline!");
-        console.log(data);
       }
     } catch (error) {
       console.error("Error deleting deadline:", error);
