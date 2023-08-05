@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, Routes, Route } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './StudyAdd.css';
 
 const StudyAddCard = () => {
   const navigate = useNavigate();
-  const [addBtn, setAddBtN] = useState('Add');
+  const [addBtn, setAddBtn] = useState('Add');
   const [inputData, setInputData] = useState({ subject: '', link: '' });
 
   const handleClickSub = async (event) => {
-    setAddBtN('Adding ...');
     event.preventDefault();
+    setAddBtn('Adding ...');
 
     try {
       const response = await fetch('http://localhost:5000/resource/addResource', {
@@ -21,13 +21,11 @@ const StudyAddCard = () => {
         body: JSON.stringify(inputData),
       });
 
-      const data = response.json();
-
       if (response.status === 400) {
-        setAddBtN('Add');
+        setAddBtn('Add');
         window.alert('Empty fields!');
       } else {
-        setAddBtN('Add');
+        setAddBtn('Add');
         navigate('/study');
       }
     } catch (error) {

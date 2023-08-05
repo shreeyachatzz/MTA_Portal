@@ -4,11 +4,11 @@ import SideNav from '../../../Components/Navbar/Navbar';
 import SmCard from './SmCard/SmCard';
 import { BiSearchAlt } from 'react-icons/bi';
 
-const MainPage = (props, state) => {
+const MainPage = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [loading, setLoading] = useState(true); // Initialize loading state
+  const [loading, setLoading] = useState(true);
 
   const heading = 'STUDY MATERIAL';
 
@@ -48,16 +48,16 @@ const MainPage = (props, state) => {
         const data = await response.json();
         setData(data);
         setFilteredData(data);
-        setLoading(false); // Set loading to false after data is fetched
+        setLoading(false);
       } catch (error) {
         console.error(error);
-        setLoading(false); // Set loading to false in case of error
+        setLoading(false);
         // Handle error if needed
       }
     };
 
     fetchResources();
-  }, []);
+  }, [token]);
 
   return (
     <div className={`fullmain ${shouldSetHeight ? 'fill' : ''}`}>
@@ -80,8 +80,8 @@ const MainPage = (props, state) => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            filteredData.map((item, index) => (
-              <SmCard key={index} id={item._id} subject={item.subject} link={item.link} />
+            filteredData.map((item) => (
+              <SmCard key={item._id} id={item._id} subject={item.subject} link={item.link} />
             ))
           )}
         </div>

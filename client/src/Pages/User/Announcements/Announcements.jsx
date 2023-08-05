@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import './Announcements.css';
 import SideNav from '../../../Components/Navbar/Navbar';
 import ACard from './ACard/ACard';
+import { useNavigate } from 'react-router-dom';
 
-const Announcements = (props) => {
+const Announcements = () => {
   const [allAnnouncements, setAllAnnouncements] = useState([]);
   const [selectedButton, setSelectedButton] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState('');
 
   const token = localStorage.getItem('jwtoken');
+  const navigate = useNavigate();
 
   const getUserInfo = async () => {
     try {
@@ -32,10 +34,11 @@ const Announcements = (props) => {
         const data = await res.json();
         setUserData(data);
       } else {
-        console.log("failed");
+        console.error("Failed to fetch user data");
+        navigate('/login');
       }
     } catch (err) {
-      console.log(err);
+      console.error('Error fetching user data:', err);
       navigate('/login');
     }
   };
@@ -51,7 +54,7 @@ const Announcements = (props) => {
         const response = await fetch('http://localhost:5000/announcement/getAllAnnouncements', {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+            Authorization: `Bearer ${token}`,
           },
         });
         if (!response.ok) {
@@ -62,14 +65,14 @@ const Announcements = (props) => {
         setAllAnnouncements(data.announcements);
         setIsLoading(false); // Set loading status to false after data is fetched
       } catch (error) {
-        console.error(error);
+        console.error('Error fetching announcements:', error);
         setIsLoading(false); // Set loading status to false on error
       }
     };
 
     // Fetch all announcements
     fetchAllAnnouncements();
-  }, []);
+  }, [token]);
 
   const handleButtonClick = (category) => {
     setSelectedButton(prevState => prevState === category ? '' : category);
@@ -82,7 +85,7 @@ const Announcements = (props) => {
       return item.group === userData.group;
     }
     return true; // No filtering for other cases
-  });
+  }).reverse(); // Reverse the array to show latest announcement first
 
   const shouldSetHeight = filteredAnnouncements.length < 4;
 
@@ -110,7 +113,7 @@ const Announcements = (props) => {
         {isLoading ? (
           <div>Loading...</div>
         ) : (
-          filteredAnnouncements.reverse().map((item, index) => (
+          filteredAnnouncements.map((item) => (
             <ACard
               key={item._id}
               id={item._id}

@@ -26,7 +26,7 @@ const Dropdown = ({ items, onChange, selectedSubject }) => {
   };
 
   const handleOptionClick = (option) => {
-    onChange(option === 'All Subjects' ? null : option); // Pass null if "All Subjects" is selected, otherwise, pass the selected subject
+    onChange(option === 'All Subjects' ? '' : option); // Pass null if "All Subjects" is selected, otherwise, pass the selected subject
     setIsOpen(false); // Close the dropdown when an option is selected
   };
 

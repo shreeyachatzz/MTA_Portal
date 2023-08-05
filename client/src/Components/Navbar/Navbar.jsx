@@ -73,7 +73,6 @@ const SideNav = (props) => {
           localStorage.removeItem('jwtoken');
         }
       } catch (err) {
-        console.log(err);
       }
     } 
   };
@@ -103,10 +102,8 @@ const SideNav = (props) => {
         setIsAdmin(data.role === "admin");
       } else {
         // navigate('/login');
-        console.log("failed");
       }
     } catch (err) {
-      console.log(err);
       navigate('/login');
     }
   };

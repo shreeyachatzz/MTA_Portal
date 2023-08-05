@@ -44,8 +44,6 @@ const AddCard = () => {
             } else if (response.status === 201) {
                 setSubmitText('Submit');
                 // Handle success scenario, e.g., show success message, clear form, etc.
-                console.log('Announcement submission successful!');
-                console.log(data);
 
                 // Clear the form fields after successful submission
                 setDescription('');
@@ -54,8 +52,6 @@ const AddCard = () => {
                 navigate('/announcements'); // Change '/success' to the desired route
             } else {
                 setSubmitText('Submit');
-                console.log('Announcement submission failed!');
-                console.log(data);
             }
         } catch (error) {
             // Handle any error that may occur during the API call

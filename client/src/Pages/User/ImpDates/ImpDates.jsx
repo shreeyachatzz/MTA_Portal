@@ -3,15 +3,14 @@ import './ImpDates.css';
 import SideNav from '../../../Components/Navbar/Navbar';
 import ImpCard from './ImpCard/ImpCard';
 
-const ImpDates = (props) => {
+const ImpDates = () => {
   const [selectedButton, setSelectedButton] = useState('');
   const [examDates, setExamDates] = useState([]);
-  const [loading, setLoading] = useState(true); // Initialize loading state
+  const [loading, setLoading] = useState(true);
 
   const shouldSetHeight = examDates.length < 10;
 
   useEffect(() => {
-    // Fetch exam dates from the backend
     const fetchExamDates = async () => {
       try {
         const response = await fetch('http://localhost:5000/exam/viewMyExamDates', {
@@ -28,11 +27,10 @@ const ImpDates = (props) => {
 
         const data = await response.json();
         setExamDates(data.exams);
-        setLoading(false); // Set loading to false after data is fetched
+        setLoading(false);
       } catch (error) {
-        console.error(error);
-        setLoading(false); // Set loading to false in case of error
-        // Handle error if needed
+        console.error('Error fetching exam dates:', error);
+        setLoading(false);
       }
     };
 
@@ -43,7 +41,6 @@ const ImpDates = (props) => {
     ? examDates
     : examDates.filter(item => item.class === selectedButton);
 
-  // Sort the filtered exam dates by date and time
   filteredExamDates.sort((a, b) => new Date(a.date + ' ' + a.time) - new Date(b.date + ' ' + b.time));
 
   return (
@@ -68,7 +65,7 @@ const ImpDates = (props) => {
             </div>
             {filteredExamDates.map((item, index) => (
               <ImpCard
-                key={index}
+                key={item._id}
                 id={item._id}
                 subject={item.title}
                 date={item.date}
