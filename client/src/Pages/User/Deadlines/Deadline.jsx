@@ -57,7 +57,6 @@ const Deadline = () => {
       setAllDeadlines(originalDeadlines);
     }
   };
-  
 
   return (
     <div className={`fullmain ${shouldSetHeight ? 'fill' : ''}`}>
@@ -69,7 +68,7 @@ const Deadline = () => {
 
         <div className='deadBard'>
           <div className='filter'>
-            FILTER BY <Dropdown items={[...dropdownItems, 'All Subjects']} onChange={handleSubjectChange} selectedSubject={selectedSubject} />
+            FILTER BY <Dropdown items={[...dropdownItems, 'All Subjects']} onChange={(selectedSubject) => handleSubjectChange(selectedSubject === null ? 'All Subjects' : selectedSubject)} selectedSubject={selectedSubject} />
           </div>
         </div>
         <div className={`msg ${isLoading ? 'show' : ''}`}>

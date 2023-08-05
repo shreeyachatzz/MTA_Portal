@@ -76,4 +76,7 @@
         margin-left:1vh;
         display: flex;
     }
+    .info-d{
+        text-align: center;
+    }
 }
