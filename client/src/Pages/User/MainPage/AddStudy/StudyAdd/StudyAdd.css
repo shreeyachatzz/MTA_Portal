@@ -29,6 +29,10 @@
     height: 2vh;
 }
 
-@media (max-width: 500px) {
-    
+.sm-cl{
+    margin-top: 1vh;
+}
+
+.sm-but-cl{
+    display: flex;
 }
