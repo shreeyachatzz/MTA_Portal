@@ -40,8 +40,11 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
     }
   };
 
+  const currentDate = new Date();
+  const isPastDue = new Date(date) < currentDate;
+
   return (
-    <div className='card-d'>
+    <div className={`card-d ${isPastDue ? 'past-due' : ''}`}>
       <div className='deadBarr-d'>
         <div className='p1-d'>
           <div className='sub-d'>

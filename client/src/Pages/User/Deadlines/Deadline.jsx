@@ -11,6 +11,7 @@ const Deadline = () => {
   const [allDeadlines, setAllDeadlines] = useState([]);
   const [originalDeadlines, setOriginalDeadlines] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isDueFilterActive, setIsDueFilterActive] = useState(false); 
 
   useEffect(() => {
     const fetchAllDeadlines = async () => {
@@ -38,10 +39,25 @@ const Deadline = () => {
     fetchAllDeadlines();
   }, []);
 
+  // const sortedDataArray = allDeadlines.slice().sort((a, b) => {
+  //   const dateA = new Date(a.date);
+  //   const dateB = new Date(b.date);
+  //   return dateA - dateB;
+  // });
   const sortedDataArray = allDeadlines.slice().sort((a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);
-    return dateA - dateB;
+    const currentDate = new Date();
+
+    if (dateA < currentDate && dateB < currentDate) {
+      return dateA - dateB;
+    } else if (dateA < currentDate) {
+      return 1;
+    } else if (dateB < currentDate) {
+      return -1; 
+    }
+
+    return dateA - dateB; // Sort by date for other cases
   });
 
   const shouldSetHeight = sortedDataArray.length < 4;
@@ -58,6 +74,17 @@ const Deadline = () => {
     }
   };
 
+  const handleDueFilter = () => {
+    if (isDueFilterActive) {
+      setAllDeadlines(originalDeadlines);
+    } else {
+      const currentDate = new Date();
+      const filteredDeadlines = originalDeadlines.filter(item => new Date(item.date) < currentDate);
+      setAllDeadlines(filteredDeadlines); 
+    }
+    setIsDueFilterActive(prevState => !prevState);
+  };
+
   return (
     <div className={`fullmain ${shouldSetHeight ? 'fill' : ''}`}>
       <SideNav heading='DEADLINES' />
@@ -69,6 +96,12 @@ const Deadline = () => {
         <div className='deadBard'>
           <div className='filter'>
             FILTER BY <Dropdown items={[...dropdownItems, 'All Subjects']} onChange={(selectedSubject) => handleSubjectChange(selectedSubject === null ? 'All Subjects' : selectedSubject)} selectedSubject={selectedSubject} />
+          </div>
+          <div
+            className={`butf BUTD ${isDueFilterActive ? 'active' : ''}`}
+            onClick={handleDueFilter}
+          >
+            PAST DUE
           </div>
         </div>
         <div className={`msg ${isLoading ? 'show' : ''}`}>

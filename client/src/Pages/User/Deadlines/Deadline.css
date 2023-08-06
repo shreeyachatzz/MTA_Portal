@@ -16,6 +16,7 @@
     flex-direction: row;
     align-items: center;
     position:-webkit-sticky;
+    justify-content: space-between;
 }
 .butf{
     padding: 0.6vh;
@@ -92,6 +93,9 @@ color: aliceblue;
     /* color: #FF432A; */
     /* font-weight: 300; */
 }
+.BUTD{
+    margin-right: 3vw!important;
+}
 
 .show{
     display: block;
@@ -121,4 +125,7 @@ color: aliceblue;
         margin-left: 4vw;
         margin-top: 15vh;
     } 
+    .BUTD{
+        color: bisque;
+    }
 }

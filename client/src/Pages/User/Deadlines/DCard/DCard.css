@@ -19,6 +19,10 @@
     padding: 1.5vh;
 }
 
+.card-d.past-due {
+    background-color: #ffbebe;
+  }
+  
 .butf{
     padding: 0.6vh;
     border: solid;
@@ -56,6 +60,7 @@
     /* text-decoration: underline; */
     border: solid;
     background-color: #FF432A;
+    border-color: #FF432A;
     padding: 1vh;
     border-radius: 1vh;
     font-size: 2vh;
