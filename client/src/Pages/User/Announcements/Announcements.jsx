@@ -85,7 +85,7 @@ const Announcements = () => {
       return item.group === userData.group;
     }
     return true; // No filtering for other cases
-  }).reverse(); // Reverse the array to show latest announcement first
+  }).sort((a, b) => new Date(b.date) - new Date(a.date)); // Reverse the array to show latest announcement first
 
   const shouldSetHeight = filteredAnnouncements.length < 4;
 
