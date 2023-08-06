@@ -15,7 +15,8 @@ const SmCard = ({ id, subject, link }) => {
 
   const fullLink = link.startsWith('http://') || link.startsWith('https://') ? link : `http://${link}`;
 
-  const handleDelete = async () => {
+  const handleDelete = async (event) => {
+    event.stopPropagation(); // This line prevents the onClick property from working when clicked on the delete button
     setDeleteMsg('Deleting ...');
     try {
       const response = await fetch(`http://localhost:5000/resource/delResource/${id}`, {
@@ -34,23 +35,27 @@ const SmCard = ({ id, subject, link }) => {
         throw new Error('Failed to delete resource');
       }
     } catch (error) {
-      // navigate('/login');
       console.error(error);
     }
   };
 
-  // Define the delete button conditionally
   const deleteButton = isAdmin && (
     <span className="del-dead" onClick={handleDelete}>
       {deleteMsg}
     </span>
   );
 
+  const handleCardClick = () => {
+    window.open(fullLink, '_blank');
+  };
+
   return (
-    <div className='card-m'>
-      <a href={fullLink} target="_blank" rel="noopener noreferrer" className='whole'>
-        {subject}
-      </a>
+    <div className='card-m' onClick={handleCardClick}>
+      <div className='card-content'>
+        <a href={fullLink} target="_blank" rel="noopener noreferrer" className='whole'>
+          {subject}
+        </a>
+      </div>
       {deleteButton}
     </div>
   );

@@ -9,6 +9,7 @@ const MainPage = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
+  const [selectedButton, setSelectedButton] = useState('');
 
   const heading = 'STUDY MATERIAL';
 
@@ -26,6 +27,20 @@ const MainPage = () => {
           item.subject.toLowerCase().includes(inputValue)
         )
       );
+    }
+  };
+
+  const handleButtonClick = (buttonName) => {
+    setSelectedButton(buttonName);
+
+    // Apply filtering based on button clicked (subgroup or group)
+    if (buttonName === 'COE16') {
+      setFilteredData(data.filter((item) => item.subgroup === 'COE16'));
+    } else if (buttonName === 'COE15-22') {
+      setFilteredData(data.filter((item) => item.group === 'COE15-22'));
+    } else {
+      // If no button is selected, show all data
+      setFilteredData(data);
     }
   };
 
@@ -74,6 +89,18 @@ const MainPage = () => {
               placeholder='Search by subject...'
             />
             <BiSearchAlt className='icon-search' />
+          </div>
+          <div
+            className={`butf mainbut ${selectedButton === 'COE16' ? 'active' : ''}`}
+            onClick={() => handleButtonClick('COE16')}
+          >
+            CO16
+          </div>
+          <div
+            className={`butf mainbut ${selectedButton === 'COE15-22' ? 'active' : ''}`}
+            onClick={() => handleButtonClick('COE15-22')}
+          >
+            CO16-20
           </div>
         </div>
         <div className='cards-m'>
