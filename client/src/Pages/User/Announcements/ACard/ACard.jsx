@@ -6,6 +6,8 @@ const ACard = ({ id, date, description, groupOrSubgroup }) => {
   const { userData, setUserData } = useEditContext();
   const [isAdmin, setIsAdmin] = useState(false);
   const [deleteBtnText, setDeleteBtnText] = useState('Delete');
+  const [showFullDescription, setShowFullDescription] = useState(false);
+
 
   useEffect(() => {
     setIsAdmin(userData.role === 'admin');
@@ -44,13 +46,35 @@ const ACard = ({ id, date, description, groupOrSubgroup }) => {
     }
   };
 
+  const handleReadMoreClick = () => {
+    setShowFullDescription(!showFullDescription);
+  };
+
   return (
     <div className='card-a'>
       <div className='top-an'>
         <div className='grpclass-a'>{date}</div>
-        {isAdmin && <div className='del-an' onClick={handleDelete}>{deleteBtnText} </div>}
+        {isAdmin && <div className='del-an' onClick={handleDelete}>{deleteBtnText}</div>}
       </div>
-      <div className='info-a'>{description}</div>
+      <div className='info-a'>
+        {showFullDescription ? (
+          <div>
+            {description}
+            <span className='read-more' onClick={handleReadMoreClick}>Read less...</span>
+          </div>
+        ) : (
+          <div>
+            {description.length > 100 ? (
+              <div>
+                {description.substring(0, 100)}...
+                <span className='read-more' onClick={handleReadMoreClick}>Read more...</span>
+              </div>
+            ) : (
+              description
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -45,3 +45,13 @@
     transition:.1s ease all;
     color: #FF432A;
 }
+
+.read-more{
+    margin-left: 2vh;
+    color: #4f6aff;
+}
+
+.read-more:hover{
+    cursor: pointer;
+    color: #FF432A;
+}
