@@ -7,23 +7,28 @@
     margin: 0vh 2vh 0vh 2vh;
     border-radius: 1.5vh;
     align-items: center;
+
+    border: solid;
+    border-width: 2px;
+    border-radius: 1.5vh;
+    border-color: rgb(165, 165, 165);
 }
 
 .card-imp-d{
     display: flex;
     align-items: center;
+    
 }
 .del-impdate{
     color: rgb(255, 255, 255);
     font-size: 3vh;
     background-color: red;
-    padding-top: 3vh;
-    padding-bottom: 3vh;
+    padding-top: 3.1vh;
+    padding-bottom: 3.1vh;
     width: 12.5vw;
     text-align: center;
-    /* padding-right: 1vh;
-    padding-left: 1vh; */
-    border-radius: 0vh 1.5vh 1.5vh 0vh;
+    
+    border-radius: 0vh 1.2vh 1.2vh 0vh;
     cursor: pointer;
 }
 .del-impdate:hover{
@@ -49,12 +54,16 @@
 .date{
     padding: 1vh 2vh 2vh 2vh;
     border-bottom: solid;
+    border-left: solid;
+    border-right: solid;
 }
 
 
 
 .time{
     padding: 1vh 2vh 2vh 2vh;
+    border-left: solid;
+    border-right: solid;
     
 }
 
@@ -64,7 +73,7 @@
 /* .type{
     padding: 5vh 2vh 2vh 2vh;
 } */
-.type1,.date1{
+.date1{
     margin-left: 0vw;
 }
 
@@ -76,7 +85,6 @@
 }
 
 .date,.time,.sub-box{
-    border-right: solid ;
     border-color: rgb(165, 165, 165);
     border-width: 2px;
     height: 2vh;
@@ -167,7 +175,9 @@
         color: antiquewhite;
     }
 } */
-
+.harshFuckedUp{
+    color: #4f6aff;
+}
 @media (max-width: 1023px) {
     .card-imp1{
         color: antiquewhite;
@@ -211,7 +221,7 @@
         border-width: 1.5px;
         padding: 0;
         padding-bottom: 1vh;
-        padding-left: 1.15vh;
+        
         padding-right: 1.15vh;
         width: 100%;
     }

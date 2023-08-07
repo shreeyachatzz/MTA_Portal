@@ -40,7 +40,7 @@
 
 .sub-d{
     color: #4f6aff;
-    margin: 1vh;
+    margin: 1.25vh;
 }
 
 .date-d{
@@ -48,6 +48,13 @@
     margin-left: auto;
     margin-right:2vw ;
     font-size: 2.5vh;
+}
+@media (max-width: 1038px) {
+    .date-d{
+        margin-top: -1vh;
+        margin-bottom: 0.5vh;
+    }    
+
 }
 .deadBarr-d{
     display: flex;
@@ -65,6 +72,7 @@
     border-radius: 1vh;
     font-size: 2vh;
     cursor: pointer;
+    margin-bottom: 1vh;
 }
 .del-dead:hover{
     border: solid;
@@ -84,4 +92,5 @@
     .info-d{
         text-align: center;
     }
+    
 }

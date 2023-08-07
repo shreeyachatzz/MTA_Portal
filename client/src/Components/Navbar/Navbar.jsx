@@ -140,7 +140,7 @@ const SideNav = (props) => {
               <div className='link'>
               <div className='focus'>
                 <PiBooksDuotone className='logo' />
-                &nbsp;Links
+                &nbsp;Study Material
               </div>                
                 {isAdmin && makeEdit &&
                 <Link to="/add/study">
@@ -153,7 +153,7 @@ const SideNav = (props) => {
             <Link to="/announcements">
               <div className='link'>
                 <div className='focus'>
-                  <TfiAnnouncement className='logo' />
+                  <TfiAnnouncement className='logo annlog' />
                   &nbsp;Announcements
                 </div>
                   

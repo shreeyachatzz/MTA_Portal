@@ -64,7 +64,7 @@ const ImpCard = ({ id, subject, date, time, venue, type, groupOrSubgroup }) => {
             <div className='card-imp'>
               <div className='sub-box'>
                 <div className='subj'>
-                  {subject} <br/><i>#{groupOrSubgroup}</i>
+                  {subject} <br/><div className='harshFuckedUp'>{groupOrSubgroup}</div>
                 </div>
               </div>
               <div className='dtogether'>
