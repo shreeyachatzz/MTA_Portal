@@ -40,6 +40,16 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
     }
   };
 
+  useEffect(() => {
+    const currentDate = new Date();
+    const dueDate = new Date(date);
+    const sevenDaysPastDueDate = new Date(dueDate.setDate(dueDate.getDate() + 7));
+
+    if (isAdmin && currentDate > sevenDaysPastDueDate) {
+      handleDelete();
+    }
+  }, [date, isAdmin]);
+
   const currentDate = new Date();
   const isPastDue = new Date(date) < currentDate;
 
