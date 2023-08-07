@@ -1,11 +1,13 @@
 import express from 'express';
 import { Authenticate } from '../middlewares/auth.js';
-import { addResource, deleteResource, viewAllResources } from '../controllers/resource_controllers.js';
+import { addGrpResource, addSubGrpResource, deleteGrpResource, deleteSubGrpResource, viewAllResources } from '../controllers/resource_controllers.js';
 
 const resourceRouter = express.Router();
 
-resourceRouter.post('/addResource',Authenticate,addResource);
-resourceRouter.delete('/delResource/:id',Authenticate,deleteResource);
+resourceRouter.post('/addSubGrpResource',Authenticate,addSubGrpResource);
+resourceRouter.post('/addGrpResource',Authenticate,addGrpResource);
+resourceRouter.delete('/delSubGrpResource/:id',Authenticate,deleteSubGrpResource);
+resourceRouter.delete('/delGrpResource/:id',Authenticate,deleteGrpResource);
 resourceRouter.get('/viewResource',Authenticate,viewAllResources);
 
 export default resourceRouter;

@@ -49,6 +49,10 @@ const userSchema = new mongoose.Schema({
         type : mongoose.Types.ObjectId,
         ref: "Resource"
     }],
+    resourcesGrp:[{
+        type : mongoose.Types.ObjectId,
+        ref: "Resource"
+    }],
     tokens : [
         {
             token:{
