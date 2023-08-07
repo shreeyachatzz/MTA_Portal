@@ -61,8 +61,8 @@ const MainPage = () => {
         }
 
         const data = await response.json();
-        setData(data);
-        setFilteredData(data);
+        setData(data.resources);
+        setFilteredData(data.resources);
         setLoading(false);
       } catch (error) {
         console.error(error);
@@ -108,7 +108,13 @@ const MainPage = () => {
             <div>Loading...</div>
           ) : (
             filteredData.map((item) => (
-              <SmCard key={item._id} id={item._id} subject={item.subject} link={item.link} />
+              <SmCard
+                key={item._id}
+                id={item._id}
+                subject={item.subject} 
+                link={item.link}
+                groupOrSubgroup={item.group || item.subgroup}
+                />
             ))
           )}
         </div>
