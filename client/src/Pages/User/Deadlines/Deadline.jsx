@@ -5,7 +5,7 @@ import DCard from './DCard/DCard';
 import Dropdown from './Dropdown/Dropdown';
 
 const Deadline = () => {
-  const dropdownItems = ['OS', 'DSA', 'DAA', 'CN', 'AI'];
+  const dropdownItems = ['Probability & Statistics', 'Machine Learning', 'Software Engineering', 'Computer Architecture & Org.', 'Network Programming','Elective'];
 
   const [selectedSubject, setSelectedSubject] = useState('All Subjects');
   const [allDeadlines, setAllDeadlines] = useState([]);
