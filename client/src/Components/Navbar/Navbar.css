@@ -73,6 +73,7 @@
     padding: 1.5vh;
     display: flex;
     width: 100%;
+    align-items: center;
 }
 
 .focus:hover,.link-s:hover{
@@ -150,6 +151,8 @@
     color: #FF432A;
     margin-left: auto; /* Add this to push the button to the rightmost position */
     margin-right: 5vh;
+    font-size: 2.25vh;
+    width: 12vh;
 }
 
 .logout-btn-pc:hover{
@@ -236,6 +239,8 @@
             background-color: transparent;
             border: solid;
             color: #FF432A;
+            font-size: 2.25vh;
+            width: 12vh;
         }
 
         .logout-btn:hover{
@@ -289,8 +294,9 @@
     padding: 0.5vh;
     font-size: 2vh;
     color: #FF432A;
-    border-radius: 1.5vh;
+    border-radius: 1vh;
     border-width: 2px;
+    width: 12vh;
 }
 
 .edit:hover{
@@ -321,4 +327,8 @@
 }
 .grass:hover{
     color: #70eaff;
+}
+
+.annlog{
+    font-size: 2.75vh;
 }

@@ -72,7 +72,7 @@ const Login = () => {
             <form onSubmit={loginUser}>
               <div className='form-group'>
                 <div className='labell'>
-                  <i>Email</i>
+                  Email
                 </div>
                 <input
                   placeholder='College email id'
@@ -85,7 +85,7 @@ const Login = () => {
               </div>
               <div className='form-group'>
                 <div className='labell'>
-                  <i>Password</i>
+                  Password
                 </div>
                 <input
                   placeholder='Enter your password'
@@ -97,7 +97,7 @@ const Login = () => {
                 />
               </div>
               <Link className='rplink' to='/reset'>
-                <div className='rp'>Reset Password?</div>
+                <div className='rp'>Reset Password!</div>
               </Link>
               <div className='forg'></div>
               <button type='submit' className='but-sin'>

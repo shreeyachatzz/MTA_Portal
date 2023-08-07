@@ -11,7 +11,7 @@ const Landing = () => {
             <div className='text-u'>
                 <div className='oneu'>MY THAPAR</div>
                 <div className='twou'>Academia</div> 
-                <div className='threeu'>A one stop solution to all your academic problems</div>
+                <div className='threeu'>A one stop solution to all your academic problems.</div>
             </div>   
             <div className='pos'>
             <Link to='/login'>
@@ -31,7 +31,7 @@ const Landing = () => {
         <div className='text-l'>
             <div className='one'>MY THAPAR</div>
             <div className='two'>Academia</div> 
-            <div className='three'>A one stop solution to all your academic problems</div>
+            <div className='three'>A one stop solution to all your academic problems.</div>
         </div>
         </div>
         <div className='marb-mob'>

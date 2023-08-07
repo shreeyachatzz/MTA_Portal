@@ -1,6 +1,6 @@
 .containerr-dd{
     justify-content: center;
-    margin-left: 17vw;
+    margin-left: 13vw;
     color: black;
     font-weight: 700;
     font-size: 2.5vh;
@@ -22,8 +22,11 @@
     padding: 0.6vh;
     border: solid;
     margin: 1vh ;
-    border-radius: 0.6em;
     border-width: 2px;
+    width: 12vh;
+    text-align: center;
+    font-size: 2.2vh;
+    border-radius: 1vh!important;
 }
 .fend{
     margin-left: auto;
@@ -95,6 +98,7 @@ color: aliceblue;
 }
 .BUTD{
     margin-right: 3vw!important;
+    width: 13vh;
 }
 
 .show{
@@ -102,7 +106,7 @@ color: aliceblue;
 }
 @media (max-width:2580px ) {
     .containerr-dd{
-        margin-left: 34vh;
+        margin-left: 30vh;
     }
 }
 
@@ -122,7 +126,7 @@ color: aliceblue;
         margin-left: 0vh;
     }    
     .containerr-dd{
-        margin-left: 4vw;
+        margin-left: 1.5vw;
         margin-top: 15vh;
     } 
     .BUTD{
