@@ -203,7 +203,7 @@ const SideNav = (props) => {
           <div className='foot'>
             Made with ❤️ by <br/>Team  
             <a className='lucky' target="_blank" rel="noopener" href='https://www.linkedin.com/in/lakshaya-aggarwal-9b958b228/'> L</a>
-            {/* <a className='grass' target="_blank" rel="noopener" href='https://www.linkedin.com/in/harsh--jain/'>H</a> */}
+            <a className='grass' target="_blank" rel="noopener" href='https://www.linkedin.com/in/harsh--jain/'>H</a>
             <a target="_blank" rel="noopener" href='https://www.linkedin.com/in/shreeyachatterji/'className='chatz'>S</a>
           </div>
           {/* </Link> */}

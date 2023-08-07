@@ -3,7 +3,7 @@
     width: 80%;
     padding: 4vh;
     border-radius: 1.5vh;
-    margin-left: 10vh;
+    margin-left: 8vw;
 }
 .title-a{
     color: #59FF30;
@@ -90,14 +90,14 @@
 @media (max-width:820px) {
     .full{
         width: 75%;
-        margin-left: 4vh;
+        margin-left: 5vh;
     }
 }
 
 @media (max-width:538px) {
     .full{
         width: 75%;
-        margin-left: 1.5vh;
+        margin-left: 5vw!important;
     }
     .title-a{
         font-size: 3vh;

@@ -72,8 +72,8 @@ const ImpCard = ({ id, subject, date, time, venue, type, groupOrSubgroup }) => {
                 <div className='time'>{time}</div>
               </div>
               <div className='tven'>
-                <div className='type'>{type}</div>
-                <div className='venmob'>{venue}</div>
+                <div className='type'>&nbsp;&nbsp;&nbsp;&nbsp;{type}</div>
+                <div className='venmob'>&nbsp;{venue}</div>
               </div>
               <div className='venue'>{venue}</div>
               {isAdmin && (

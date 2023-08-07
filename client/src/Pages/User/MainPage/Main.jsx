@@ -117,7 +117,7 @@ const MainPage = () => {
       <SideNav heading={heading} />
 
       <div className='containerr'>
-        <div className='mobHead'>LINKS</div>
+        <div className='mobHead'>STUDY MATERIAL</div>
         <div className='search-contain'>
           <div className='search'>
             <input

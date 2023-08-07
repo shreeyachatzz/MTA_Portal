@@ -49,11 +49,13 @@
         margin-left: 1vw!important;
     }
     .search{
-        width:50%;
+        width: 45%!important;;
     }
     .mainbut{
-        font-size: 2vh;
-        width: 13vw;
+        font-size: 1.5vh!important;
+        width: 16vw!important;
+        padding-top: 1vh!important;
+        padding-bottom: 1vh!important;
         align-items: center;
         text-align: center;
         margin-right: 0vh;

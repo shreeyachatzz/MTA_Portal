@@ -21,7 +21,7 @@ const Login = () => {
 
   const loginUser = async (e) => {
     e.preventDefault();
-    setLoadingMsg('PROCESSING ...');
+    setLoadingMsg('LOGGING IN ...');
 
     const { email, password } = user;
 

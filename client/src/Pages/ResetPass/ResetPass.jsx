@@ -71,7 +71,7 @@ const ResetPass = () => {
             <form onSubmit={handleResetPassword}>
               <div className='form-group'>
                 <div className='labell'>
-                  <i>Email</i>
+                  <>Email</>
                 </div>
                 <input
                   placeholder='College email id'
@@ -84,7 +84,7 @@ const ResetPass = () => {
               </div>
               <div className='form-group'>
                 <div className='labell'>
-                  <i>Current Password</i>
+                  <>Current Password</>
                 </div>
                 <input
                   placeholder='Enter your current password'
@@ -97,7 +97,7 @@ const ResetPass = () => {
               </div>
               <div className='form-group'>
                 <div className='labell'>
-                  <i>New Password</i>
+                  <>New Password</>
                 </div>
                 <input
                   placeholder='Enter your new password'
@@ -108,8 +108,8 @@ const ResetPass = () => {
                   onChange={handleChange}
                 />
               </div>
-              <Link className='rplink' to='/reset'>
-                <div className='rp'>Reset Password?</div>
+              <Link className='rplink' to='/login'>
+                <div className='rp'>Go Back!</div>
               </Link>
               <div className='forg'></div>
               <button type='submit' className='but-sin'>

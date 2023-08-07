@@ -6,7 +6,7 @@ const AddStudy = () => {
   return (
     <div className='fullmain'>
           <SideNav heading='ADD STUDY MATERIAL'/>
-        <div className="containerr">
+        <div className="containerr stud">
         <div className='heading'>ADD STUDY MATERIAL</div>
             <StudyAddCard/>
         </div>
