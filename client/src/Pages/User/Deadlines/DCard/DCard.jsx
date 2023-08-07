@@ -40,6 +40,12 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
     }
   };
 
+  const [showFullDescription, setShowFullDescription] = useState(false);
+
+  const handleReadMoreClick = () => {
+    setShowFullDescription(!showFullDescription);
+  };
+
   useEffect(() => {
     const currentDate = new Date();
     const dueDate = new Date(date);
@@ -70,7 +76,24 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
         </div>}
       </div>
 
-      <div className='info-d'>{description}</div>
+      <div className='info-d'>{showFullDescription ? (
+          <div>
+            {description}
+            <span className='read-more' onClick={handleReadMoreClick}>Read less...</span>
+          </div>
+        ) : (
+          <div>
+            {description.length > 100 ? (
+              <div>
+                {description.substring(0, 100)}...
+                <span className='read-more' onClick={handleReadMoreClick}>Read more...</span>
+              </div>
+            ) : (
+              description
+            )}
+          </div>
+        )}
+        </div>
     </div>
   );
 };
