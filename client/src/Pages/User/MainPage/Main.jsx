@@ -114,7 +114,7 @@ const MainPage = () => {
                 subject={item.subject} 
                 link={item.link}
                 groupOrSubgroup={item.group || item.subgroup}
-                />
+              />
             ))
           )}
         </div>

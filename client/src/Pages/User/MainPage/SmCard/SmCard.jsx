@@ -24,13 +24,18 @@ const SmCard = ({ id, subject, link, groupOrSubgroup }) => {
           ? `http://localhost:5000/resource/delGrpResource/${id}`
           : `http://localhost:5000/resource/delSubGrpResource/${id}`;
 
+      const token = localStorage.getItem('jwtoken');
+
       const response = await fetch(backendRoute, {
         method: 'DELETE',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+          Authorization: `Bearer ${token}`,
         },
       });
+
+      const data = await response.json();
 
       if (response.status === 200) {
         setDeleteMsg('Delete');
@@ -40,7 +45,6 @@ const SmCard = ({ id, subject, link, groupOrSubgroup }) => {
         throw new Error('Failed to delete resource');
       }
     } catch (error) {
-      navigate('/login');
       console.error(error);
     }
   };

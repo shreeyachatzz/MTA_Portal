@@ -87,10 +87,6 @@ export const deleteSubGrpResource = async (req, res) => {
       return res.status(404).json({ error: 'Resource not found' });
     }
 
-    if (resource.subgroup !== req.rootUser.subgroup) {
-      return res.status(403).json({ error: 'You are not authorized to delete this resource' });
-    }
-
     await Resource.findByIdAndRemove(id);
 
     await User.findByIdAndUpdate(req.rootUser._id, { $pull: { resourcesSubGrp: id } });
@@ -110,10 +106,6 @@ export const deleteGrpResource = async (req, res) => {
 
     if (!resource) {
       return res.status(404).json({ error: 'Resource not found' });
-    }
-
-    if (resource.group !== req.rootUser.group) {
-      return res.status(403).json({ error: 'You are not authorized to delete this resource' });
     }
 
     await Resource.findByIdAndRemove(id);
