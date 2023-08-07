@@ -3,7 +3,7 @@ import './SmCard.css';
 import { useNavigate } from 'react-router-dom';
 import { useEditContext } from '../../../../EditContext';
 
-const SmCard = ({ id, subject, link }) => {
+const SmCard = ({ id, subject, link, groupOrSubgroup }) => {
   const navigate = useNavigate();
   const { userData } = useEditContext();
   const [isAdmin, setIsAdmin] = useState(false);
@@ -19,13 +19,23 @@ const SmCard = ({ id, subject, link }) => {
     event.stopPropagation(); // This line prevents the onClick property from working when clicked on the delete button
     setDeleteMsg('Deleting ...');
     try {
-      const response = await fetch(`http://localhost:5000/resource/delResource/${id}`, {
+      const backendRoute =
+        groupOrSubgroup === 'group'
+          ? `http://localhost:5000/resource/delGrpResource/${id}`
+          : `http://localhost:5000/resource/delSubGrpResource/${id}`;
+
+      const token = localStorage.getItem('jwtoken');
+
+      const response = await fetch(backendRoute, {
         method: 'DELETE',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
+          Authorization: `Bearer ${token}`,
         },
       });
+
+      const data = await response.json();
 
       if (response.status === 200) {
         setDeleteMsg('Delete');

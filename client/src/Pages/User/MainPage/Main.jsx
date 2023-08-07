@@ -3,13 +3,15 @@ import './Main.css';
 import SideNav from '../../../Components/Navbar/Navbar';
 import SmCard from './SmCard/SmCard';
 import { BiSearchAlt } from 'react-icons/bi';
+import { useEditContext } from '../../../EditContext';
 
 const MainPage = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
-  const [selectedButton, setSelectedButton] = useState('');
+  const [selectedButton, setSelectedButton] = useState(null);
+  const [userData, setUserData] = useState('');
 
   const heading = 'STUDY MATERIAL';
 
@@ -31,18 +33,55 @@ const MainPage = () => {
   };
 
   const handleButtonClick = (buttonName) => {
-    setSelectedButton(buttonName);
-
-    // Apply filtering based on button clicked (subgroup or group)
-    if (buttonName === 'COE16') {
-      setFilteredData(data.filter((item) => item.subgroup === 'COE16'));
-    } else if (buttonName === 'COE15-22') {
-      setFilteredData(data.filter((item) => item.group === 'COE15-22'));
-    } else {
-      // If no button is selected, show all data
+    if (buttonName === selectedButton) {
+      setSelectedButton(null);
+      // Show all data if no button is selected
       setFilteredData(data);
+    } else {
+      setSelectedButton(buttonName);
+      // Apply filtering based on the selected button
+      if (buttonName === 'COE16') {
+        setFilteredData(data.filter((item) => item.subgroup === userData.subgroup));
+      } else if (buttonName === 'COE15-22') {
+        setFilteredData(data.filter((item) => item.group === userData.group));
+      }
     }
   };
+  
+
+  const getUserInfo = async () => {
+    try {
+      if (!token) {
+        navigate('/login');
+        return;
+      }
+
+      const res = await fetch('http://localhost:5000/user/getUserData', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+          'Accept': 'application/json',
+        },
+        credentials: 'include',
+      });
+
+      if (res.status === 200) {
+        const data = await res.json();
+        setUserData(data);
+      } else {
+        console.error("Failed to fetch user data");
+        navigate('/login');
+      }
+    } catch (err) {
+      console.error('Error fetching user data:', err);
+      navigate('/login');
+    }
+  };
+
+  useEffect(() => {
+    getUserInfo();
+  }, []);
 
   const token = localStorage.getItem('jwtoken');
   useEffect(() => {
@@ -61,13 +100,12 @@ const MainPage = () => {
         }
 
         const data = await response.json();
-        setData(data);
-        setFilteredData(data);
+        setData(data.resources);
+        setFilteredData(data.resources);
         setLoading(false);
       } catch (error) {
         console.error(error);
         setLoading(false);
-        // Handle error if needed
       }
     };
 
@@ -94,13 +132,13 @@ const MainPage = () => {
             className={`butf mainbut ${selectedButton === 'COE16' ? 'active' : ''}`}
             onClick={() => handleButtonClick('COE16')}
           >
-            CO16
+            {userData.subgroup}
           </div>
           <div
             className={`butf mainbut ${selectedButton === 'COE15-22' ? 'active' : ''}`}
             onClick={() => handleButtonClick('COE15-22')}
           >
-            CO16-20
+            {userData.group}
           </div>
         </div>
         <div className='cards-m'>
@@ -108,7 +146,13 @@ const MainPage = () => {
             <div>Loading...</div>
           ) : (
             filteredData.map((item) => (
-              <SmCard key={item._id} id={item._id} subject={item.subject} link={item.link} />
+              <SmCard
+                key={item._id}
+                id={item._id}
+                subject={item.subject} 
+                link={item.link}
+                groupOrSubgroup={item.group || item.subgroup}
+              />
             ))
           )}
         </div>

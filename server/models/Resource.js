@@ -10,6 +10,9 @@ const resourceSchema = new mongoose.Schema({
     subgroup :{
         type : String
     },
+    group:{
+        type : String
+    },
     user : {
         type : mongoose.Types.ObjectId,
         ref : "User"
