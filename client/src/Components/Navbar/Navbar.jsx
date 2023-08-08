@@ -69,7 +69,7 @@ const SideNav = (props) => {
           throw error;
         } else {
           navigate('/login');
-          localStorage.removeItem('userId');
+          // localStorage.removeItem('userId');
           localStorage.removeItem('jwtoken');
         }
       } catch (err) {
