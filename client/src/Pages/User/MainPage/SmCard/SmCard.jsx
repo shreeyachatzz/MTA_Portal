@@ -17,6 +17,13 @@ const SmCard = ({ id, subject, link, groupOrSubgroup }) => {
 
   const handleDelete = async (event) => {
     event.stopPropagation(); // This line prevents the onClick property from working when clicked on the delete button
+
+    const confirmed = window.confirm('Are you sure you want to delete this resource?');
+
+    if (!confirmed) {
+      return;
+    }
+
     setDeleteMsg('Deleting ...');
     try {
       const backendRoute =

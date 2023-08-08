@@ -13,6 +13,7 @@ const MainPage = () => {
   const [loading, setLoading] = useState(true);
   const [selectedButton, setSelectedButton] = useState(null);
   const [userData, setUserData] = useState('');
+
   const navigate = useNavigate();
 
   const heading = 'STUDY MATERIAL';
