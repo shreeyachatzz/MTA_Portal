@@ -3,10 +3,11 @@ import './Deadline.css';
 import SideNav from '../../../Components/Navbar/Navbar';
 import DCard from './DCard/DCard';
 import Dropdown from './Dropdown/Dropdown';
+import { useNavigate } from 'react-router-dom';
 
 const Deadline = () => {
   const dropdownItems = ['Probability & Statistics', 'Machine Learning', 'Software Engineering', 'Computer Architecture & Org.', 'Network Programming','Elective'];
-
+  const navigate = useNavigate();
   const [selectedSubject, setSelectedSubject] = useState('All Subjects');
   const [allDeadlines, setAllDeadlines] = useState([]);
   const [originalDeadlines, setOriginalDeadlines] = useState([]);
@@ -32,6 +33,7 @@ const Deadline = () => {
         setIsLoading(false);
       } catch (error) {
         // console.error('Error fetching deadlines:', error);
+        navigate('/login');
         setIsLoading(false);
       }
     };

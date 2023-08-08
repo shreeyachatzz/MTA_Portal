@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './ImpDates.css';
 import SideNav from '../../../Components/Navbar/Navbar';
 import ImpCard from './ImpCard/ImpCard';
+import { useNavigate } from 'react-router-dom';
 
 const ImpDates = () => {
   const [selectedButton, setSelectedButton] = useState('');
   const [examDates, setExamDates] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const shouldSetHeight = examDates.length < 10;
 
@@ -30,6 +32,7 @@ const ImpDates = () => {
         setLoading(false);
       } catch (error) {
         // console.error('Error fetching exam dates:', error);
+        navigate('/login');
         setLoading(false);
       }
     };
