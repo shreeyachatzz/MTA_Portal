@@ -42,7 +42,7 @@ const StudyAddCard = () => {
       }
     } catch (error) {
       navigate('/login');
-      console.error(error);
+      // console.error(error);
       // Handle error if needed
     }
   };

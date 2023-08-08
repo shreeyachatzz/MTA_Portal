@@ -46,10 +46,10 @@ export const login = async (req, res) => {
 
             if (isMatch) {
 
-                console.log(userLogin);
+                // console.log(userLogin);
 
                 const token = await userLogin.generateAuthToken();
-                console.log(token);
+                // console.log(token);
                 res.cookie("jwtoken", token, {
                     expires: new Date(Date.now() + 25892000000),
                     httpOnly: true

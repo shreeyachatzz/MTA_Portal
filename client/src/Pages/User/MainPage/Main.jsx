@@ -70,11 +70,11 @@ const MainPage = () => {
         const data = await res.json();
         setUserData(data);
       } else {
-        console.error("Failed to fetch user data");
+        // console.error("Failed to fetch user data");
         navigate('/login');
       }
     } catch (err) {
-      console.error('Error fetching user data:', err);
+      // console.error('Error fetching user data:', err);
       navigate('/login');
     }
   };
@@ -104,7 +104,7 @@ const MainPage = () => {
         setFilteredData(data.resources);
         setLoading(false);
       } catch (error) {
-        console.error(error);
+        // console.error(error);
         setLoading(false);
       }
     };

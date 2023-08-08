@@ -53,17 +53,17 @@ const ImpAddCard = () => {
 
       if (response.status === 201) {
         setSubmitText('Submit');
-        console.log('Exam date added successfully!');
+        // console.log('Exam date added successfully!');
         navigate('/impdates');
       } else {
         setSubmitText('Submit');
-        console.log('Failed to add the exam date!');
-        console.log(data);
+        // console.log('Failed to add the exam date!');
+        // console.log(data);
       }
     } catch (error) {
       setSubmitText('Submit');
       navigate('/login');
-      console.error('Error adding exam date:', error);
+      // console.error('Error adding exam date:', error);
     }
   };
 

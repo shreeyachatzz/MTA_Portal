@@ -50,8 +50,8 @@ const CardD = () => {
             } else if (response.status === 201) {
                 setSubmitText('Submit');
                 // Handle success scenario, e.g., show success message, clear form, etc.
-                console.log('Deadline submission successful!');
-                console.log(data);
+                // console.log('Deadline submission successful!');
+                // console.log(data);
 
                 // Clear the form fields after successful submission
                 setTitle('');
@@ -62,25 +62,25 @@ const CardD = () => {
                 navigate('/deadline'); // Change '/success' to the desired route
             } else {
                 setSubmitText('Submit');
-                console.log('Deadline submission failed!');
-                console.log(data);
+                // console.log('Deadline submission failed!');
+                // console.log(data);
             }
         } catch (error) {
             setSubmitText('Submit');
             // Handle any error that may occur during the API call
-            console.error('Error submitting deadline:', error);
+            // console.error('Error submitting deadline:', error);
         }
     };
 
     const handleSubjectChange = (subject) => {
         setTitle(subject);
-        console.log('Selected Title:', subject);
+        // console.log('Selected Title:', subject);
         // You can also update the userData or perform any other actions with the selected title here
     };
 
     const handleButtonClick = (buttonType) => {
         setClickedButton(buttonType);
-        console.log(buttonType);
+        // console.log(buttonType);
     };
 
     const handleDateChange = (event) => {

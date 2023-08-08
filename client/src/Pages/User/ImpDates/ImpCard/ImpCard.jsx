@@ -43,14 +43,14 @@ const ImpCard = ({ id, subject, date, time, venue, type, groupOrSubgroup }) => {
       const data = await response.json();
 
       if (response.status === 200) {
-        console.log('exam deleted successfully!');
+        // console.log('exam deleted successfully!');
         window.location.reload();
       } else {
-        console.log('Failed to delete the exam!');
-        console.log(data);
+        // console.log('Failed to delete the exam!');
+        // console.log(data);
       }
     } catch (error) {
-      console.error('Error deleting exam:', error);
+      // console.error('Error deleting exam:', error);
     } finally {
       setIsDeleting(false);
     }

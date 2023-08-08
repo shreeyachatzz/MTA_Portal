@@ -50,7 +50,7 @@ const Login = () => {
         navigate('/study');
       }
     } catch (error) {
-      console.error('An error occurred:', error);
+      // console.error('An error occurred:', error);
       setLoadingMsg('Login');
     }
   };

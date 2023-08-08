@@ -33,10 +33,10 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
         setDeleteBtnText('Delete');
         window.location.reload();
       } else {
-        console.log("Failed to delete the deadline!");
+        // console.log("Failed to delete the deadline!");
       }
     } catch (error) {
-      console.error("Error deleting deadline:", error);
+      // console.error("Error deleting deadline:", error);
     }
   };
 

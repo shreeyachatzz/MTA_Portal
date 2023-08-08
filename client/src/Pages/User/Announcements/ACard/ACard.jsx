@@ -35,14 +35,14 @@ const ACard = ({ id, date, description, groupOrSubgroup }) => {
 
       if (response.status === 200) {
         setDeleteBtnText('Delete');
-        console.log('Announcement deleted successfully!');
+        // console.log('Announcement deleted successfully!');
         window.location.reload();
       } else {
-        console.log('Failed to delete the announcement!');
-        console.log(data);
+        // console.log('Failed to delete the announcement!');
+        // console.log(data);
       }
     } catch (error) {
-      console.error('Error deleting announcement:', error);
+      // console.error('Error deleting announcement:', error);
     }
   };
 

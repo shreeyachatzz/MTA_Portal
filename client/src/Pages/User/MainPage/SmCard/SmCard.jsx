@@ -45,7 +45,7 @@ const SmCard = ({ id, subject, link, groupOrSubgroup }) => {
         throw new Error('Failed to delete resource');
       }
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   };
 

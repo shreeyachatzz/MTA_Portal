@@ -31,7 +31,7 @@ const Deadline = () => {
         setOriginalDeadlines(data.deadlines);
         setIsLoading(false);
       } catch (error) {
-        console.error('Error fetching deadlines:', error);
+        // console.error('Error fetching deadlines:', error);
         setIsLoading(false);
       }
     };
