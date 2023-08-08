@@ -34,11 +34,11 @@ const Announcements = () => {
         const data = await res.json();
         setUserData(data);
       } else {
-        console.error("Failed to fetch user data");
+        // console.error("Failed to fetch user data");
         navigate('/login');
       }
     } catch (err) {
-      console.error('Error fetching user data:', err);
+      // console.error('Error fetching user data:', err);
       navigate('/login');
     }
   };
@@ -65,7 +65,7 @@ const Announcements = () => {
         setAllAnnouncements(data.announcements);
         setIsLoading(false); // Set loading status to false after data is fetched
       } catch (error) {
-        console.error('Error fetching announcements:', error);
+        // console.error('Error fetching announcements:', error);
         setIsLoading(false); // Set loading status to false on error
       }
     };

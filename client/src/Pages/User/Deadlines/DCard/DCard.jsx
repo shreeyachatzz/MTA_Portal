@@ -12,31 +12,34 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
   }, [userData]);
 
   const handleDelete = async () => {
-    setDeleteBtnText('Deleting...');
-    try {
-      const backendRoute =
-        groupOrSubgroup === 'group'
-          ? `http://localhost:5000/deadline/delGrpDeadlines/${id}`
-          : `http://localhost:5000/deadline/delSubGrpDeadlines/${id}`;
+    const confirmed = window.confirm('Are you sure you want to delete this deadline?');
+    if (confirmed) {
+      setDeleteBtnText('Deleting...');
+      try {
+        const backendRoute =
+          groupOrSubgroup === 'group'
+            ? `http://localhost:5000/deadline/delGrpDeadlines/${id}`
+            : `http://localhost:5000/deadline/delSubGrpDeadlines/${id}`;
 
-      const token = localStorage.getItem("jwtoken");
-      const response = await fetch(backendRoute, {
-        method: "DELETE",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+        const token = localStorage.getItem("jwtoken");
+        const response = await fetch(backendRoute, {
+          method: "DELETE",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-      if (response.status === 200) {
-        setDeleteBtnText('Delete');
-        window.location.reload();
-      } else {
-        console.log("Failed to delete the deadline!");
+        if (response.status === 200) {
+          setDeleteBtnText('Delete');
+          window.location.reload();
+        } else {
+          // Handle deletion failure
+        }
+      } catch (error) {
+        // Handle error
       }
-    } catch (error) {
-      console.error("Error deleting deadline:", error);
     }
   };
 
@@ -45,16 +48,6 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
   const handleReadMoreClick = () => {
     setShowFullDescription(!showFullDescription);
   };
-
-  useEffect(() => {
-    const currentDate = new Date();
-    const dueDate = new Date(date);
-    const sevenDaysPastDueDate = new Date(dueDate.setDate(dueDate.getDate() + 7));
-
-    if (currentDate > sevenDaysPastDueDate) {
-      handleDelete();
-    }
-  }, [date]);
 
   const currentDate = new Date();
   const isPastDue = new Date(date) < currentDate;
@@ -71,12 +64,14 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
         <div className='date-d'>
           {date}
         </div>
-        {isAdmin && <div className='del-dead' onClick={handleDelete}>
-          {deleteBtnText}
-        </div>}
+        {isAdmin && (
+          <div className='del-dead' onClick={handleDelete}>
+            {deleteBtnText}
+          </div>
+        )}
       </div>
-
-      <div className='info-d'>{showFullDescription ? (
+      <div className='info-d'>
+        {showFullDescription ? (
           <div>
             {description}
             <span className='read-more' onClick={handleReadMoreClick}>Read less...</span>
@@ -93,7 +88,7 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
             )}
           </div>
         )}
-        </div>
+      </div>
     </div>
   );
 };

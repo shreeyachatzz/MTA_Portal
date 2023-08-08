@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './ImpDates.css';
 import SideNav from '../../../Components/Navbar/Navbar';
 import ImpCard from './ImpCard/ImpCard';
+import { useNavigate } from 'react-router-dom';
 
 const ImpDates = () => {
-  const [selectedButton, setSelectedButton] = useState('');
   const [examDates, setExamDates] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  const shouldSetHeight = examDates.length < 10;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchExamDates = async () => {
@@ -27,9 +26,10 @@ const ImpDates = () => {
 
         const data = await response.json();
         setExamDates(data.exams);
-        setLoading(false);
       } catch (error) {
-        console.error('Error fetching exam dates:', error);
+        // console.error('Error fetching exam dates:', error);
+        navigate('/login');
+      } finally {
         setLoading(false);
       }
     };
@@ -37,14 +37,12 @@ const ImpDates = () => {
     fetchExamDates();
   }, []);
 
-  const filteredExamDates = selectedButton === ''
-    ? examDates
-    : examDates.filter(item => item.class === selectedButton);
+  const filteredExamDates = examDates.filter(item => !item.class || item.class === item.selectedButton);
 
   filteredExamDates.sort((a, b) => new Date(a.date + ' ' + a.time) - new Date(b.date + ' ' + b.time));
 
   return (
-    <div className={`fullmain ${shouldSetHeight ? 'fill' : ''}`}>
+    <div className={`fullmain ${examDates.length < 10 ? 'fill' : ''}`}>
       <SideNav heading='IMPORTANT DATES' />
 
       <div className='containerr-d'>
@@ -64,19 +62,21 @@ const ImpDates = () => {
               <div className='venue1'>VENUE</div>
             </div>
             {filteredExamDates.length === 0 ? (
-            <div className='nodat anndat'>No Data Available</div>
-          ) : filteredExamDates.map((item, index) => (
-              <ImpCard
-                key={item._id}
-                id={item._id}
-                subject={item.title}
-                date={item.date}
-                time={item.time}
-                venue={item.venue}
-                type={item.type}
-                groupOrSubgroup={item.group || item.subgroup}
-              />
-            ))}
+              <div className='nodat anndat'>No Data Available</div>
+            ) : (
+              filteredExamDates.map((item) => (
+                <ImpCard
+                  key={item._id}
+                  id={item._id}
+                  subject={item.title}
+                  date={item.date}
+                  time={item.time}
+                  venue={item.venue}
+                  type={item.type}
+                  groupOrSubgroup={item.group || item.subgroup}
+                />
+              ))
+            )}
           </div>
         )}
       </div>

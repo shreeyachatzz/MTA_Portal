@@ -45,12 +45,12 @@ const Login = () => {
         window.alert('Login failed !');
       } else {
         setLoadingMsg('Login');
-        localStorage.setItem('userId', data.userId);
+        // localStorage.setItem('userId', data.userId);
         localStorage.setItem('jwtoken', data.token);
         navigate('/study');
       }
     } catch (error) {
-      console.error('An error occurred:', error);
+      // console.error('An error occurred:', error);
       setLoadingMsg('Login');
     }
   };

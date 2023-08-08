@@ -4,6 +4,7 @@ import SideNav from '../../../Components/Navbar/Navbar';
 import SmCard from './SmCard/SmCard';
 import { BiSearchAlt } from 'react-icons/bi';
 import { useEditContext } from '../../../EditContext';
+import { useNavigate } from 'react-router-dom';
 
 const MainPage = () => {
   const [data, setData] = useState([]);
@@ -12,6 +13,7 @@ const MainPage = () => {
   const [loading, setLoading] = useState(true);
   const [selectedButton, setSelectedButton] = useState(null);
   const [userData, setUserData] = useState('');
+  const navigate = useNavigate();
 
   const heading = 'STUDY MATERIAL';
 
@@ -70,11 +72,11 @@ const MainPage = () => {
         const data = await res.json();
         setUserData(data);
       } else {
-        console.error("Failed to fetch user data");
-        navigate('/login');
+        // console.error("Failed to fetch user data");
+        // navigate('/login');
       }
     } catch (err) {
-      console.error('Error fetching user data:', err);
+      // console.error('Error fetching user data:', err);
       navigate('/login');
     }
   };
@@ -104,7 +106,8 @@ const MainPage = () => {
         setFilteredData(data.resources);
         setLoading(false);
       } catch (error) {
-        console.error(error);
+         navigate('/login');
+        // console.error(error);
         setLoading(false);
       }
     };
