@@ -64,19 +64,24 @@ const userSchema = new mongoose.Schema({
 });
 
 
-userSchema.methods.generateAuthToken = async function(){
-    try{
-        let token = jwt.sign({_id: this._id}, process.env.SECRET_KEY);
-        this.tokens = this.tokens.concat({token : token});
-        await this.save();
-        // console.log(token);
-        return token;
-    }catch(err){
-        console.log(err);
+userSchema.methods.generateAuthToken = async function() {
+    try {
+      let token = jwt.sign({ _id: this._id }, process.env.SECRET_KEY, {
+        expiresIn: '30d'
+      });
+      this.tokens = this.tokens.concat({ token: token });
+      
+      if (this.tokens.length > 5) {
+        this.tokens = this.tokens.slice(-5);
+      }
+      
+      await this.save();
+      return token;
+    } catch (err) {
+      console.log(err);
     }
-}
-
-
+  }
+  
 
 export default model("User", userSchema);
 //users
