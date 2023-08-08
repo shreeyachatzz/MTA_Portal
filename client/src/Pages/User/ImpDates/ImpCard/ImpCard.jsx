@@ -22,67 +22,65 @@ const ImpCard = ({ id, subject, date, time, venue, type, groupOrSubgroup }) => {
   };
 
   const handleDelete = async () => {
-    try {
-      setIsDeleting(true);
+    const confirmed = window.confirm('Are you sure you want to delete this exam?');
+    if (confirmed) {
+      try {
+        setIsDeleting(true);
 
-      const backendRoute =
-        groupOrSubgroup === 'group'
-          ? `http://localhost:5000/exam/delGrpExams/${id}`
-          : `http://localhost:5000/exam/delSubGrpExams/${id}`;
+        const backendRoute =
+          groupOrSubgroup === 'group'
+            ? `http://localhost:5000/exam/delGrpExams/${id}`
+            : `http://localhost:5000/exam/delSubGrpExams/${id}`;
 
-      const token = localStorage.getItem('jwtoken');
-      const response = await fetch(backendRoute, {
-        method: 'DELETE',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      });
+        const token = localStorage.getItem('jwtoken');
+        const response = await fetch(backendRoute, {
+          method: 'DELETE',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-      const data = await response.json();
-
-      if (response.status === 200) {
-        // console.log('exam deleted successfully!');
-        window.location.reload();
-      } else {
-        // console.log('Failed to delete the exam!');
-        // console.log(data);
+        if (response.status === 200) {
+          window.location.reload();
+        } else {
+          // Handle deletion failure
+        }
+      } catch (error) {
+        // Handle error
+      } finally {
+        setIsDeleting(false);
       }
-    } catch (error) {
-      // console.error('Error deleting exam:', error);
-    } finally {
-      setIsDeleting(false);
     }
   };
 
   return (
     <>
       <div>
-        
-          <div className='card-imp-d'>
-            <div className='card-imp'>
-              <div className='sub-box'>
-                <div className='subj'>
-                  {subject} <br/><div className='harshFuckedUp'>{groupOrSubgroup}</div>
-                </div>
+        <div className='card-imp-d'>
+          <div className='card-imp'>
+            <div className='sub-box'>
+              <div className='subj'>
+                {subject} <br/><div className='harshFuckedUp'>{groupOrSubgroup}</div>
               </div>
-              <div className='dtogether'>
-                <div className='date'>{formatDate(date)}</div>
-                <div className='time'>{time}</div>
-              </div>
-              <div className='tven'>
-                <div className='type'>&nbsp;&nbsp;&nbsp;&nbsp;{type}</div>
-                <div className='venmob'>&nbsp;{venue}</div>
-              </div>
-              <div className='venue'>{venue}</div>
-              {isAdmin && (
-                <div className='del-impdate' onClick={handleDelete}>
-                  {isDeleting ? '...' : <MdOutlineDeleteForever />}
-                </div>
-              )}
             </div>
+            <div className='dtogether'>
+              <div className='date'>{formatDate(date)}</div>
+              <div className='time'>{time}</div>
+            </div>
+            <div className='tven'>
+              <div className='type'>&nbsp;&nbsp;&nbsp;&nbsp;{type}</div>
+              <div className='venmob'>&nbsp;{venue}</div>
+            </div>
+            <div className='venue'>{venue}</div>
+            {isAdmin && (
+              <div className='del-impdate' onClick={handleDelete}>
+                {isDeleting ? '...' : <MdOutlineDeleteForever />}
+              </div>
+            )}
           </div>
+        </div>
       </div>
     </>
   );
