@@ -142,8 +142,8 @@ const SideNav = (props) => {
           </div>
           <div className='links'>
             <Link to="/study">
-              <div className={`link ${isActive('/study') ? 'active-link' : ''}`}>
-              <div className='focus'>
+              <div className='link'>
+              <div className={`focus ${(isActive('/study')||isActive('/add/study')) ? 'active-link' : ''}`}>
                 <PiBooksDuotone className='logo' />
                 &nbsp;Study Material
               </div>                
@@ -156,8 +156,8 @@ const SideNav = (props) => {
             </Link>
 
             <Link to="/announcements">
-            <div className={`link ${isActive('/announcements') ? 'active-link' : ''}`}>
-                <div className='focus'>
+            <div className='link'>
+                <div className={`focus ${(isActive('/announcements')||isActive('/add/announcements')) ? 'active-link' : ''}`}>
                   <TfiAnnouncement className='logo annlog' />
                   &nbsp;Announcements
                 </div>
@@ -172,8 +172,8 @@ const SideNav = (props) => {
             </Link>
 
             <Link to="/deadline">
-            <div className={`link ${isActive('/deadline') ? 'active-link' : ''}`}>
-              <div className='focus'>
+            <div className='link'>
+            <div className={`focus ${(isActive('/deadline')||isActive('/add/deadline')) ? 'active-link' : ''}`}>
                 <LiaStopwatchSolid className='logo' />
                 &nbsp;Deadlines
               </div>
@@ -187,8 +187,8 @@ const SideNav = (props) => {
             </Link>
 
             <Link to="/impdates">
-            <div className={`link ${isActive('/impdates') ? 'active-link' : ''}`}>
-              <div className='focus'>
+            <div className='link'>
+              <div className={`focus ${(isActive('/impdates')||isActive('/add/impdates')) ? 'active-link' : ''}`}>
                 <LiaCalendarSolid className='logo' />
                 &nbsp;Evaluations
               </div>
