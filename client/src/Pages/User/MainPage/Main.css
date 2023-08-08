@@ -107,3 +107,22 @@
         font-size: 2vh;
     }
 }
+
+.nodat{
+    color: rgb(216, 36, 36);
+    text-align: center;
+    font-weight: 500;
+    margin-left: 20vw;
+    width: 100%;
+    font-size: 3vh;
+}
+
+.anndat{
+    margin-left: 0vw;
+}
+@media (max-width: 1038px) {
+    .nodat{
+        text-align: center;
+        margin-left: 0vw;
+    }
+}

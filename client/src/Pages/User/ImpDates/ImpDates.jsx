@@ -63,7 +63,9 @@ const ImpDates = () => {
               </div>
               <div className='venue1'>VENUE</div>
             </div>
-            {filteredExamDates.map((item, index) => (
+            {filteredExamDates.length === 0 ? (
+            <div className='nodat anndat'>No Data Available</div>
+          ) : filteredExamDates.map((item, index) => (
               <ImpCard
                 key={item._id}
                 id={item._id}

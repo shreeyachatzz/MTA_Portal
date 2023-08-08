@@ -142,8 +142,10 @@ const MainPage = () => {
           </div>
         </div>
         <div className='cards-m'>
-          {loading ? (
+        {loading ? (
             <div>Loading...</div>
+          ) : filteredData.length === 0 ? (
+            <div className='nodat'>No Data Available</div>
           ) : (
             filteredData.map((item) => (
               <SmCard

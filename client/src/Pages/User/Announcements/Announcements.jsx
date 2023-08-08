@@ -112,7 +112,9 @@ const Announcements = () => {
         </div>
         {isLoading ? (
           <div>Loading...</div>
-        ) : (
+        ) : filteredAnnouncements.length === 0 ? (
+            <div className='nodat anndat'>No Data Available</div>
+          ) :  (
           filteredAnnouncements.map((item) => (
             <ACard
               key={item._id}

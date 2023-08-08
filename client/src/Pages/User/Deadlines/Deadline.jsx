@@ -107,7 +107,9 @@ const Deadline = () => {
         <div className={`msg ${isLoading ? 'show' : ''}`}>
           {isLoading ? 'Loading ...' : null}
         </div>
-        {sortedDataArray.map(item => (
+        {sortedDataArray.length === 0 ? (
+            <div className='nodat anndat'>No Data Available</div>
+          ) : sortedDataArray.map(item => (
           <DCard
             key={item._id}
             id={item._id}
