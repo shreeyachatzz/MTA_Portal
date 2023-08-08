@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
+import { NavLink } from 'react-router-dom';
 import { PiBooksDuotone } from 'react-icons/pi';
 import { TiThMenuOutline } from 'react-icons/ti';
 import { TfiAnnouncement } from 'react-icons/tfi';
@@ -112,6 +113,10 @@ const SideNav = (props) => {
     getUserInfo();
   },[])
 
+  const isActive = (path) => {
+    return window.location.pathname === path;
+  };
+
   return (
     <div className='whole'>
       <div className={`sidee ${showSidee ? 'show-sidee' : ''}`}>
@@ -137,7 +142,7 @@ const SideNav = (props) => {
           </div>
           <div className='links'>
             <Link to="/study">
-              <div className='link'>
+              <div className={`link ${isActive('/study') ? 'active-link' : ''}`}>
               <div className='focus'>
                 <PiBooksDuotone className='logo' />
                 &nbsp;Study Material
@@ -151,7 +156,7 @@ const SideNav = (props) => {
             </Link>
 
             <Link to="/announcements">
-              <div className='link'>
+            <div className={`link ${isActive('/announcements') ? 'active-link' : ''}`}>
                 <div className='focus'>
                   <TfiAnnouncement className='logo annlog' />
                   &nbsp;Announcements
@@ -167,7 +172,7 @@ const SideNav = (props) => {
             </Link>
 
             <Link to="/deadline">
-              <div className='link'>
+            <div className={`link ${isActive('/deadline') ? 'active-link' : ''}`}>
               <div className='focus'>
                 <LiaStopwatchSolid className='logo' />
                 &nbsp;Deadlines
@@ -182,7 +187,7 @@ const SideNav = (props) => {
             </Link>
 
             <Link to="/impdates">
-              <div className='link'>
+            <div className={`link ${isActive('/impdates') ? 'active-link' : ''}`}>
               <div className='focus'>
                 <LiaCalendarSolid className='logo' />
                 &nbsp;Evaluations
