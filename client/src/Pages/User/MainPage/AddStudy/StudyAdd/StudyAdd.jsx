@@ -21,8 +21,8 @@ const StudyAddCard = () => {
     try {
       const response = await fetch(
         selectedSection === 'subgroup'
-          ? 'http://localhost:5000/resource/addSubGrpResource'
-          : 'http://localhost:5000/resource/addGrpResource',
+          ? 'https://mta-backend.vercel.app/resource/addSubGrpResource'
+          : 'https://mta-backend.vercel.app/resource/addGrpResource',
         {
           method: 'POST',
           headers: {

@@ -36,8 +36,8 @@ const ImpAddCard = () => {
 
       const backendRoute =
         selectedGroupOrSubgroup === 'subgroup'
-          ? 'http://localhost:5000/exam/addSubGrpExam'
-          : 'http://localhost:5000/exam/addGrpExam';
+          ? 'https://mta-backend.vercel.app/exam/addSubGrpExam'
+          : 'https://mta-backend.vercel.app/exam/addGrpExam';
 
       const response = await fetch(backendRoute, {
         method: 'POST',

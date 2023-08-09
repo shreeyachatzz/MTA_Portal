@@ -19,8 +19,8 @@ const ACard = ({ id, date, description, groupOrSubgroup }) => {
       try {
         const backendRoute =
           groupOrSubgroup === 'group'
-            ? `http://localhost:5000/announcement/delGrpAnnouncement/${id}`
-            : `http://localhost:5000/announcement/delSubGrpAnnouncement/${id}`;
+            ? `https://mta-backend.vercel.app/announcement/delGrpAnnouncement/${id}`
+            : `https://mta-backend.vercel.app/announcement/delSubGrpAnnouncement/${id}`;
 
         const token = localStorage.getItem('jwtoken');
         const response = await fetch(backendRoute, {

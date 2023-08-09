@@ -59,7 +59,7 @@ const MainPage = () => {
         return;
       }
 
-      const res = await fetch('http://localhost:5000/user/getUserData', {
+      const res = await fetch('https://mta-backend.vercel.app/user/getUserData', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ const MainPage = () => {
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        const response = await fetch('http://localhost:5000/resource/viewResource', {
+        const response = await fetch('https://mta-backend.vercel.app/resource/viewResource', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

@@ -26,7 +26,7 @@ const Login = () => {
     const { email, password } = user;
 
     try {
-      const res = await fetch('http://localhost:5000/user/login', {
+      const res = await fetch('https://mta-backend.vercel.app/user/login', {
         method: 'POST',
         credentials: 'include',
         headers: {

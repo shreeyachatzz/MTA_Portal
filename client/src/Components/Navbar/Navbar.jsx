@@ -56,7 +56,7 @@ const SideNav = (props) => {
     const result = window.confirm('Are you sure you want to logout?');
     if (result) {
       try {
-        const res = await fetch('http://localhost:5000/user/logout', {
+        const res = await fetch('https://mta-backend.vercel.app/user/logout', {
           method: 'GET',
           headers: {
             Accept: 'application/json',
@@ -85,7 +85,7 @@ const SideNav = (props) => {
         return;
       }
 
-      const res = await fetch('http://localhost:5000/user/getUserData', {
+      const res = await fetch('https://mta-backend.vercel.app/user/getUserData', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

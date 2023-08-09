@@ -12,7 +12,7 @@ const ImpDates = () => {
   useEffect(() => {
     const fetchExamDates = async () => {
       try {
-        const response = await fetch('http://localhost:5000/exam/viewMyExamDates', {
+        const response = await fetch('https://mta-backend.vercel.app/exam/viewMyExamDates', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

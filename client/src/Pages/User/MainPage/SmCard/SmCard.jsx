@@ -28,8 +28,8 @@ const SmCard = ({ id, subject, link, groupOrSubgroup }) => {
     try {
       const backendRoute =
         groupOrSubgroup === 'group'
-          ? `http://localhost:5000/resource/delGrpResource/${id}`
-          : `http://localhost:5000/resource/delSubGrpResource/${id}`;
+          ? `https://mta-backend.vercel.app/resource/delGrpResource/${id}`
+          : `https://mta-backend.vercel.app/resource/delSubGrpResource/${id}`;
 
       const token = localStorage.getItem('jwtoken');
 

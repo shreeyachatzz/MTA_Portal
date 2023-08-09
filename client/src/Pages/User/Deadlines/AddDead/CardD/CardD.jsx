@@ -30,7 +30,7 @@ const CardD = () => {
             };
 
             // Determine the appropriate backend route based on the clickedButton value
-            const backendRoute = clickedButton === 'group' ? 'http://localhost:5000/deadline/addGrpDeadline' : 'http://localhost:5000/deadline/addSubGrpDeadline';
+            const backendRoute = clickedButton === 'group' ? 'https://mta-backend.vercel.app/deadline/addGrpDeadline' : 'https://mta-backend.vercel.app/deadline/addSubGrpDeadline';
 
             const response = await fetch(backendRoute, {
                 method: 'POST',

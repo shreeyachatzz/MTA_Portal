@@ -26,7 +26,7 @@ const ResetPass = () => {
     const { email, currentPassword, newPassword } = resetData;
 
     try {
-      const res = await fetch('http://localhost:5000/user/resetPassword', {
+      const res = await fetch('https://mta-backend.vercel.app/user/resetPassword', {
         method: 'POST',
         credentials: 'include',
         headers: {

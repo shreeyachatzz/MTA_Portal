@@ -29,8 +29,8 @@ const ImpCard = ({ id, subject, date, time, venue, type, groupOrSubgroup }) => {
 
         const backendRoute =
           groupOrSubgroup === 'group'
-            ? `http://localhost:5000/exam/delGrpExams/${id}`
-            : `http://localhost:5000/exam/delSubGrpExams/${id}`;
+            ? `https://mta-backend.vercel.app/exam/delGrpExams/${id}`
+            : `https://mta-backend.vercel.app/exam/delSubGrpExams/${id}`;
 
         const token = localStorage.getItem('jwtoken');
         const response = await fetch(backendRoute, {
