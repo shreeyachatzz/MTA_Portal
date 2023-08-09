@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './ACard.css';
 import { useEditContext } from '../../../../EditContext';
+import { useNavigate } from 'react-router-dom';
 
 const ACard = ({ id, date, description, groupOrSubgroup }) => {
   const { userData, setUserData } = useEditContext();
   const [isAdmin, setIsAdmin] = useState(false);
   const [deleteBtnText, setDeleteBtnText] = useState('Delete');
   const [showFullDescription, setShowFullDescription] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false); // New state to track deletion
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsAdmin(userData.role === 'admin');
@@ -19,8 +22,8 @@ const ACard = ({ id, date, description, groupOrSubgroup }) => {
       try {
         const backendRoute =
           groupOrSubgroup === 'group'
-            ? `http://localhost:5000/announcement/delGrpAnnouncement/${id}`
-            : `http://localhost:5000/announcement/delSubGrpAnnouncement/${id}`;
+            ? `https://mta-backend.vercel.app/announcement/delGrpAnnouncement/${id}`
+            : `https://mta-backend.vercel.app/announcement/delSubGrpAnnouncement/${id}`;
 
         const token = localStorage.getItem('jwtoken');
         const response = await fetch(backendRoute, {
@@ -32,16 +35,13 @@ const ACard = ({ id, date, description, groupOrSubgroup }) => {
           },
         });
 
-        const data = await response.json();
-
         if (response.status === 200) {
-          setDeleteBtnText('Delete');
-          window.location.reload();
+          setIsDeleted(true); // Update state to hide the card
         } else {
           // Handle deletion failure
         }
       } catch (error) {
-        // Handle error
+        navigate('/landing');
       }
     }
   };
@@ -49,6 +49,10 @@ const ACard = ({ id, date, description, groupOrSubgroup }) => {
   const handleReadMoreClick = () => {
     setShowFullDescription(!showFullDescription);
   };
+
+  if (isDeleted) {
+    return null; // Return null if the card is deleted
+  }
 
   return (
     <div className='card-a'>

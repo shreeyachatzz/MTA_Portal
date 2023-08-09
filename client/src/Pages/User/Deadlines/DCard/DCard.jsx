@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './DCard.css';
 import { useEditContext } from '../../../../EditContext';
+import { useNavigate } from 'react-router-dom';
 
 const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
   const { userData } = useEditContext();
   const [isAdmin, setIsAdmin] = useState(false);
   const [deleteBtnText, setDeleteBtnText] = useState('Delete');
+  const [isDeleted, setIsDeleted] = useState(false); // New state to track deletion
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsAdmin(userData.role === "admin");
@@ -18,8 +21,8 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
       try {
         const backendRoute =
           groupOrSubgroup === 'group'
-            ? `http://localhost:5000/deadline/delGrpDeadlines/${id}`
-            : `http://localhost:5000/deadline/delSubGrpDeadlines/${id}`;
+            ? `https://mta-backend.vercel.app/deadline/delGrpDeadlines/${id}`
+            : `https://mta-backend.vercel.app/deadline/delSubGrpDeadlines/${id}`;
 
         const token = localStorage.getItem("jwtoken");
         const response = await fetch(backendRoute, {
@@ -32,12 +35,12 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
         });
 
         if (response.status === 200) {
-          setDeleteBtnText('Delete');
-          window.location.reload();
+          setIsDeleted(true); // Update state to hide the card
         } else {
           // Handle deletion failure
         }
       } catch (error) {
+        navigate('/landing');
         // Handle error
       }
     }
@@ -48,6 +51,10 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
   const handleReadMoreClick = () => {
     setShowFullDescription(!showFullDescription);
   };
+
+  if (isDeleted) {
+    return null; // Return null if the card is deleted
+  }
 
   const currentDate = new Date();
   const isPastDue = new Date(date) < currentDate;

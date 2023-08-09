@@ -26,7 +26,7 @@ const Login = () => {
     const { email, password } = user;
 
     try {
-      const res = await fetch('http://localhost:5000/user/login', {
+      const res = await fetch('https://mta-backend.vercel.app/user/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -47,7 +47,7 @@ const Login = () => {
         setLoadingMsg('Login');
         // localStorage.setItem('userId', data.userId);
         localStorage.setItem('jwtoken', data.token);
-        navigate('/study');
+        navigate('/');
       }
     } catch (error) {
       // console.error('An error occurred:', error);

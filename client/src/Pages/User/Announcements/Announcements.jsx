@@ -16,11 +16,11 @@ const Announcements = () => {
   const getUserInfo = async () => {
     try {
       if (!token) {
-        navigate('/login');
+        navigate('/landing');
         return;
       }
 
-      const res = await fetch('http://localhost:5000/user/getUserData', {
+      const res = await fetch('https://mta-backend.vercel.app/user/getUserData', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -35,11 +35,11 @@ const Announcements = () => {
         setUserData(data);
       } else {
         // console.error("Failed to fetch user data");
-        navigate('/login');
+        navigate('/landing');
       }
     } catch (err) {
       // console.error('Error fetching user data:', err);
-      navigate('/login');
+      navigate('/landing');
     }
   };
 
@@ -51,7 +51,7 @@ const Announcements = () => {
     const fetchAllAnnouncements = async () => {
       try {
         setIsLoading(true); // Set loading status to true when fetching data
-        const response = await fetch('http://localhost:5000/announcement/getAllAnnouncements', {
+        const response = await fetch('https://mta-backend.vercel.app/announcement/getAllAnnouncements', {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,

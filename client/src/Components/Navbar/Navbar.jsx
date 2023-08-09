@@ -56,7 +56,7 @@ const SideNav = (props) => {
     const result = window.confirm('Are you sure you want to logout?');
     if (result) {
       try {
-        const res = await fetch('http://localhost:5000/user/logout', {
+        const res = await fetch('https://mta-backend.vercel.app/user/logout', {
           method: 'GET',
           headers: {
             Accept: 'application/json',
@@ -69,7 +69,7 @@ const SideNav = (props) => {
           const error = new Error(res.error);
           throw error;
         } else {
-          navigate('/login');
+          navigate('/landing');
           // localStorage.removeItem('userId');
           localStorage.removeItem('jwtoken');
         }
@@ -85,7 +85,7 @@ const SideNav = (props) => {
         return;
       }
 
-      const res = await fetch('http://localhost:5000/user/getUserData', {
+      const res = await fetch('https://mta-backend.vercel.app/user/getUserData', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ const SideNav = (props) => {
         // navigate('/login');
       }
     } catch (err) {
-      navigate('/login');
+      navigate('/landing');
     }
   };
 
@@ -141,9 +141,9 @@ const SideNav = (props) => {
             </p>
           </div>
           <div className='links'>
-            <Link to="/study">
+            <Link to="/">
               <div className='link'>
-              <div className={`focus ${(isActive('/study')||isActive('/add/study')) ? 'active-link' : ''}`}>
+              <div className={`focus ${(isActive('/')||isActive('/add/study')) ? 'active-link' : ''}`}>
                 <PiBooksDuotone className='logo' />
                 &nbsp;Study Material
               </div>                

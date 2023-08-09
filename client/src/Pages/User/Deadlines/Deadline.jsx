@@ -17,7 +17,7 @@ const Deadline = () => {
   useEffect(() => {
     const fetchAllDeadlines = async () => {
       try {
-        const response = await fetch('http://localhost:5000/deadline/getAllDeadlines', {
+        const response = await fetch('https://mta-backend.vercel.app/deadline/getAllDeadlines', {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('jwtoken')}`,
@@ -33,7 +33,7 @@ const Deadline = () => {
         setIsLoading(false);
       } catch (error) {
         // console.error('Error fetching deadlines:', error);
-        navigate('/login');
+        navigate('/landing');
         setIsLoading(false);
       }
     };
