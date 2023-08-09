@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css'
 import MainPage from './Pages/User/MainPage/Main'
@@ -33,7 +33,6 @@ function App() {
       <Route path="/add/announcements" element={<AddAnnouncement/>}/>
       <Route path="/add/deadline" element={<DeadAdd />}/>
       <Route path="/add/impdates" element={ <AddImp />}/>
-
       <Route path="/about" element={ <AboutUs />}/>
     </Routes>
     </div>
