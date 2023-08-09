@@ -49,7 +49,7 @@ const Login = () => {
         setUserData(data);
         setLoadingMsg('Login');
         localStorage.setItem('jwtoken', data.token);
-        navigate('/');
+        navigate('/study');
       }
     } catch (error) {
       // console.error('An error occurred:', error);

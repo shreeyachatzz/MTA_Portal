@@ -73,7 +73,7 @@ const SideNav = memo((props) => {
           const error = new Error(res.error);
           throw error;
         } else {
-          navigate('/landing');
+          navigate('/');
           // localStorage.removeItem('userId');
           localStorage.removeItem('jwtoken');
         }
@@ -108,9 +108,9 @@ const SideNav = memo((props) => {
             </p>
           </div>
           <div className='links'>
-            <Link to="/">
+            <Link to="/study">
               <div className='link'>
-              <div className={`focus ${(isActive('/')||isActive('/add/study')) ? 'active-link' : ''}`}>
+              <div className={`focus ${(isActive('/study')||isActive('/add/study')) ? 'active-link' : ''}`}>
                 <PiBooksDuotone className='logo' />
                 &nbsp;Study Material
               </div>                

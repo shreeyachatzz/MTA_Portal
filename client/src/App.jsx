@@ -21,10 +21,10 @@ function App() {
     <>
     <div className='app'>
     <Routes >
-      <Route path="/landing" element={<Landing/>}/>
+      <Route path="/" element={<Landing/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/reset" element={<ResetPass/>}/>
-      <Route path="/" element={<MainPage/>}/>
+      <Route path="/study" element={<MainPage/>}/>
       <Route path="/announcements" element={<Announcements/>}/>
       <Route path="/deadline" element={<Deadline />}/>
       <Route path="/impdates" element={ <ImpDates />}/>

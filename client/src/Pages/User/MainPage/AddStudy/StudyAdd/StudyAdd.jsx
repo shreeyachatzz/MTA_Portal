@@ -41,7 +41,7 @@ const StudyAddCard = () => {
         navigate('/study');
       }
     } catch (error) {
-      navigate('/landing');
+      navigate('/');
       // console.error(error);
       // Handle error if needed
     }
