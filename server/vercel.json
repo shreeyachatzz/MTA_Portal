@@ -2,10 +2,20 @@
     "version": 2,
     "name": "music-album",
     "builds": [
-        {
-            "src": "app.js",
-            "use": "@vercel/node"
-        }
+      {
+        "src": "app.js",
+        "use": "@vercel/node"
+      }
     ],
-    "rewrites": [{ "source": "/(.*)", "destination": "/" }]
-}
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "/app.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/"
+      }
+    ]
+  }
+  
