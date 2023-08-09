@@ -3,49 +3,16 @@ import './Announcements.css';
 import SideNav from '../../../Components/Navbar/Navbar';
 import ACard from './ACard/ACard';
 import { useNavigate } from 'react-router-dom';
+import { useEditContext } from '../../../EditContext';
 
 const Announcements = () => {
   const [allAnnouncements, setAllAnnouncements] = useState([]);
   const [selectedButton, setSelectedButton] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [userData, setUserData] = useState('');
+  const {userData, setUserData} = useEditContext();
 
   const token = localStorage.getItem('jwtoken');
   const navigate = useNavigate();
-
-  const getUserInfo = async () => {
-    try {
-      if (!token) {
-        navigate('/landing');
-        return;
-      }
-
-      const res = await fetch('https://mta-backend.vercel.app/user/getUserData', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-          'Accept': 'application/json',
-        },
-        credentials: 'include',
-      });
-
-      if (res.status === 200) {
-        const data = await res.json();
-        setUserData(data);
-      } else {
-        // console.error("Failed to fetch user data");
-        navigate('/landing');
-      }
-    } catch (err) {
-      // console.error('Error fetching user data:', err);
-      navigate('/landing');
-    }
-  };
-
-  useEffect(() => {
-    getUserInfo();
-  }, []);
 
   useEffect(() => {
     const fetchAllAnnouncements = async () => {
