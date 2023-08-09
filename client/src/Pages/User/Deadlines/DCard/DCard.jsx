@@ -6,6 +6,7 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
   const { userData } = useEditContext();
   const [isAdmin, setIsAdmin] = useState(false);
   const [deleteBtnText, setDeleteBtnText] = useState('Delete');
+  const [isDeleted, setIsDeleted] = useState(false); // New state to track deletion
 
   useEffect(() => {
     setIsAdmin(userData.role === "admin");
@@ -32,8 +33,7 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
         });
 
         if (response.status === 200) {
-          setDeleteBtnText('Delete');
-          window.location.reload();
+          setIsDeleted(true); // Update state to hide the card
         } else {
           // Handle deletion failure
         }
@@ -48,6 +48,10 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
   const handleReadMoreClick = () => {
     setShowFullDescription(!showFullDescription);
   };
+
+  if (isDeleted) {
+    return null; // Return null if the card is deleted
+  }
 
   const currentDate = new Date();
   const isPastDue = new Date(date) < currentDate;

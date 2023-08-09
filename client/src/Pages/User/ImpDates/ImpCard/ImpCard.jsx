@@ -7,6 +7,7 @@ const ImpCard = ({ id, subject, date, time, venue, type, groupOrSubgroup }) => {
   const { userData, setUserData } = useEditContext();
   const [isAdmin, setIsAdmin] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false); // New state to track deletion
 
   useEffect(() => {
     setIsAdmin(userData.role === 'admin');
@@ -43,7 +44,7 @@ const ImpCard = ({ id, subject, date, time, venue, type, groupOrSubgroup }) => {
         });
 
         if (response.status === 200) {
-          window.location.reload();
+          setIsDeleted(true); // Update state to hide the card
         } else {
           // Handle deletion failure
         }
@@ -54,6 +55,10 @@ const ImpCard = ({ id, subject, date, time, venue, type, groupOrSubgroup }) => {
       }
     }
   };
+
+  if (isDeleted) {
+    return null; // Return null if the card is deleted
+  }
 
   return (
     <>

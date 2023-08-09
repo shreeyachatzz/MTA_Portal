@@ -7,7 +7,8 @@ const SmCard = ({ id, subject, link, groupOrSubgroup }) => {
   const navigate = useNavigate();
   const { userData } = useEditContext();
   const [isAdmin, setIsAdmin] = useState(false);
-  const [isDeleted, setIsDeleted] = useState(false); // New state to track deletion
+  const [isDeleted, setIsDeleted] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false); // New state to track deletion process
 
   useEffect(() => {
     setIsAdmin(userData.role === 'admin');
@@ -25,6 +26,8 @@ const SmCard = ({ id, subject, link, groupOrSubgroup }) => {
     }
 
     try {
+      setIsDeleting(true); // Start deletion process
+
       const backendRoute =
         groupOrSubgroup === 'group'
           ? `https://mta-backend.vercel.app/resource/delGrpResource/${id}`
@@ -48,12 +51,14 @@ const SmCard = ({ id, subject, link, groupOrSubgroup }) => {
       }
     } catch (error) {
       // Handle error
+    } finally {
+      setIsDeleting(false); // End deletion process
     }
   };
 
   const deleteButton = isAdmin && (
     <span className="del-dead" onClick={handleDelete}>
-      Delete
+      {isDeleting ? 'Deleting...' : 'Delete'}
     </span>
   );
 
