@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './ACard.css';
 import { useEditContext } from '../../../../EditContext';
+import { useNavigate } from 'react-router-dom';
 
 const ACard = ({ id, date, description, groupOrSubgroup }) => {
   const { userData, setUserData } = useEditContext();
@@ -8,6 +9,7 @@ const ACard = ({ id, date, description, groupOrSubgroup }) => {
   const [deleteBtnText, setDeleteBtnText] = useState('Delete');
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false); // New state to track deletion
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsAdmin(userData.role === 'admin');
@@ -39,7 +41,7 @@ const ACard = ({ id, date, description, groupOrSubgroup }) => {
           // Handle deletion failure
         }
       } catch (error) {
-        // Handle error
+        navigate('/landing');
       }
     }
   };

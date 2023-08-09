@@ -69,7 +69,7 @@ const SideNav = (props) => {
           const error = new Error(res.error);
           throw error;
         } else {
-          navigate('/login');
+          navigate('/landing');
           // localStorage.removeItem('userId');
           localStorage.removeItem('jwtoken');
         }
@@ -105,7 +105,7 @@ const SideNav = (props) => {
         // navigate('/login');
       }
     } catch (err) {
-      navigate('/login');
+      navigate('/landing');
     }
   };
 
@@ -141,9 +141,9 @@ const SideNav = (props) => {
             </p>
           </div>
           <div className='links'>
-            <Link to="/study">
+            <Link to="/">
               <div className='link'>
-              <div className={`focus ${(isActive('/study')||isActive('/add/study')) ? 'active-link' : ''}`}>
+              <div className={`focus ${(isActive('/')||isActive('/add/study')) ? 'active-link' : ''}`}>
                 <PiBooksDuotone className='logo' />
                 &nbsp;Study Material
               </div>                

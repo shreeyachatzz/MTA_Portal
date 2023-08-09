@@ -55,7 +55,7 @@ const MainPage = () => {
   const getUserInfo = async () => {
     try {
       if (!token) {
-        navigate('/login');
+        navigate('/landing');
         return;
       }
 
@@ -78,7 +78,7 @@ const MainPage = () => {
       }
     } catch (err) {
       // console.error('Error fetching user data:', err);
-      navigate('/login');
+      navigate('/landing');
     }
   };
 
@@ -107,7 +107,7 @@ const MainPage = () => {
         setFilteredData(data.resources);
         setLoading(false);
       } catch (error) {
-         navigate('/login');
+         navigate('/landing');
         // console.error(error);
         setLoading(false);
       }

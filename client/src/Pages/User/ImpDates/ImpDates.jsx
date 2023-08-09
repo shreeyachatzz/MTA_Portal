@@ -28,7 +28,7 @@ const ImpDates = () => {
         setExamDates(data.exams);
       } catch (error) {
         // console.error('Error fetching exam dates:', error);
-        navigate('/login');
+        navigate('/landing');
       } finally {
         setLoading(false);
       }

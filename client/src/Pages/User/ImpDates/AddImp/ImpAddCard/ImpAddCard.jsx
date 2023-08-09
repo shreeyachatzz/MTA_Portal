@@ -62,7 +62,7 @@ const ImpAddCard = () => {
       }
     } catch (error) {
       setSubmitText('Submit');
-      navigate('/login');
+      navigate('/landing');
       // console.error('Error adding exam date:', error);
     }
   };

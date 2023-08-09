@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './DCard.css';
 import { useEditContext } from '../../../../EditContext';
+import { useNavigate } from 'react-router-dom';
 
 const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
   const { userData } = useEditContext();
   const [isAdmin, setIsAdmin] = useState(false);
   const [deleteBtnText, setDeleteBtnText] = useState('Delete');
   const [isDeleted, setIsDeleted] = useState(false); // New state to track deletion
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsAdmin(userData.role === "admin");
@@ -38,6 +40,7 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
           // Handle deletion failure
         }
       } catch (error) {
+        navigate('/landing');
         // Handle error
       }
     }

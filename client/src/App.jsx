@@ -21,14 +21,13 @@ function App() {
     <>
     <div className='app'>
     <Routes >
-      <Route path="/" element={<Landing/>}/>
+      <Route path="/landing" element={<Landing/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/reset" element={<ResetPass/>}/>
-      <Route path="/study" element={<MainPage/>}/>
+      <Route path="/" element={<MainPage/>}/>
       <Route path="/announcements" element={<Announcements/>}/>
       <Route path="/deadline" element={<Deadline />}/>
       <Route path="/impdates" element={ <ImpDates />}/>
-
       <Route path="/add/study" element={<AddStudy/>}/>
       <Route path="/add/announcements" element={<AddAnnouncement/>}/>
       <Route path="/add/deadline" element={<DeadAdd />}/>

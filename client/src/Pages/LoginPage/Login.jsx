@@ -47,7 +47,7 @@ const Login = () => {
         setLoadingMsg('Login');
         // localStorage.setItem('userId', data.userId);
         localStorage.setItem('jwtoken', data.token);
-        navigate('/study');
+        navigate('/');
       }
     } catch (error) {
       // console.error('An error occurred:', error);

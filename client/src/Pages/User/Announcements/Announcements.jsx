@@ -16,7 +16,7 @@ const Announcements = () => {
   const getUserInfo = async () => {
     try {
       if (!token) {
-        navigate('/login');
+        navigate('/landing');
         return;
       }
 
@@ -35,11 +35,11 @@ const Announcements = () => {
         setUserData(data);
       } else {
         // console.error("Failed to fetch user data");
-        navigate('/login');
+        navigate('/landing');
       }
     } catch (err) {
       // console.error('Error fetching user data:', err);
-      navigate('/login');
+      navigate('/landing');
     }
   };
 

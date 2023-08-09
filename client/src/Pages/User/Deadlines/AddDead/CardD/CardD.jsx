@@ -67,7 +67,7 @@ const CardD = () => {
             }
         } catch (error) {
             setSubmitText('Submit');
-            navigate('/login');
+            navigate('/landing');
             // Handle any error that may occur during the API call
             // console.error('Error submitting deadline:', error);
         }

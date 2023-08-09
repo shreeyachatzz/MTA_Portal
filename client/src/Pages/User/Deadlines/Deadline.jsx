@@ -33,7 +33,7 @@ const Deadline = () => {
         setIsLoading(false);
       } catch (error) {
         // console.error('Error fetching deadlines:', error);
-        navigate('/login');
+        navigate('/landing');
         setIsLoading(false);
       }
     };
