@@ -1,16 +1,12 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom';
-
 import './App.css'
-
 import MainPage from './Pages/User/MainPage/Main'
 import Login from './Pages/LoginPage/Login';
-
 import Announcements from './Pages/User/Announcements/Announcements'
 import Deadline from './Pages/User/Deadlines/Deadline'
 import ImpDates from './Pages/User/ImpDates/ImpDates'
 import Landing from './Pages/Landing/Landing';
-
 import AddAnnouncement from './Pages/User/Announcements/AddAnnouncements/AddAnnouncement';
 import DeadAdd from './Pages/User/Deadlines/AddDead/DeadAdd';
 import AddImp from './Pages/User/ImpDates/AddImp/AddImp';
