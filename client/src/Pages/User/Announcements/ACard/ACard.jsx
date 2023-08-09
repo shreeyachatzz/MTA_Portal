@@ -7,6 +7,7 @@ const ACard = ({ id, date, description, groupOrSubgroup }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [deleteBtnText, setDeleteBtnText] = useState('Delete');
   const [showFullDescription, setShowFullDescription] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false); // New state to track deletion
 
   useEffect(() => {
     setIsAdmin(userData.role === 'admin');
@@ -32,11 +33,8 @@ const ACard = ({ id, date, description, groupOrSubgroup }) => {
           },
         });
 
-        const data = await response.json();
-
         if (response.status === 200) {
-          setDeleteBtnText('Delete');
-          window.location.reload();
+          setIsDeleted(true); // Update state to hide the card
         } else {
           // Handle deletion failure
         }
@@ -49,6 +47,10 @@ const ACard = ({ id, date, description, groupOrSubgroup }) => {
   const handleReadMoreClick = () => {
     setShowFullDescription(!showFullDescription);
   };
+
+  if (isDeleted) {
+    return null; // Return null if the card is deleted
+  }
 
   return (
     <div className='card-a'>
