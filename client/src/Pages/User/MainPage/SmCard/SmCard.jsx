@@ -7,7 +7,7 @@ const SmCard = ({ id, subject, link, groupOrSubgroup }) => {
   const navigate = useNavigate();
   const { userData } = useEditContext();
   const [isAdmin, setIsAdmin] = useState(false);
-  const [deleteMsg, setDeleteMsg] = useState('Delete');
+  const [isDeleted, setIsDeleted] = useState(false); // New state to track deletion
 
   useEffect(() => {
     setIsAdmin(userData.role === 'admin');
@@ -16,7 +16,7 @@ const SmCard = ({ id, subject, link, groupOrSubgroup }) => {
   const fullLink = link.startsWith('http://') || link.startsWith('https://') ? link : `http://${link}`;
 
   const handleDelete = async (event) => {
-    event.stopPropagation(); // This line prevents the onClick property from working when clicked on the delete button
+    event.stopPropagation();
 
     const confirmed = window.confirm('Are you sure you want to delete this resource?');
 
@@ -24,7 +24,6 @@ const SmCard = ({ id, subject, link, groupOrSubgroup }) => {
       return;
     }
 
-    setDeleteMsg('Deleting ...');
     try {
       const backendRoute =
         groupOrSubgroup === 'group'
@@ -42,29 +41,29 @@ const SmCard = ({ id, subject, link, groupOrSubgroup }) => {
         },
       });
 
-      const data = await response.json();
-
       if (response.status === 200) {
-        setDeleteMsg('Delete');
-        navigate('/study');
+        setIsDeleted(true); // Update state to hide the card
       } else {
-        setDeleteMsg('Delete');
         throw new Error('Failed to delete resource');
       }
     } catch (error) {
-      // console.error(error);
+      // Handle error
     }
   };
 
   const deleteButton = isAdmin && (
     <span className="del-dead" onClick={handleDelete}>
-      {deleteMsg}
+      Delete
     </span>
   );
 
   const handleCardClick = () => {
     window.open(fullLink, '_blank');
   };
+
+  if (isDeleted) {
+    return null; // Return null if the card is deleted
+  }
 
   return (
     <div className='card-m' onClick={handleCardClick}>
