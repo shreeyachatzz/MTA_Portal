@@ -46,7 +46,7 @@ const SmCard = ({ id, subject, link, groupOrSubgroup }) => {
 
       if (response.status === 200) {
         setDeleteMsg('Delete');
-        window.location.reload();
+        navigate('/study');
       } else {
         setDeleteMsg('Delete');
         throw new Error('Failed to delete resource');
