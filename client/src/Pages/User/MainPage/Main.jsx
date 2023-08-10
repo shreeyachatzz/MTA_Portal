@@ -74,7 +74,7 @@ const MainPage = () => {
         setFilteredData(data.resources);
         setLoading(false);
       } catch (error) {
-         navigate('/');
+         navigate('/landing');
         // console.error(error);
         setLoading(false);
       }
