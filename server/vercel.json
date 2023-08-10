@@ -10,23 +10,23 @@
     "routes": [
         {
             "src": "^/user(/.*)?$",
-            "dest": "https://mta-backend.vercel.app"
+            "dest": "/app.js"
         },
         {
             "src": "^/announcement(/.*)?$",
-            "dest": "https://mta-backend.vercel.app"
+            "dest": "/app.js"
         },
         {
             "src": "^/deadline(/.*)?$",
-            "dest": "https://mta-backend.vercel.app"
+            "dest": "/app.js"
         },
         {
             "src": "^/resource(/.*)?$",
-            "dest": "https://mta-backend.vercel.app"
+            "dest": "/app.js"
         },
         {
             "src": "^/exam(/.*)?$",
-            "dest": "https://mta-backend.vercel.app"
+            "dest": "/app.js"
         },
         {
             "src": "/(.*)",
