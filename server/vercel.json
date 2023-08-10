@@ -9,28 +9,8 @@
     ],
     "routes": [
         {
-            "src": "^/user(/.*)?$",
-            "dest": "/app.js"
-        },
-        {
-            "src": "^/announcement(/.*)?$",
-            "dest": "/app.js"
-        },
-        {
-            "src": "^/deadline(/.*)?$",
-            "dest": "/app.js"
-        },
-        {
-            "src": "^/resource(/.*)?$",
-            "dest": "/app.js"
-        },
-        {
-            "src": "^/exam(/.*)?$",
-            "dest": "/app.js"
-        },
-        {
             "src": "/(.*)",
-            "dest": "/main.jsx"
+            "dest": "/app.js"
         }
     ]
 }
