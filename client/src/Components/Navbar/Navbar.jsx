@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo, useMemo } from 'react';
 import './Navbar.css';
 import { NavLink } from 'react-router-dom';
 import { PiBooksDuotone } from 'react-icons/pi';
@@ -10,14 +10,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useEditContext } from '../../EditContext';
 
 
-const SideNav = (props) => {
+const SideNav = memo((props) => {
+  const {userData, setUserData} = useEditContext();
   const navigate = useNavigate();
   const {heading}=props;
 
 // Check admin status
-  const [isAdmin,setIsAdmin] = useState(false);
   const { makeEdit, setMakeEdit } = useEditContext();
   
+
+  const isAdmin = useMemo(() => {
+    return userData && userData.role === 'admin';
+  }, [userData]);
 
   const [showSidee, setShowSidee] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -49,7 +53,7 @@ const SideNav = (props) => {
     }
   };
 
-  const { userData, setUserData } = useEditContext();
+  
   const token = localStorage.getItem("jwtoken");
 
   const handleLogout = async () => {
@@ -69,7 +73,7 @@ const SideNav = (props) => {
           const error = new Error(res.error);
           throw error;
         } else {
-          navigate('/landing');
+          navigate('/');
           // localStorage.removeItem('userId');
           localStorage.removeItem('jwtoken');
         }
@@ -78,40 +82,6 @@ const SideNav = (props) => {
     } 
   };
 
-  const getUserInfo = async () => {
-    try {
-      if (!token) {
-        navigate('/login');
-        return;
-      }
-
-      const res = await fetch('https://mta-backend.vercel.app/user/getUserData', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-          'Accept': 'application/json',
-        },
-        credentials: 'include',
-      });
-
-      if (res.status === 200) {
-        const data = await res.json();
-        setUserData(data);
-        // localStorage.setItem('userData', JSON.stringify(data));
-      
-        setIsAdmin(data.role === "admin");
-      } else {
-        // navigate('/login');
-      }
-    } catch (err) {
-      navigate('/landing');
-    }
-  };
-
-  useEffect(()=>{
-    getUserInfo();
-  },[])
 
   const isActive = (path) => {
     return window.location.pathname === path;
@@ -124,15 +94,12 @@ const SideNav = (props) => {
           {/* <div className='dash'>DASHBOARD</div> */}
           <div className='person-info'>
             <p className='welc'>Welcome,</p>
-            {userData ? (
+           
               <>
                 <p className='name'>{userData.name}</p>
                 <p className='mail'>{userData.email}</p>
               </>
-            ) : (
-              // Show a loading message or fallback UI while userData is null
-              <p>Loading...</p>
-            )}
+        
             <p className='admin-mode'>
               {isAdmin&&<p className='crgr'>CR/GR</p>}
               {!isAdmin&&<p className='crgr'>STUDENT</p>}
@@ -141,9 +108,9 @@ const SideNav = (props) => {
             </p>
           </div>
           <div className='links'>
-            <Link to="/">
+            <Link to="/study">
               <div className='link'>
-              <div className={`focus ${(isActive('/')||isActive('/add/study')) ? 'active-link' : ''}`}>
+              <div className={`focus ${(isActive('/study')||isActive('/add/study')) ? 'active-link' : ''}`}>
                 <PiBooksDuotone className='logo' />
                 &nbsp;Study Material
               </div>                
@@ -236,6 +203,6 @@ const SideNav = (props) => {
       </div>
     </div>
   );
-};
+});
 
 export default SideNav;

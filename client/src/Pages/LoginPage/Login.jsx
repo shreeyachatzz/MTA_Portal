@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useEditContext } from '../../EditContext';
 import './Login.css';
 
 const Login = () => {
+  const { userData, setUserData } = useEditContext();
   const [loadingMsg, setLoadingMsg] = useState('Login');
   const [user, setUser] = useState({
     email: '',
@@ -44,10 +46,10 @@ const Login = () => {
         setLoadingMsg('Login');
         window.alert('Login failed !');
       } else {
+        setUserData(data);
         setLoadingMsg('Login');
-        // localStorage.setItem('userId', data.userId);
         localStorage.setItem('jwtoken', data.token);
-        navigate('/');
+        navigate('/study');
       }
     } catch (error) {
       // console.error('An error occurred:', error);

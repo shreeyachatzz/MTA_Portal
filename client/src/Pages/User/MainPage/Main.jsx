@@ -12,7 +12,7 @@ const MainPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const [selectedButton, setSelectedButton] = useState(null);
-  const [userData, setUserData] = useState('');
+  const {userData, setUserData} = useEditContext();
 
   const navigate = useNavigate();
 
@@ -52,39 +52,6 @@ const MainPage = () => {
   };
   
 
-  const getUserInfo = async () => {
-    try {
-      if (!token) {
-        navigate('/landing');
-        return;
-      }
-
-      const res = await fetch('https://mta-backend.vercel.app/user/getUserData', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-          'Accept': 'application/json',
-        },
-        credentials: 'include',
-      });
-
-      if (res.status === 200) {
-        const data = await res.json();
-        setUserData(data);
-      } else {
-        // console.error("Failed to fetch user data");
-        // navigate('/login');
-      }
-    } catch (err) {
-      // console.error('Error fetching user data:', err);
-      navigate('/landing');
-    }
-  };
-
-  useEffect(() => {
-    getUserInfo();
-  }, []);
 
   const token = localStorage.getItem('jwtoken');
   useEffect(() => {
