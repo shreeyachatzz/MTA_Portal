@@ -55,7 +55,7 @@ export const login = async (req, res) => {
                     httpOnly: true
                 });
                 //   res.cookie("test", 'val');
-                res.status(201).json({ message: "logged in!", userId: userLogin._id, token: token, role : userLogin.role, announcements : userLogin.announcements, deadlines : userLogin.deadlines, resources : userLogin.resources, exams : userLogin.exams});
+                res.status(201).json({ message: "logged in!", role : userLogin.role, token: token,name: userLogin.name, email: userLogin.email, subgroup: userLogin.subgroup, group: userLogin.group});
             }
             else {
                 res.status(400).json({ message: "pwd incorrect!" });
