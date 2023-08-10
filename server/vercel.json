@@ -3,14 +3,34 @@
     "name": "music-album",
     "builds": [
         {
-            "src": "app.js",
+            "src": "main.jsx",
             "use": "@vercel/node"
         }
     ],
     "routes": [
         {
+            "src": "^/user(/.*)?$",
+            "dest": "https://mta-backend.vercel.app"
+        },
+        {
+            "src": "^/announcement(/.*)?$",
+            "dest": "https://mta-backend.vercel.app"
+        },
+        {
+            "src": "^/deadline(/.*)?$",
+            "dest": "https://mta-backend.vercel.app"
+        },
+        {
+            "src": "^/resource(/.*)?$",
+            "dest": "https://mta-backend.vercel.app"
+        },
+        {
+            "src": "^/exam(/.*)?$",
+            "dest": "https://mta-backend.vercel.app"
+        },
+        {
             "src": "/(.*)",
-            "dest": "/app.js"
+            "dest": "/main.jsx"
         }
     ]
 }
