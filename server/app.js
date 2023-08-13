@@ -18,7 +18,7 @@ connectDB();
 //middlewares
 app.use(cookieParser());
 app.use(cors({
-    origin: 'https://mtaportal.vercel.app',
+    origin: 'https://monumental-kataifi-958abb.netlify.app',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
