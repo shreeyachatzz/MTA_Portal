@@ -1,26 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import './ACard.css';
-// import { useEditContext } from '../../../../EditContext';
+import { useEditContext } from '../../../../EditContext';
+import { useNavigate } from 'react-router-dom';
 
 const ACard = ({ id, date, description, groupOrSubgroup }) => {
-  // const { userData, setUserData } = useEditContext();
+  const { userData, setUserData } = useEditContext();
   const [isAdmin, setIsAdmin] = useState(false);
   const [deleteBtnText, setDeleteBtnText] = useState('Delete');
   const [showFullDescription, setShowFullDescription] = useState(false);
-  const [isDeleted, setIsDeleted] = useState(false); // New state to track deletion4
-
-  const name = localStorage.getItem('name');
-  // const role = localStorage.getItem('role');
-  const subgroup = localStorage.getItem('subgroup');
-  const group = localStorage.getItem('group');
-  const email = localStorage.getItem('email');
+  const [isDeleted, setIsDeleted] = useState(false); // New state to track deletion
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const role = localStorage.getItem('role');
-    if (role === 'admin') {
-      setIsAdmin(true);
-    }
-  }, []);
+    setIsAdmin(userData.role === 'admin');
+  }, [userData]);
 
   const handleDelete = async () => {
     const confirmed = window.confirm('Are you sure you want to delete this card?');
@@ -48,7 +41,7 @@ const ACard = ({ id, date, description, groupOrSubgroup }) => {
           // Handle deletion failure
         }
       } catch (error) {
-        // Handle error
+        navigate('/landing');
       }
     }
   };

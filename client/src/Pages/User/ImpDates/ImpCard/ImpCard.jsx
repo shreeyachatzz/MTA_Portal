@@ -1,25 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import './ImpCard.css';
 import { MdOutlineDeleteForever } from 'react-icons/md';
-// import { useEditContext } from '../../../../EditContext';
+import { useEditContext } from '../../../../EditContext';
 
 const ImpCard = ({ id, subject, date, time, venue, type, groupOrSubgroup }) => {
-  // const { userData, setUserData } = useEditContext();
+  const { userData, setUserData } = useEditContext();
   const [isAdmin, setIsAdmin] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false); // New state to track deletion
 
-  const name = localStorage.getItem('name');
-  const role = localStorage.getItem('role');
-  const subgroup = localStorage.getItem('subgroup');
-  const group = localStorage.getItem('group');
-  const email = localStorage.getItem('email');
-
   useEffect(() => {
-    const role = localStorage.getItem('role');
-    if (role === 'admin') {
-      setIsAdmin(true);
-    }
+    setIsAdmin(userData.role === 'admin');
   }, []);
 
   const formatDate = (inputDate) => {

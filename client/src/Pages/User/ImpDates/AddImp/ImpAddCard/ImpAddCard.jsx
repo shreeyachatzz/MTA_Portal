@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import './ImpAddCard.css';
 import DropdownAdd from '../../../../../Components/DropDownPop/DropDownAdd';
 import { useNavigate } from 'react-router-dom';
-// import { useEditContext } from '../../../../../EditContext';
+import { useEditContext } from '../../../../../EditContext';
 
 const ImpAddCard = () => {
   const navigate = useNavigate();
-  // const { userData, setUserData } = useEditContext();
+  const { userData, setUserData } = useEditContext();
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [venue, setVenue] = useState('');
@@ -14,16 +14,6 @@ const ImpAddCard = () => {
   const [title, setTitle] = useState('');
   const [selectedGroupOrSubgroup, setSelectedGroupOrSubgroup] = useState('subgroup');
   const [submitText,setSubmitText] = useState('Submit');
-
-  const name = localStorage.getItem('name');
-  const role = localStorage.getItem('role');
-  const subgroup = localStorage.getItem('subgroup');
-  const group = localStorage.getItem('group');
-  const email = localStorage.getItem('email');
-
-  if(role == "admin"){
-    setIsAdmin(true);
-  }
 
   const token = localStorage.getItem('jwtoken');
 
@@ -72,7 +62,7 @@ const ImpAddCard = () => {
       }
     } catch (error) {
       setSubmitText('Submit');
-      navigate('/login');
+      navigate('/landing');
       // console.error('Error adding exam date:', error);
     }
   };
@@ -151,13 +141,13 @@ const ImpAddCard = () => {
         className={`sec-grp ${selectedGroupOrSubgroup === 'subgroup' ? 'active' : ''}`}
         onClick={() => setSelectedGroupOrSubgroup('subgroup')}
       >
-        {subgroup}
+        {userData.subgroup}
       </button>
       <button
         className={`sec-grp ${selectedGroupOrSubgroup === 'group' ? 'active' : ''}`}
         onClick={() => setSelectedGroupOrSubgroup('group')}
       >
-        {group}
+        {userData.group}
       </button>
      
       <div className='title-a'>Info</div>

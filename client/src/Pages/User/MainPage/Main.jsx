@@ -3,7 +3,7 @@ import './Main.css';
 import SideNav from '../../../Components/Navbar/Navbar';
 import SmCard from './SmCard/SmCard';
 import { BiSearchAlt } from 'react-icons/bi';
-// import { useEditContext } from '../../../EditContext';
+import { useEditContext } from '../../../EditContext';
 import { useNavigate } from 'react-router-dom';
 
 const MainPage = () => {
@@ -12,13 +12,7 @@ const MainPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const [selectedButton, setSelectedButton] = useState(null);
-  // const {userData, setUserData} = useEditContext();
-
-  const name = localStorage.getItem('name');
-  const role = localStorage.getItem('role');
-  const subgroup = localStorage.getItem('subgroup');
-  const group = localStorage.getItem('group');
-  const email = localStorage.getItem('email');
+  const {userData, setUserData} = useEditContext();
 
   const navigate = useNavigate();
 
@@ -50,9 +44,9 @@ const MainPage = () => {
       setSelectedButton(buttonName);
       // Apply filtering based on the selected button
       if (buttonName === 'COE16') {
-        setFilteredData(data.filter((item) => item.subgroup === subgroup));
+        setFilteredData(data.filter((item) => item.subgroup === userData.subgroup));
       } else if (buttonName === 'COE15-22') {
-        setFilteredData(data.filter((item) => item.group === group));
+        setFilteredData(data.filter((item) => item.group === userData.group));
       }
     }
   };
@@ -80,7 +74,7 @@ const MainPage = () => {
         setFilteredData(data.resources);
         setLoading(false);
       } catch (error) {
-         navigate('/login');
+         navigate('/landing');
         // console.error(error);
         setLoading(false);
       }
@@ -109,13 +103,13 @@ const MainPage = () => {
             className={`butf mainbut ${selectedButton === 'COE16' ? 'active' : ''}`}
             onClick={() => handleButtonClick('COE16')}
           >
-            {subgroup}
+            {userData.subgroup}
           </div>
           <div
             className={`butf mainbut ${selectedButton === 'COE15-22' ? 'active' : ''}`}
             onClick={() => handleButtonClick('COE15-22')}
           >
-            {group}
+            {userData.group}
           </div>
         </div>
         <div className='cards-m'>
