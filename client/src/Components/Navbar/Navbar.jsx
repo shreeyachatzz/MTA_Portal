@@ -7,7 +7,7 @@ import { TfiAnnouncement } from 'react-icons/tfi';
 import { BsFillPlusSquareFill } from 'react-icons/bs';
 import { LiaStopwatchSolid, LiaCalendarSolid } from 'react-icons/lia';
 import { Link, useNavigate } from 'react-router-dom';
-import { useEditContext } from '../../EditContext';
+// import { useEditContext } from '../../EditContext';
 
 
 const SideNav = (props) => {
@@ -24,19 +24,19 @@ const SideNav = (props) => {
 
   
   // Check admin status
-  const { makeEdit, setMakeEdit } = useEditContext();
+  // const { makeEdit, setMakeEdit } = useEditContext();
 
 
   const [showSidee, setShowSidee] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  const handleEditClick = () => {
-    setMakeEdit(true); // Set the makeEdit state using the context function
-  };
+  // const handleEditClick = () => {
+  //   setMakeEdit(true); // Set the makeEdit state using the context function
+  // };
 
-  const handleExitClick = () => {
-    setMakeEdit(false); // Set the makeEdit state using the context function
-  };
+  // const handleExitClick = () => {
+  //   setMakeEdit(false); // Set the makeEdit state using the context function
+  // };
 
   useEffect(() => {
 
@@ -112,8 +112,8 @@ const SideNav = (props) => {
             <p className='admin-mode'>
               {isAdmin && <p className='crgr'>CR/GR</p>}
               {!isAdmin && <p className='crgr'>STUDENT</p>}
-              {isAdmin && !makeEdit && <button className='edit' onClick={handleEditClick}>ADD INFO</button>}
-              {isAdmin && makeEdit && <button className='edit' onClick={handleExitClick}>EXIT</button>}
+              {isAdmin && <button className='edit' onClick={handleEditClick}>ADD INFO</button>}
+              {isAdmin && <button className='edit' onClick={handleExitClick}>EXIT</button>}
             </p>
           </div>
           <div className='links'>
@@ -123,7 +123,7 @@ const SideNav = (props) => {
                   <PiBooksDuotone className='logo' />
                   &nbsp;Study Material
                 </div>
-                {isAdmin && makeEdit &&
+                {isAdmin &&
                   <Link to="/add/study">
                     <BsFillPlusSquareFill className='addLogo' />
                   </Link>
@@ -139,7 +139,7 @@ const SideNav = (props) => {
                 </div>
 
                 &nbsp;
-                {isAdmin && makeEdit &&
+                {isAdmin && 
                   <Link to="/add/announcements">
                     <BsFillPlusSquareFill className='addLogo' />
                   </Link>
@@ -154,7 +154,7 @@ const SideNav = (props) => {
                   &nbsp;Deadlines
                 </div>
 
-                {isAdmin && makeEdit &&
+                {isAdmin && 
                   <Link to="/add/deadline">
                     <BsFillPlusSquareFill className='addLogo' />
                   </Link>
@@ -169,7 +169,7 @@ const SideNav = (props) => {
                   &nbsp;Evaluations
                 </div>
 
-                {isAdmin && makeEdit &&
+                {isAdmin && 
                   <Link to="/add/impdates">
                     <BsFillPlusSquareFill className='addLogo' />
                   </Link>
