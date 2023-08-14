@@ -33,42 +33,45 @@ export const signup = async (req, res) => {
 
 export const login = async (req, res) => {
     try {
-        const { email,  password } = req.body;
+        const { email, password } = req.body;
 
         if (!email || !password) {
-            res.status(400).json({ message: "fields empty!" });
+            return res.status(400).json({ message: "Fields empty!" });
         }
 
-        const userLogin = await User.findOne({ email : email }) //has entire document
+        const userLogin = await User.findOne({
+            email: { $regex: new RegExp(email, "i") } // Perform case-insensitive search
+        });
 
         if (userLogin) {
             const isMatch = await bcrypt.compare(password, userLogin.password);
 
             if (isMatch) {
-
-                // console.log(userLogin);
-
                 const token = await userLogin.generateAuthToken();
-                // console.log(token);
                 res.cookie("jwtoken", token, {
                     expires: new Date(Date.now() + 25892000000),
                     httpOnly: true
                 });
-                //   res.cookie("test", 'val');
-                res.status(201).json({ message: "logged in!", role : userLogin.role, token: token,name: userLogin.name, email: userLogin.email, subgroup: userLogin.subgroup, group: userLogin.group});
+                res.status(201).json({
+                    message: "Logged in!",
+                    role: userLogin.role,
+                    token: token,
+                    name: userLogin.name,
+                    email: userLogin.email,
+                    subgroup: userLogin.subgroup,
+                    group: userLogin.group
+                });
+            } else {
+                res.status(400).json({ message: "Password incorrect!" });
             }
-            else {
-                res.status(400).json({ message: "pwd incorrect!" });
-            }
+        } else {
+            return res.status(400).json({ message: "User does not exist!" });
         }
-        else {
-            return res.status(400).json({ message: "user does not exist !" });
-        }
-
     } catch (err) {
         console.log(err);
     }
 }
+
 
 export const userDetails = async (req, res) => {
     res.send(req.rootUser);
