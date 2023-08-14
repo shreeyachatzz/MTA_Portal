@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import './DCard.css';
-import { useEditContext } from '../../../../EditContext';
-import { useNavigate } from 'react-router-dom';
+// import { useEditContext } from '../../../../EditContext';
 
 const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
-  const { userData } = useEditContext();
+  // const { userData } = useEditContext();
   const [isAdmin, setIsAdmin] = useState(false);
   const [deleteBtnText, setDeleteBtnText] = useState('Delete');
   const [isDeleted, setIsDeleted] = useState(false); // New state to track deletion
-  const navigate = useNavigate();
+
+  const name = localStorage.getItem('name');
+  // const role = localStorage.getItem('role');
+  const subgroup = localStorage.getItem('subgroup');
+  const group = localStorage.getItem('group');
+  const email = localStorage.getItem('email');
 
   useEffect(() => {
-    setIsAdmin(userData.role === "admin");
-  }, [userData]);
+    const role = localStorage.getItem('role');
+    if (role === 'admin') {
+      setIsAdmin(true);
+    }
+  }, []);
 
   const handleDelete = async () => {
     const confirmed = window.confirm('Are you sure you want to delete this deadline?');
@@ -40,7 +47,6 @@ const DCard = ({ id, title, description, date, groupOrSubgroup }) => {
           // Handle deletion failure
         }
       } catch (error) {
-        navigate('/landing');
         // Handle error
       }
     }
