@@ -112,8 +112,8 @@ const SideNav = (props) => {
             <p className='admin-mode'>
               {isAdmin && <p className='crgr'>CR/GR</p>}
               {!isAdmin && <p className='crgr'>STUDENT</p>}
-              {isAdmin && <button className='edit' onClick={handleEditClick}>ADD INFO</button>}
-              {isAdmin && <button className='edit' onClick={handleExitClick}>EXIT</button>}
+              {isAdmin && <button className='edit'>ADD INFO</button>}
+              {isAdmin && <button className='edit'>EXIT</button>}
             </p>
           </div>
           <div className='links'>
