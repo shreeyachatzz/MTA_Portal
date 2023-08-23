@@ -1,13 +1,13 @@
 import Announcement from '../models/Announcement.js';
 import User from '../models/User.js';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 export const postGroupAnnouncement = async (req, res) => {
   try {
     const { description } = req.body;
     const { group } = req.rootUser;
 
-    const date = moment().format('DD/MM/YYYY hh:mm A');
+    const date = moment.tz('Asia/Kolkata').format('DD/MM/YYYY hh:mm A');
     if (!description) {
       res.status(422).json({ error: "empty fields" });
     }
@@ -33,7 +33,7 @@ export const postSubgroupAnnouncement = async (req, res) => {
     const { description } = req.body;
     const { subgroup } = req.rootUser;
 
-    const date = moment().format('DD/MM/YYYY hh:mm A');
+    const date = moment.tz('Asia/Kolkata').format('DD/MM/YYYY hh:mm A');
     if (!description) {
       res.status(422).json({ error: "empty fields" });
     }

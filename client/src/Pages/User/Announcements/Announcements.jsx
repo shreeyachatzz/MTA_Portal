@@ -9,15 +9,14 @@ const Announcements = () => {
   const [allAnnouncements, setAllAnnouncements] = useState([]);
   const [selectedButton, setSelectedButton] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const {userData, setUserData} = useEditContext();
+  const { userData } = useEditContext();
 
   const token = localStorage.getItem('jwtoken');
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAllAnnouncements = async () => {
       try {
-        setIsLoading(true); // Set loading status to true when fetching data
+        setIsLoading(true);
         const response = await fetch('https://mta-backend.vercel.app/announcement/getAllAnnouncements', {
           headers: {
             'Content-Type': 'application/json',
@@ -30,14 +29,12 @@ const Announcements = () => {
 
         const data = await response.json();
         setAllAnnouncements(data.announcements);
-        setIsLoading(false); // Set loading status to false after data is fetched
+        setIsLoading(false);
       } catch (error) {
-        // console.error('Error fetching announcements:', error);
-        setIsLoading(false); // Set loading status to false on error
+        setIsLoading(false);
       }
     };
 
-    // Fetch all announcements
     fetchAllAnnouncements();
   }, [token]);
 
@@ -51,10 +48,11 @@ const Announcements = () => {
     } else if (selectedButton === 'COE15-22') {
       return item.group === userData.group;
     }
-    return true; // No filtering for other cases
-  }).sort((a, b) => new Date(b.date) - new Date(a.date)); // Reverse the array to show latest announcement first
+    return true;
+  }).sort((a, b) => new Date(a.date) - new Date(b.date));
 
-  const shouldSetHeight = filteredAnnouncements.length < 4;
+  const reversedAnnouncements = [...filteredAnnouncements].reverse();
+  const shouldSetHeight = reversedAnnouncements.length < 4;
 
   return (
     <div className={`fullmain ${shouldSetHeight ? 'app' : ''}`}>
@@ -79,10 +77,10 @@ const Announcements = () => {
         </div>
         {isLoading ? (
           <div>Loading...</div>
-        ) : filteredAnnouncements.length === 0 ? (
-            <div className='nodat anndat'>No Data Available</div>
-          ) :  (
-          filteredAnnouncements.map((item) => (
+        ) : reversedAnnouncements.length === 0 ? (
+          <div className='nodat anndat'>No Data Available</div>
+        ) : (
+          reversedAnnouncements.map((item) => (
             <ACard
               key={item._id}
               id={item._id}

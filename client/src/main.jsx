@@ -1,17 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom';
-import { EditContextProvider } from './EditContext';
+import './index.css'
+import { EditContextProvider } from './EditContext.jsx';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <EditContextProvider>
     <BrowserRouter>
-      <EditContextProvider>
-        <App />
-      </EditContextProvider>
+      <App /> 
     </BrowserRouter>
-  </React.StrictMode>
-);
+    </EditContextProvider>
+  </React.StrictMode>,
+)
